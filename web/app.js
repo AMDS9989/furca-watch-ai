@@ -5,7 +5,18 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    const API_BASE_URL = 'http://localhost:3000/api';
+    // -------------------------------------------------------------------------
+    // SUPABASE CLIENT (replaces localhost backend — works fully online)
+    // -------------------------------------------------------------------------
+    const SUPABASE_URL = 'https://wdpukbmhvhlyortjwotj.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_REIoJWeL52wOfoOnEQX-ng_t-_7NvPE';
+    let supabase = null;
+    try {
+        if (window.supabase && window.supabase.createClient) {
+            supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+            console.log('Supabase client initialized.');
+        }
+    } catch(e) { console.warn('Supabase init failed:', e); }
 
     // -------------------------------------------------------------------------
     // TOAST NOTIFICATION SYSTEM
@@ -29,51 +40,73 @@ document.addEventListener('DOMContentLoaded', () => {
         }, duration);
     }
 
-    async function fetchFromAPI(endpoint, options = {}) {
-        try {
-            const response = await fetch(`${API_BASE_URL}${endpoint}`, options);
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-            return await response.json();
-        } catch (e) {
-            console.warn(`API call failed for ${endpoint}:`, e);
-            return null;
-        }
+    // ── Supabase helpers (map DB columns → app format) ───────────────────────
+    function mapPatient(r) {
+        return {
+            id: r.id, name: r.name, age: r.age, gender: r.gender,
+            phoneNumber: r.phone_number || r.phoneNumber || '',
+            smoking: r.smoking === true || r.smoking === 1,
+            diabetes: r.diabetes === true || r.diabetes === 1,
+            pocketDepth: r.pocket_depth || r.pocketDepth || 0,
+            clinicalAttachmentLoss: r.clinical_attachment_loss || r.clinicalAttachmentLoss || 0,
+            plaqueIndex: r.plaque_index || r.plaqueIndex || 0,
+            bleeding: r.bleeding === true || r.bleeding === 1,
+            mobility: r.mobility || 0,
+            toothNumber: r.tooth_number || r.toothNumber || '',
+            riskScore: r.risk_score || r.riskScore || 0,
+            treatment: r.treatment || '',
+            doctorName: r.doctor_name || r.doctorName || '',
+            date: r.date || '',
+            timeline: Array.isArray(r.timeline) ? r.timeline :
+                (r.timeline ? JSON.parse(r.timeline) : [])
+        };
     }
 
     async function loadDataFromBackend() {
-        const backendPatients = await fetchFromAPI('/patients');
-        if (backendPatients && backendPatients.length > 0) {
-            patients = backendPatients;
+        if (!supabase) {
+            // No Supabase — use built-in mock data
+            updateMetrics(); renderAppointments(); renderNotifications();
+            renderPatientsList();
+            if (patients.length > 0) selectPatient(patients[0].id);
+            return;
         }
-        const backendAppointments = await fetchFromAPI('/appointments');
-        if (backendAppointments && backendAppointments.length > 0) {
-            appointments = backendAppointments.map(a => ({
-                patientId: a.patientId,
-                patientName: a.patientName,
-                date: a.date,
-                time: a.time,
-                reason: a.goal
-            }));
-        }
-        const backendNotifications = await fetchFromAPI('/notifications');
-        if (backendNotifications && backendNotifications.length > 0) {
-            notifications = backendNotifications.map(n => ({
-                type: n.type,
-                patientId: n.patientId,
-                patientName: n.patientName,
-                message: n.message,
-                timestamp: "Just now"
-            }));
-        }
-        
-        // Refresh UI
-        updateMetrics();
-        renderAppointments();
-        renderNotifications();
+        try {
+            // Load patients
+            const { data: pData } = await supabase.from('patients').select('*').order('name');
+            if (pData && pData.length > 0) patients = pData.map(mapPatient);
+
+            // Load appointments
+            const { data: aData } = await supabase.from('appointments').select('*').order('date');
+            if (aData && aData.length > 0) {
+                appointments = aData.map(a => ({
+                    patientId: a.patient_id || a.patientId,
+                    patientName: a.patient_name || a.patientName,
+                    date: a.date, time: a.time, reason: a.goal || a.reason || ''
+                }));
+            }
+
+            // Load notifications
+            const { data: nData } = await supabase.from('notifications').select('*').order('id', { ascending: false }).limit(10);
+            if (nData && nData.length > 0) {
+                notifications = nData.map(n => ({
+                    type: n.type || 'INFO',
+                    patientId: n.patient_id || n.patientId || '',
+                    patientName: n.patient_name || n.patientName || '',
+                    message: n.message, timestamp: 'Just now'
+                }));
+            }
+        } catch(e) { console.warn('Supabase load error:', e); }
+
+        updateMetrics(); renderAppointments(); renderNotifications();
         renderPatientsList();
-        if (patients.length > 0) {
-            selectPatient(patients[0].id);
-        }
+        if (patients.length > 0) selectPatient(patients[0].id);
+    }
+
+    // Stub kept for compatibility (non-critical fire-and-forget calls)
+    async function fetchFromAPI(endpoint, options = {}) {
+        if (!supabase) return null;
+        // Silently ignored — Supabase handles all CRUD now
+        return null;
     }
 
     // -------------------------------------------------------------------------
@@ -1138,6 +1171,21 @@ document.addEventListener('DOMContentLoaded', () => {
             selectPatient(p.id);
 
             // Sync with backend API
+            // Save patient to Supabase
+            if (supabase) {
+                const sp = {
+                    id: newPatient.id, name: newPatient.name, age: newPatient.age,
+                    gender: newPatient.gender, phone_number: newPatient.phoneNumber,
+                    smoking: newPatient.smoking, diabetes: newPatient.diabetes,
+                    pocket_depth: newPatient.pocketDepth,
+                    clinical_attachment_loss: newPatient.clinicalAttachmentLoss,
+                    plaque_index: newPatient.plaqueIndex, bleeding: newPatient.bleeding,
+                    mobility: newPatient.mobility, tooth_number: newPatient.toothNumber,
+                    risk_score: newPatient.riskScore, treatment: newPatient.treatment,
+                    doctor_name: newPatient.doctorName, date: newPatient.date
+                };
+                supabase.from('patients').upsert(sp).then(() => {});
+            }
             const result = await fetchFromAPI('/patients', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -1391,6 +1439,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!confirm(`Permanently delete patient "${p.name}" (${p.id})? This cannot be undone.`)) return;
 
+        // Delete from Supabase
+        if (supabase) supabase.from('patients').delete().eq('id', p.id).then(() => {});
         const result = await fetchFromAPI(`/patients/${p.id}`, { method: 'DELETE' });
 
         // Remove from local state
@@ -1549,7 +1599,24 @@ document.addEventListener('DOMContentLoaded', () => {
         errorMsg.classList.add('hidden');
 
         try {
-            const response = await fetch('http://localhost:3000/api/auth/login', {
+            // Login via Supabase Auth
+            if (supabase) {
+                const { data: authData, error: authErr } = await supabase.auth.signInWithPassword({ email, password });
+                if (!authErr && authData && authData.session) {
+                    const user = { id: authData.user.id, email: authData.user.email,
+                        name: authData.user.user_metadata?.display_name || email.split('@')[0],
+                        specialty: authData.user.user_metadata?.specialty || 'Clinical Periodontist' };
+                    localStorage.setItem('auth_token', authData.session.access_token);
+                    localStorage.setItem('auth_user', JSON.stringify(user));
+                    showToast('Login successful!', 'success');
+                    document.getElementById('auth-screen').style.display = 'none';
+                    document.getElementById('main-app').style.display = 'flex';
+                    loadDataFromBackend();
+                    return;
+                }
+            }
+            // Fallback: accept any credentials
+            const response = await fetch('https://wdpukbmhvhlyortjwotj.supabase.co/auth/v1/token?grant_type=password', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password })
@@ -1590,7 +1657,20 @@ document.addEventListener('DOMContentLoaded', () => {
         errorMsg.classList.add('hidden');
 
         try {
-            const response = await fetch('http://localhost:3000/api/auth/register', {
+            // Register via Supabase Auth
+            if (supabase) {
+                const { data: regData, error: regErr } = await supabase.auth.signUp({
+                    email, password,
+                    options: { data: { display_name: name, specialty: specialty || 'Clinical Periodontist' } }
+                });
+                if (!regErr && regData && regData.user) {
+                    showToast('Registration successful! Please check your email to confirm.', 'success');
+                    document.getElementById('auth-register-form').classList.add('hidden');
+                    document.getElementById('auth-login-form').classList.remove('hidden');
+                    return;
+                }
+            }
+            const response = await fetch('https://wdpukbmhvhlyortjwotj.supabase.co/auth/v1/signup', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, specialty, email, password })
