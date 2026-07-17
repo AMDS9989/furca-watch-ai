@@ -56,13 +56,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: backend/package.json
 
       # ── 3. Install Backend Dependencies ──────────────────────────────────────
       - name: Install Backend Dependencies
         working-directory: backend
-        run: npm ci
+        run: npm install
+
 
       # ── 4. Start Backend Server ───────────────────────────────────────────────
       - name: Start FurcaRiskAI Backend

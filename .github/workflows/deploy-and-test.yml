@@ -104,13 +104,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: tests/package.json
 
       # ── 3. Install Test Dependencies ─────────────────────────────────────────
       - name: Install Test Dependencies
         working-directory: tests
-        run: npm ci
+        run: npm install
+
 
       # ── 4. Wait for GitHub Pages to be reachable ─────────────────────────────
       - name: Wait for GitHub Pages Deployment (HTTP 200)
