@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_bg"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Furcation Grade Index"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Hamp &amp; Glickman classification models for horizontal tissue attachment loss."
+            android:textColor="@color/text_grey"
+            android:textSize="12sp" />
+
+        <!-- Select Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+            <Button android:id="@+id/btnG0" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="G0" android:layout_margin="2dp" app:backgroundTint="@color/dark_surface" android:textColor="@color/white" />
+            <Button android:id="@+id/btnG1" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="GI" android:layout_margin="2dp" app:backgroundTint="@color/dark_surface" android:textColor="@color/white" />
+            <Button android:id="@+id/btnG2" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="GII" android:layout_margin="2dp" app:backgroundTint="@color/dark_surface" android:textColor="@color/white" />
+            <Button android:id="@+id/btnG3" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="GIII" android:layout_margin="2dp" app:backgroundTint="@color/dark_surface" android:textColor="@color/white" />
+            <Button android:id="@+id/btnG4" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="GIV" android:layout_margin="2dp" app:backgroundTint="@color/dark_surface" android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <!-- Diagram Display Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="@color/dark_surface"
+            app:cardCornerRadius="16dp">
+            <ImageView
+                android:id="@+id/ivGradeDiagram"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- Text details card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="@color/dark_surface"
+            app:cardCornerRadius="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tvGradeTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Grade II: Cul-de-sac Defect"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvGradeDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Horizontal bone loss exceeds 3 mm but does not encompass the entire width. Nabers probe enters but cannot emerge on the opposite side."
+                    android:textColor="@color/text_grey"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/btnNext"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
+            android:text="Forecast Progression"
+            app:backgroundTint="@color/primary_cyan"
+            android:textColor="@color/dark_bg"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

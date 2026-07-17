@@ -1,0 +1,173 @@
+##############################################################################
+# FurcaRiskAI – Baseline Load Test Workflow
+#
+# Runs 100 virtual users for 60 seconds against the backend API.
+# Generates HTML + Excel + Markdown reports and uploads them as artifacts.
+#
+# Triggers:
+#   - workflow_dispatch  (manual, with configurable VUs and duration)
+#   - schedule           (every Monday 02:00 UTC)
+##############################################################################
+name: Baseline Load Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      vus:
+        description: 'Virtual Users (concurrent)'
+        required: false
+        default: '100'
+      duration:
+        description: 'Test duration in seconds'
+        required: false
+        default: '60'
+      host:
+        description: 'Target host URL'
+        required: false
+        default: 'http://localhost:3000'
+
+  schedule:
+    - cron: '0 2 * * 1'   # Every Monday at 02:00 UTC
+
+permissions:
+  contents: read
+
+jobs:
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # Baseline Load Test
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  load-test:
+    name: ⚡ Baseline Load Test (${{ github.event.inputs.vus || '100' }} VUs · ${{ github.event.inputs.duration || '60' }}s)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    env:
+      VUS:      ${{ github.event.inputs.vus      || '100' }}
+      DURATION: ${{ github.event.inputs.duration || '60'  }}
+      HOST:     ${{ github.event.inputs.host     || 'http://localhost:3000' }}
+
+    steps:
+      # ── 1. Checkout ──────────────────────────────────────────────────────────
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # ── 2. Node.js Setup ─────────────────────────────────────────────────────
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: backend/package.json
+
+      # ── 3. Install Backend Dependencies ──────────────────────────────────────
+      - name: Install Backend Dependencies
+        working-directory: backend
+        run: npm ci
+
+      # ── 4. Start Backend Server ───────────────────────────────────────────────
+      - name: Start FurcaRiskAI Backend
+        working-directory: backend
+        run: |
+          node server.js &
+          echo "Backend server starting (PID: $!)"
+          sleep 5
+
+      # ── 5. Health-check backend ───────────────────────────────────────────────
+      - name: Verify Backend is Running
+        run: |
+          for i in 1 2 3 4 5; do
+            STATUS=$(curl -o /dev/null -s -w "%{http_code}" --max-time 5 http://localhost:3000/api/patients || echo "000")
+            echo "  Attempt $i → HTTP $STATUS"
+            if [ "$STATUS" = "200" ]; then
+              echo "✅ Backend is up!"
+              break
+            fi
+            if [ $i -eq 5 ]; then
+              echo "❌ Backend did not respond after 5 attempts. Aborting."
+              exit 1
+            fi
+            sleep 3
+          done
+
+      # ── 6. Install Report Dependencies (exceljs) ──────────────────────────────
+      - name: Install Report Dependencies
+        run: |
+          npm install --no-save exceljs
+
+      # ── 7. Create output directories ──────────────────────────────────────────
+      - name: Create Report Directories
+        run: |
+          mkdir -p "Load Test Results/HTML"
+          mkdir -p "Load Test Results/Excel"
+          mkdir -p "Load Test Results/Summary"
+
+      # ── 8. Run Load Test ──────────────────────────────────────────────────────
+      - name: Run Baseline Load Test
+        run: |
+          echo "🚀 Starting load test: $VUS VUs for ${DURATION}s against $HOST"
+          node load-test.js --vus $VUS --duration $DURATION --host $HOST \
+            2>&1 | tee "Load Test Results/load-test-run.log" || true
+
+      # ── 9. Generate Reports ───────────────────────────────────────────────────
+      - name: Generate HTML + Excel + Markdown Reports
+        if: always()
+        run: node load-test-report.js
+
+      # ── 10. Write GitHub Actions Step Summary ─────────────────────────────────
+      - name: Write Step Summary
+        if: always()
+        run: |
+          if [ -f "load-test-results.json" ]; then
+            TOTAL=$(node -e "const r=require('./load-test-results.json');console.log(r.totalRequests||0)")
+            RPS=$(node   -e "const r=require('./load-test-results.json');console.log(r.rps||0)")
+            AVG=$(node   -e "const r=require('./load-test-results.json');console.log(r.responseTime.avg||0)")
+            MIN=$(node   -e "const r=require('./load-test-results.json');console.log(r.responseTime.min||0)")
+            MAX=$(node   -e "const r=require('./load-test-results.json');console.log(r.responseTime.max||0)")
+            P95=$(node   -e "const r=require('./load-test-results.json');console.log(r.responseTime.p95||0)")
+            ERRS=$(node  -e "const r=require('./load-test-results.json');console.log(r.totalErrors||0)")
+            RATE=$(node  -e "const r=require('./load-test-results.json');console.log(r.passRate||'0%')")
+
+            cat >> $GITHUB_STEP_SUMMARY << SUMMARY
+          # ⚡ Baseline Load Test Summary
+
+          > **Target:** \`${HOST}\` · **VUs:** ${VUS} · **Duration:** ${DURATION}s
+
+          ---
+
+          ## 📊 Performance Results
+
+          | Metric | Value |
+          |--------|-------|
+          | **Requests/sec (RPS)** | **${RPS}** |
+          | Total Requests | ${TOTAL} |
+          | Pass Rate | **${RATE}** |
+          | Errors | ${ERRS} |
+
+          ## ⏱ Response Times
+
+          | Min | Average | P95 | Max |
+          |:---:|:-------:|:---:|:---:|
+          | ${MIN}ms | **${AVG}ms** | ${P95}ms | ${MAX}ms |
+
+          ---
+          SUMMARY
+          else
+            echo "⚠️ load-test-results.json not found." >> $GITHUB_STEP_SUMMARY
+          fi
+
+          # Append markdown summary if it exists
+          if [ -f "Load Test Results/Summary/load-test-summary.md" ]; then
+            cat "Load Test Results/Summary/load-test-summary.md" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      # ── 11. Upload All Artifacts ──────────────────────────────────────────────
+      - name: Upload Load Test Reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: furcariskai-load-test-${{ github.run_number }}
+          path: |
+            Load Test Results/
+            load-test-results.json
+            Load Test Results/load-test-run.log
+          retention-days: 30

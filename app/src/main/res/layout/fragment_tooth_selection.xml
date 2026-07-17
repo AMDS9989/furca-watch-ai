@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_bg"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Target Molar"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Select specific molar to analyze root anatomy and local furcation breakdown risk."
+        android:textColor="@color/text_grey"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+    <!-- Jaw Switcher Tab -->
+    <LinearLayout
+        android:id="@+id/layoutJawTabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvDesc">
+
+        <Button
+            android:id="@+id/btnUpperJaw"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="4dp"
+            android:text="Upper Maxilla"
+            app:backgroundTint="@color/dark_surface"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btnLowerJaw"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="4dp"
+            android:text="Lower Mandible"
+            app:backgroundTint="@color/dark_surface"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <!-- Upper Arch Layout -->
+    <GridLayout
+        android:id="@+id/layoutUpperArch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:columnCount="3"
+        android:rowCount="2"
+        app:layout_constraintTop_toBottomOf="@+id/layoutJawTabs">
+
+        <Button android:id="@+id/btnTooth18" android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1" android:layout_margin="6dp" android:text="18\n3rd Molar" app:backgroundTint="@color/dark_surface" android:textColor="@color/white" />
+        <Button android:id="@+id/btnTooth17" android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1" android:layout_margin="6dp" android:text="17\n2nd Molar" app:backgroundTint="@color/dark_surface" android:textColor="@color/white" />
+        <Button android:id="@+id/btnTooth16" android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1" android:layout_margin="6dp" android:text="16\n1st Molar" app:backgroundTint="@color/dark_surface" android:textColor="@color/white" />
+        <Button android:id="@+id/btnTooth26" android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1" android:layout_margin="6dp" android:text="26\n1st Molar" app:backgroundTint="@color/dark_surface" android:textColor="@color/white" />
+        <Button android:id="@+id/btnTooth27" android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1" android:layout_margin="6dp" android:text="27\n2nd Molar" app:backgroundTint="@color/dark_surface" android:textColor="@color/white" />
+        <Button android:id="@+id/btnTooth28" android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1" android:layout_margin="6dp" android:text="28\n3rd Molar" app:backgroundTint="@color/dark_surface" android:textColor="@color/white" />
+
+    </GridLayout>
+
+    <!-- Lower Arch Layout -->
+    <GridLayout
+        android:id="@+id/layoutLowerArch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:columnCount="3"
+        android:rowCount="2"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/layoutJawTabs">
+
+        <Button android:id="@+id/btnTooth38" android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1" android:layout_margin="6dp" android:text="38\n3rd Molar" app:backgroundTint="@color/dark_surface" android:textColor="@color/white" />
+        <Button android:id="@+id/btnTooth37" android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1" android:layout_margin="6dp" android:text="37\n2nd Molar" app:backgroundTint="@color/dark_surface" android:textColor="@color/white" />
+        <Button android:id="@+id/btnTooth36" android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1" android:layout_margin="6dp" android:text="36\n1st Molar" app:backgroundTint="@color/dark_surface" android:textColor="@color/white" />
+        <Button android:id="@+id/btnTooth46" android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1" android:layout_margin="6dp" android:text="46\n1st Molar" app:backgroundTint="@color/dark_surface" android:textColor="@color/white" />
+        <Button android:id="@+id/btnTooth47" android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1" android:layout_margin="6dp" android:text="47\n2nd Molar" app:backgroundTint="@color/dark_surface" android:textColor="@color/white" />
+        <Button android:id="@+id/btnTooth48" android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1" android:layout_margin="6dp" android:text="48\n3rd Molar" app:backgroundTint="@color/dark_surface" android:textColor="@color/white" />
+
+    </GridLayout>
+
+    <Button
+        android:id="@+id/btnConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_marginBottom="16dp"
+        android:text="Confirm Tooth Selection"
+        app:backgroundTint="@color/primary_cyan"
+        android:textColor="@color/dark_bg"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

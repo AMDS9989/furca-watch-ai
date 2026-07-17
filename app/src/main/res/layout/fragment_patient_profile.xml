@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_bg"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Patient Demographics Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/dark_surface"
+            app:cardCornerRadius="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Johnathan Smith"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ID: FR-23091"
+                    android:textColor="@color/text_grey"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/tvGenderAge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Male • Age 42"
+                    android:textColor="@color/white"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+1 (555) 019-2831"
+                    android:textColor="@color/text_grey"
+                    android:textSize="12sp" />
+
+                <!-- Grid Details -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="16dp"
+                    android:paddingTop="12dp"
+                    android:background="@android:drawable/divider_horizontal_dark">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="AI RISK STATUS" android:textColor="@color/text_grey" android:textSize="9sp" />
+                        <TextView android:id="@+id/tvRiskStatus" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CRITICAL" android:textColor="@color/status_critical" android:textSize="14sp" android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="TARGET MOLAR" android:textColor="@color/text_grey" android:textSize="9sp" />
+                        <TextView android:id="@+id/tvToothNum" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tooth #16" android:textColor="@color/white" android:textSize="14sp" android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CONFIDENCE" android:textColor="@color/text_grey" android:textSize="9sp" />
+                        <TextView android:id="@+id/tvConfidenceScore" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="94.6%" android:textColor="@color/primary_cyan" android:textSize="14sp" android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Shortcuts Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="AI Prognostic Suite"
+            android:textColor="@color/text_grey"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <!-- Grid Buttons -->
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:columnCount="3"
+            android:rowCount="2">
+
+            <Button android:id="@+id/btnMeasurements" android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1" android:layout_margin="3dp" android:text="Probe" app:backgroundTint="@color/dark_surface" android:textColor="@color/white" android:textSize="11sp" />
+            <Button android:id="@+id/btnToothSelect" android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1" android:layout_margin="3dp" android:text="Tooth" app:backgroundTint="@color/dark_surface" android:textColor="@color/white" android:textSize="11sp" />
+            <Button android:id="@+id/btnAnatomy" android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1" android:layout_margin="3dp" android:text="Anatomy" app:backgroundTint="@color/dark_surface" android:textColor="@color/white" android:textSize="11sp" />
+            <Button android:id="@+id/btnOcclusion" android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1" android:layout_margin="3dp" android:text="Bite" app:backgroundTint="@color/dark_surface" android:textColor="@color/white" android:textSize="11sp" />
+            <Button android:id="@+id/btnSystemic" android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1" android:layout_margin="3dp" android:text="Systemic" app:backgroundTint="@color/dark_surface" android:textColor="@color/white" android:textSize="11sp" />
+            <Button android:id="@+id/btnScanXray" android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1" android:layout_margin="3dp" android:text="Scan" app:backgroundTint="@color/dark_surface" android:textColor="@color/white" android:textSize="11sp" />
+
+        </GridLayout>
+
+        <!-- Actions Footer -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp">
+
+            <Button
+                android:id="@+id/btnHistory"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                android:text="History"
+                app:backgroundTint="@color/dark_surface"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btnForecast"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp"
+                android:text="Forecast Risk"
+                app:backgroundTint="@color/primary_cyan"
+                android:textColor="@color/dark_bg" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnDeletePatient"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:text="Delete Patient Profile"
+            app:backgroundTint="@color/status_critical"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FurcaRisk AI™</string>
+    <string name="welcome_back">Welcome Back,\nDr. Shahid</string>
+    <string name="doctor_name">Dr. Shahid</string>
+    <string name="doctor_profile">Dr. Shahid\nPeriodontist</string>
+    <string name="project_objective">Predict early furcation breakdown before irreversible bone loss using Artificial Intelligence.</string>
+    <string-array name="gender_array">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="plaque_array">
+        <item>0 - No Plaque</item>
+        <item>1 - Film at margin</item>
+        <item>2 - Moderate deposits</item>
+        <item>3 - Abundant accumulation</item>
+    </string-array>
+    <string-array name="mobility_array">
+        <item>Grade 0 - Physiological</item>
+        <item>Grade I - Horizontal &lt;= 1mm</item>
+        <item>Grade II - Horizontal > 1mm</item>
+        <item>Grade III - Vertical + Horizontal</item>
+    </string-array>
+    <string-array name="time_array">
+        <item>09:00 AM</item>
+        <item>10:30 AM</item>
+        <item>01:00 PM</item>
+        <item>03:30 PM</item>
+    </string-array>
+    <string-array name="reason_array">
+        <item>Surgical GTR / Grafting</item>
+        <item>Root Planing Debridement</item>
+        <item>Occlusal Adjustment Check</item>
+        <item>Routine 6-Month Recalls</item>
+    </string-array>
+    <string-array name="doctor_array">
+        <item>Dr. Shahid (Periodontist)</item>
+        <item>Dr. Miller (Hygenist)</item>
+        <item>Dr. Smith (General Dentist)</item>
+    </string-array>
+</resources>

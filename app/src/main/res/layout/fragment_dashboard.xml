@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_bg"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome_back"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Alert Banner -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutAlertBanner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/dark_surface"
+            android:padding="12dp"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle">
+
+            <TextView
+                android:id="@+id/tvAlertIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⚠️"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvAlertBannerText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Critical Risk Alert: Patient Johnathan Smith has worsening attachment loss."
+                android:textColor="@color/status_critical"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvAlertIcon"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Metrics Cards Grid -->
+        <GridLayout
+            android:id="@+id/layoutMetrics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:columnCount="2"
+            android:rowCount="2"
+            app:layout_constraintTop_toBottomOf="@+id/layoutAlertBanner">
+
+            <!-- Total Patients -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="6dp"
+                app:cardBackgroundColor="@color/dark_surface"
+                app:cardCornerRadius="16dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="👥 Patients" android:textColor="@color/text_grey" android:textSize="11sp" />
+                    <TextView android:id="@+id/tvTotalPatients" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="254" android:textColor="@color/white" android:textSize="20sp" android:textStyle="bold" android:layout_marginTop="8dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Total Scans -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="6dp"
+                app:cardBackgroundColor="@color/dark_surface"
+                app:cardCornerRadius="16dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⚡ Scans Run" android:textColor="@color/text_grey" android:textSize="11sp" />
+                    <TextView android:id="@+id/tvTotalScans" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1142" android:textColor="@color/primary_cyan" android:textSize="20sp" android:textStyle="bold" android:layout_marginTop="8dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- High Risk Cases -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="6dp"
+                app:cardBackgroundColor="@color/dark_surface"
+                app:cardCornerRadius="16dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🚨 High Risk" android:textColor="@color/text_grey" android:textSize="11sp" />
+                    <TextView android:id="@+id/tvHighRisk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="38" android:textColor="@color/status_critical" android:textSize="20sp" android:textStyle="bold" android:layout_marginTop="8dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Low Risk Cases -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="6dp"
+                app:cardBackgroundColor="@color/dark_surface"
+                app:cardCornerRadius="16dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🛡️ Low Risk" android:textColor="@color/text_grey" android:textSize="11sp" />
+                    <TextView android:id="@+id/tvLowRisk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="126" android:textColor="@color/status_green" android:textSize="20sp" android:textStyle="bold" android:layout_marginTop="8dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </GridLayout>
+
+        <!-- Quick actions -->
+        <TextView
+            android:id="@+id/tvSectionActions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Quick AI Diagnostic Suite"
+            android:textColor="@color/text_grey"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/layoutMetrics"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/layoutActionsRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/tvSectionActions">
+
+            <Button android:id="@+id/btnRunScan" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Scan" android:layout_margin="2dp" app:backgroundTint="@color/dark_surface" android:textColor="@color/white" />
+            <Button android:id="@+id/btnAddPatient" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Add" android:layout_margin="2dp" app:backgroundTint="@color/dark_surface" android:textColor="@color/white" />
+            <Button android:id="@+id/btnAssistant" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Chat" android:layout_margin="2dp" app:backgroundTint="@color/dark_surface" android:textColor="@color/white" />
+            <Button android:id="@+id/btnHospital" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Hospital" android:layout_margin="2dp" app:backgroundTint="@color/dark_surface" android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <!-- Appointments List -->
+        <TextView
+            android:id="@+id/tvSectionAppts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Today's Diagnostic Schedule"
+            android:textColor="@color/text_grey"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/layoutActionsRow"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvAppointments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/tvSectionAppts" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,24 @@
+{
+  "name": "furcariskai-tests",
+  "version": "1.0.0",
+  "description": "Selenium and Appium E2E Automation tests for FurcaRiskAI",
+  "main": "index.js",
+  "scripts": {
+    "test:web": "node selenium/web_test.js",
+    "test:web:ci": "HEADLESS=true node selenium/web_test.js",
+    "test:app": "node appium/app_test.js",
+    "test:load": "node ../load-test.js",
+    "test:load:ci": "node ../load-test.js --vus 100 --duration 60",
+    "report:load": "node ../load-test-report.js",
+    "generate:html": "node reporters/generate-report.js",
+    "generate:excel": "node reporters/generate-excel.js",
+    "generate:summary": "node reporters/generate-summary.js",
+    "generate:reports": "node reporters/generate-report.js && node reporters/generate-excel.js && node reporters/generate-summary.js"
+
+  },
+  "dependencies": {
+    "exceljs": "^4.4.0",
+    "selenium-webdriver": "^4.22.0",
+    "webdriverio": "^8.39.0"
+  }
+}

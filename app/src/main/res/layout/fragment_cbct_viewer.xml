@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_bg"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CBCT Triplanar Slicer"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Explore volumetric sagittal, coronal, and axial slices to verify early intra-bifurcation density changes."
+        android:textColor="@color/text_grey"
+        android:textSize="11sp"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+    <!-- Triplanar images layout -->
+    <LinearLayout
+        android:id="@+id/layoutImages"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardDepthSlider"
+        app:layout_constraintTop_toBottomOf="@+id/tvDesc">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ivSagittal"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:scaleType="fitCenter"
+                android:background="@color/dark_surface" />
+
+            <ImageView
+                android:id="@+id/ivCoronal"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:scaleType="fitCenter"
+                android:background="@color/dark_surface" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivAxial"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_margin="4dp"
+            android:scaleType="fitCenter"
+            android:background="@color/dark_surface" />
+
+    </LinearLayout>
+
+    <!-- Slider card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardDepthSlider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="@color/dark_surface"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnToAi">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/tvDepthTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Volumetric Depth Slice Indicator"
+                android:textColor="@color/text_grey"
+                android:textSize="11sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="4dp">
+
+                <SeekBar
+                    android:id="@+id/sbDepth"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="64" />
+
+                <TextView
+                    android:id="@+id/tvDepthVal"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="Slice #32"
+                    android:textColor="@color/primary_cyan"
+                    android:textAlignment="viewEnd"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btnToAi"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_marginBottom="16dp"
+        android:text="Feed to AI Engine"
+        app:backgroundTint="@color/primary_cyan"
+        android:textColor="@color/dark_bg"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

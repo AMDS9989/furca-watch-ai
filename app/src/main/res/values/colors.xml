@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Core App Palette -->
+    <color name="primary_cyan">#00F0FF</color>
+    <color name="primary_teal">#00F5D4</color>
+    <color name="primary_blue">#0072FF</color>
+    <color name="dark_bg">#080E1E</color>
+    <color name="dark_surface">#0F172A</color>
+    
+    <!-- Light State Colors -->
+    <color name="light_bg">#F8FAFC</color>
+    <color name="light_surface">#FFFFFF</color>
+    
+    <!-- General Status Indicators -->
+    <color name="status_critical">#FF4D6D</color>
+    <color name="status_warning">#FFB703</color>
+    <color name="status_green">#2EC4B6</color>
+    
+    <!-- Text Elements -->
+    <color name="text_white">#FFFFFF</color>
+    <color name="text_grey">#94A3B8</color>
+    <color name="text_dark">#0F172A</color>
+    <color name="text_muted">#64748B</color>
+
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+</resources>

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.furcariskai.ui.fragment.SplashFragment"
+        android:label="Splash"
+        tools:layout="@layout/fragment_splash" />
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.example.furcariskai.ui.fragment.WelcomeFragment"
+        android:label="Welcome"
+        tools:layout="@layout/fragment_welcome" />
+
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.example.furcariskai.ui.fragment.DashboardFragment"
+        android:label="Home Dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/patientListFragment"
+        android:name="com.example.furcariskai.ui.fragment.PatientListFragment"
+        android:label="Patient List"
+        tools:layout="@layout/fragment_patient_list" />
+
+    <fragment
+        android:id="@+id/addPatientFragment"
+        android:name="com.example.furcariskai.ui.fragment.AddPatientFragment"
+        android:label="Add Patient"
+        tools:layout="@layout/fragment_add_patient" />
+
+    <fragment
+        android:id="@+id/patientProfileFragment"
+        android:name="com.example.furcariskai.ui.fragment.PatientProfileFragment"
+        android:label="Patient Profile"
+        tools:layout="@layout/fragment_patient_profile" />
+
+    <fragment
+        android:id="@+id/measurementsFragment"
+        android:name="com.example.furcariskai.ui.fragment.MeasurementsFragment"
+        android:label="Measurements"
+        tools:layout="@layout/fragment_measurements" />
+
+    <fragment
+        android:id="@+id/toothSelectionFragment"
+        android:name="com.example.furcariskai.ui.fragment.ToothSelectionFragment"
+        android:label="Tooth Selection"
+        tools:layout="@layout/fragment_tooth_selection" />
+
+    <fragment
+        android:id="@+id/rootAnatomyFragment"
+        android:name="com.example.furcariskai.ui.fragment.RootAnatomyFragment"
+        android:label="Root Anatomy"
+        tools:layout="@layout/fragment_root_anatomy" />
+
+    <fragment
+        android:id="@+id/occlusalLoadFragment"
+        android:name="com.example.furcariskai.ui.fragment.OcclusalLoadFragment"
+        android:label="Occlusal Load"
+        tools:layout="@layout/fragment_occlusal_load" />
+
+    <fragment
+        android:id="@+id/medicalHistoryFragment"
+        android:name="com.example.furcariskai.ui.fragment.MedicalHistoryFragment"
+        android:label="Medical History"
+        tools:layout="@layout/fragment_medical_history" />
+
+    <fragment
+        android:id="@+id/uploadXRayFragment"
+        android:name="com.example.furcariskai.ui.fragment.UploadXRayFragment"
+        android:label="Upload X-ray"
+        tools:layout="@layout/fragment_upload_xray" />
+
+    <fragment
+        android:id="@+id/cbctViewerFragment"
+        android:name="com.example.furcariskai.ui.fragment.CBCTViewerFragment"
+        android:label="CBCT Viewer"
+        tools:layout="@layout/fragment_cbct_viewer" />
+
+    <fragment
+        android:id="@+id/aiAnalysisFragment"
+        android:name="com.example.furcariskai.ui.fragment.AIAnalysisFragment"
+        android:label="AI Image Analysis"
+        tools:layout="@layout/fragment_ai_analysis" />
+
+    <fragment
+        android:id="@+id/aiPredictionFragment"
+        android:name="com.example.furcariskai.ui.fragment.AIPredictionFragment"
+        android:label="AI Prediction Engine"
+        tools:layout="@layout/fragment_ai_prediction" />
+
+    <fragment
+        android:id="@+id/riskScoreFragment"
+        android:name="com.example.furcariskai.ui.fragment.RiskScoreFragment"
+        android:label="Risk Score"
+        tools:layout="@layout/fragment_risk_score" />
+
+    <fragment
+        android:id="@+id/furcationGradeFragment"
+        android:name="com.example.furcariskai.ui.fragment.FurcationGradeFragment"
+        android:label="Furcation Grade"
+        tools:layout="@layout/fragment_furcation_grade" />
+
+    <fragment
+        android:id="@+id/diseaseProgressionFragment"
+        android:name="com.example.furcariskai.ui.fragment.DiseaseProgressionFragment"
+        android:label="Disease Progression"
+        tools:layout="@layout/fragment_disease_progression" />
+
+    <fragment
+        android:id="@+id/treatmentRecommendationFragment"
+        android:name="com.example.furcariskai.ui.fragment.TreatmentRecommendationFragment"
+        android:label="Treatment Recommendation"
+        tools:layout="@layout/fragment_treatment_recommendation" />
+
+    <fragment
+        android:id="@+id/medicationFragment"
+        android:name="com.example.furcariskai.ui.fragment.MedicationFragment"
+        android:label="Medication"
+        tools:layout="@layout/fragment_medication" />
+
+    <fragment
+        android:id="@+id/appointmentPlannerFragment"
+        android:name="com.example.furcariskai.ui.fragment.AppointmentPlannerFragment"
+        android:label="Appointment Planner"
+        tools:layout="@layout/fragment_appointment_planner" />
+
+    <fragment
+        android:id="@+id/aiAlertsFragment"
+        android:name="com.example.furcariskai.ui.fragment.AIAlertsFragment"
+        android:label="AI Alerts"
+        tools:layout="@layout/fragment_ai_alerts" />
+
+    <fragment
+        android:id="@+id/patientProgressFragment"
+        android:name="com.example.furcariskai.ui.fragment.PatientProgressFragment"
+        android:label="Patient Progress"
+        tools:layout="@layout/fragment_patient_progress" />
+
+    <fragment
+        android:id="@+id/analyticsDashboardFragment"
+        android:name="com.example.furcariskai.ui.fragment.AnalyticsDashboardFragment"
+        android:label="Analytics Dashboard"
+        tools:layout="@layout/fragment_analytics_dashboard" />
+
+    <fragment
+        android:id="@+id/generateReportFragment"
+        android:name="com.example.furcariskai.ui.fragment.GenerateReportFragment"
+        android:label="Generate Report"
+        tools:layout="@layout/fragment_generate_report" />
+
+    <fragment
+        android:id="@+id/dentalHistoryTimelineFragment"
+        android:name="com.example.furcariskai.ui.fragment.DentalHistoryTimelineFragment"
+        android:label="Dental History Timeline"
+        tools:layout="@layout/fragment_dental_history_timeline" />
+
+    <fragment
+        android:id="@+id/hospitalDashboardFragment"
+        android:name="com.example.furcariskai.ui.fragment.HospitalDashboardFragment"
+        android:label="Hospital Dashboard"
+        tools:layout="@layout/fragment_hospital_dashboard" />
+
+    <fragment
+        android:id="@+id/aiAssistantFragment"
+        android:name="com.example.furcariskai.ui.fragment.AIAssistantFragment"
+        android:label="AI Assistant"
+        tools:layout="@layout/fragment_ai_assistant" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.furcariskai.ui.fragment.SettingsFragment"
+        android:label="Settings &amp; Profile"
+        tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/emergencyConsultationFragment"
+        android:name="com.example.furcariskai.ui.fragment.EmergencyConsultationFragment"
+        android:label="Emergency Consultation"
+        tools:layout="@layout/fragment_emergency" />
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.furcariskai.ui.fragment.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login" />
+
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.furcariskai.ui.fragment.SignUpFragment"
+        android:label="Sign Up"
+        tools:layout="@layout/fragment_sign_up" />
+
+    <fragment
+        android:id="@+id/createProfileFragment"
+        android:name="com.example.furcariskai.ui.fragment.CreateProfileFragment"
+        android:label="Create Profile Details"
+        tools:layout="@layout/fragment_create_profile" />
+
+</navigation>

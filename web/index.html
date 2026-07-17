@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FurcaRiskAI - Periodontal Furcation Risk Assessment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Authentication Overlay Screen -->
+    <div class="auth-overlay" id="auth-screen">
+        <div class="auth-card glass">
+            <div class="auth-brand">
+                <div class="brand-icon">
+                    <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                </div>
+                <h2>FurcaRisk<span>AI</span></h2>
+                <p>Clinical Periodontal Decision Support & Diagnostics</p>
+            </div>
+            
+            <!-- Login Form -->
+            <div class="auth-form-container" id="login-form-section">
+                <h3>Welcome Back</h3>
+                <p class="auth-subtitle">Sign in to access your clinic dashboard</p>
+                <div class="auth-error-msg hidden" id="login-error">Invalid email or password</div>
+                
+                <div class="form-group-auth">
+                    <label for="login-email">Email Address</label>
+                    <input type="email" id="login-email" class="input-text-auth" placeholder="doctor@clinic.com" required>
+                </div>
+                <div class="form-group-auth">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" class="input-text-auth" placeholder="••••••••" required>
+                </div>
+                <button class="btn btn-primary btn-block" id="btn-login-submit">Sign In</button>
+                <p class="auth-switch-text">Don't have an account? <span id="link-show-register" style="color: var(--accent); cursor: pointer; text-decoration: underline;">Register here</span></p>
+            </div>
+
+            <!-- Register Form -->
+            <div class="auth-form-container hidden" id="register-form-section">
+                <h3>Create Account</h3>
+                <p class="auth-subtitle">Register your clinician profile</p>
+                <div class="auth-error-msg hidden" id="register-error">Failed to create account</div>
+                
+                <div class="form-group-auth">
+                    <label for="register-name">Full Name (with credentials)</label>
+                    <input type="text" id="register-name" class="input-text-auth" placeholder="Dr. Sarah Jenkins, DDS" required>
+                </div>
+                <div class="form-group-auth">
+                    <label for="register-specialty">Specialty / Title</label>
+                    <input type="text" id="register-specialty" class="input-text-auth" placeholder="Clinical Periodontist" value="Clinical Periodontist" required>
+                </div>
+                <div class="form-group-auth">
+                    <label for="register-email">Email Address</label>
+                    <input type="email" id="register-email" class="input-text-auth" placeholder="doctor@clinic.com" required>
+                </div>
+                <div class="form-group-auth">
+                    <label for="register-password">Password (min 6 characters)</label>
+                    <input type="password" id="register-password" class="input-text-auth" placeholder="••••••••" required>
+                </div>
+                <button class="btn btn-primary btn-block" id="btn-register-submit">Register Profile</button>
+                <p class="auth-switch-text">Already registered? <span id="link-show-login" style="color: var(--accent); cursor: pointer; text-decoration: underline;">Sign in instead</span></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-icon">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                </div>
+                <h2>FurcaRisk<span>AI</span></h2>
+            </div>
+            
+            <nav class="sidebar-menu">
+                <a href="#dashboard" class="menu-item active" data-tab="dashboard">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#patients" class="menu-item" data-tab="patients">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    <span>Patients</span>
+                </a>
+                <a href="#diagnostics" class="menu-item" data-tab="diagnostics">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                    <span>AI Diagnostics</span>
+                </a>
+                <a href="#assistant" class="menu-item" data-tab="assistant">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                    <span>AI Assistant</span>
+                    <span class="badge badge-accent">Live</span>
+                </a>
+                <a href="#settings" class="menu-item" data-tab="settings">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                    <span>Settings</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-user">
+                <div class="user-avatar">DS</div>
+                <div class="user-info">
+                    <h4>Dr. Shahid</h4>
+                    <p>Clinical Periodontist</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-title">
+                    <h1 id="page-title">Dashboard Overview</h1>
+                    <p id="page-subtitle">Welcome back. Here is the daily summary for FurcaRiskAI diagnostics.</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-secondary btn-icon-only" id="btn-notifications" title="Notifications">
+                        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                        <span class="notification-indicator"></span>
+                    </button>
+                    <button class="btn btn-secondary" id="btn-add-patient-quick">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        <span>Add Patient</span>
+                    </button>
+                    <button class="btn btn-primary" id="btn-scan-quick">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                        <span>Run AI Scan</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Notifications Dropdown (Hidden by default) -->
+            <div class="notifications-dropdown hidden" id="notifications-panel">
+                <div class="dropdown-header">
+                    <h3>Notifications & Alerts</h3>
+                    <button id="btn-clear-notifications">Clear All</button>
+                </div>
+                <div class="dropdown-content" id="notifications-list">
+                    <!-- Notifications populated dynamically -->
+                </div>
+            </div>
+
+            <!-- Tab Content Containers -->
+            <div class="tab-container">
+                
+                <!-- DASHBOARD TAB -->
+                <section id="tab-dashboard" class="tab-panel active">
+                    <!-- Metrics Row -->
+                    <div class="metrics-grid">
+                        <div class="metric-card glass">
+                            <div class="metric-icon metric-blue">
+                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                            </div>
+                            <div class="metric-info">
+                                <h3>Total Patients</h3>
+                                <p class="metric-value" id="dashboard-total-patients">254</p>
+                                <p class="metric-trend text-green">↑ 12% this month</p>
+                            </div>
+                        </div>
+                        <div class="metric-card glass">
+                            <div class="metric-icon metric-red">
+                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                            </div>
+                            <div class="metric-info">
+                                <h3>Critical Risk</h3>
+                                <p class="metric-value text-red" id="dashboard-critical-risk">36</p>
+                                <p class="metric-trend text-red">Grade II / III collapse</p>
+                            </div>
+                        </div>
+                        <div class="metric-card glass">
+                            <div class="metric-icon metric-yellow">
+                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                            </div>
+                            <div class="metric-info">
+                                <h3>Low Risk</h3>
+                                <p class="metric-value text-green" id="dashboard-low-risk">121</p>
+                                <p class="metric-trend text-green">Stable attachments</p>
+                            </div>
+                        </div>
+                        <div class="metric-card glass">
+                            <div class="metric-icon metric-cyan">
+                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="22" y1="12" x2="18" y2="12"></line><line x1="6" y1="12" x2="2" y2="12"></line><line x1="12" y1="6" x2="12" y2="2"></line><line x1="12" y1="22" x2="12" y2="18"></line></svg>
+                            </div>
+                            <div class="metric-info">
+                                <h3>Total AI Scans</h3>
+                                <p class="metric-value" id="dashboard-total-scans">1,116</p>
+                                <p class="metric-trend text-cyan">2.4s avg scan time</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Critical Alert Banner -->
+                    <div class="alert-banner-container alert-critical glass glow-red" id="dashboard-alert-banner">
+                        <div class="alert-banner-icon">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                        </div>
+                        <div class="alert-banner-body">
+                            <h4>CRITICAL ANOMALY ALERT</h4>
+                            <p id="alert-banner-message">Bite force of 720N exceeding threshold for Patient Johnathan Smith (Grade II Molar #16).</p>
+                        </div>
+                        <button class="btn btn-secondary btn-sm" id="btn-view-alert-patient">View Profile</button>
+                    </div>
+
+                    <!-- Main Grid -->
+                    <div class="dashboard-grid">
+                        <!-- Appointments Table -->
+                        <div class="dashboard-card glass main-card">
+                            <div class="card-header">
+                                <h3>Today's Scheduled Appointments</h3>
+                                <p>Interactive triage planner and profile link.</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-container">
+                                    <table class="data-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Patient Name</th>
+                                                <th>Patient ID</th>
+                                                <th>Scheduled Time</th>
+                                                <th>Diagnostic Goal</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="appointments-tbody">
+                                            <!-- Dynamically filled -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Info & Quick tools -->
+                        <div class="dashboard-card glass side-card">
+                            <div class="card-header">
+                                <h3>AI Assistant Shortcuts</h3>
+                            </div>
+                            <div class="card-body gap-md">
+                                <p class="text-secondary text-sm">Deploy automated periodontal knowledge lookups directly from diagnostics inputs.</p>
+                                
+                                <div class="shortcut-chip-list">
+                                    <button class="shortcut-chip" data-query="Explain Hamp Grade II classification">Hamp Grade II</button>
+                                    <button class="shortcut-chip" data-query="What are the surgical therapies for furcation?">Surgical Therapies</button>
+                                    <button class="shortcut-chip" data-query="What is the impact of diabetes on furcations?">Diabetes Impact</button>
+                                </div>
+
+                                <hr class="divider">
+
+                                <div class="clinic-status-card">
+                                    <div class="status-indicator-label">
+                                        <span class="status-dot dot-green"></span>
+                                        <strong>Hospital Server Status: ACTIVE</strong>
+                                    </div>
+                                    <p class="text-xs text-secondary mt-xs">Periodontal risk prediction models active (v2.4.1-alpha).</p>
+                                </div>
+
+                                <button class="btn btn-secondary w-full" id="btn-goto-assistant">
+                                    <span>Open AI Chat Assistant</span>
+                                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 5"></polyline></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- PATIENTS TAB -->
+                <section id="tab-patients" class="tab-panel">
+                    <div class="patients-layout">
+                        <!-- Left: List Panel -->
+                        <div class="patients-list-panel glass">
+                            <div class="panel-header">
+                                <div class="search-box">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                                    <input type="text" id="patient-search" placeholder="Search patients by name or ID...">
+                                </div>
+                                <button class="btn btn-secondary btn-icon-only" id="btn-add-patient-tab" title="Add Patient">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                                </button>
+                            </div>
+                            <div class="patients-scroll-list" id="patients-list-container">
+                                <!-- Dynamically filled -->
+                            </div>
+                        </div>
+
+                        <!-- Right: Detailed Profile Area -->
+                        <div class="patient-profile-detail glass" id="patient-profile-panel">
+                            <!-- Selected Patient Profile Details -->
+                            <div class="profile-empty-state" id="profile-empty-state">
+                                <div class="empty-icon">
+                                    <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                                </div>
+                                <h3>No Patient Selected</h3>
+                                <p>Select a patient from the database left panel to view full clinical logs, risk assessment, and treatment pathways.</p>
+                            </div>
+
+                            <div class="profile-details-content hidden" id="profile-details-content">
+                                <!-- Profile Header -->
+                                <div class="profile-header-card">
+                                    <div class="profile-meta">
+                                        <div class="profile-avatar" id="prof-avatar">JS</div>
+                                        <div class="profile-title">
+                                            <h2 id="prof-name">Johnathan Smith</h2>
+                                            <p id="prof-id-badge">ID: FR-23091</p>
+                                        </div>
+                                    </div>
+                                    <div class="profile-actions">
+                                        <button class="btn btn-secondary" id="btn-edit-measurements">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4z"></path></svg>
+                                            <span>Edit Measurements</span>
+                                        </button>
+                                        <button class="btn btn-secondary" id="btn-schedule-appointment">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                                            <span>Schedule Appointment</span>
+                                        </button>
+                                        <button class="btn btn-red" id="btn-delete-patient">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path></svg>
+                                            <span>Delete Patient</span>
+                                        </button>
+                                        <button class="btn btn-primary" id="btn-start-diagnostics-active">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                                            <span>Diagnostics</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Tabs Inside Profile Details -->
+                                <div class="profile-grid">
+                                    <!-- Left Column: Personal Info & Params -->
+                                    <div class="profile-column-left">
+                                        <!-- Personal Info -->
+                                        <div class="card glass-sub">
+                                            <div class="card-header">
+                                                <h4>Personal & Medical Data</h4>
+                                            </div>
+                                            <div class="card-body p-none">
+                                                <div class="data-row">
+                                                    <span class="data-label">Age / Gender</span>
+                                                    <span class="data-val" id="prof-age-gender">42 / Male</span>
+                                                </div>
+                                                <div class="data-row">
+                                                    <span class="data-label">Phone Number</span>
+                                                    <span class="data-val" id="prof-phone">+1 (555) 019-2831</span>
+                                                </div>
+                                                <div class="data-row">
+                                                    <span class="data-label">Tobacco Smoking</span>
+                                                    <span class="data-val" id="prof-smoking-badge"><span class="badge badge-accent">Yes</span></span>
+                                                </div>
+                                                <div class="data-row">
+                                                    <span class="data-label">Diabetes Status</span>
+                                                    <span class="data-val" id="prof-diabetes-badge"><span class="badge badge-accent">Yes</span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Periodontal Parameters -->
+                                        <div class="card glass-sub">
+                                            <div class="card-header">
+                                                <h4>Tooth Parameters (Molar #<span id="prof-tooth-num">16</span>)</h4>
+                                            </div>
+                                            <div class="card-body p-none">
+                                                <div class="data-row">
+                                                    <span class="data-label">Pocket Depth (PD)</span>
+                                                    <span class="data-val font-semibold" id="prof-pd">5 mm</span>
+                                                </div>
+                                                <div class="data-row">
+                                                    <span class="data-label">Clinical Attachment Loss</span>
+                                                    <span class="data-val font-semibold" id="prof-cal">4 mm</span>
+                                                </div>
+                                                <div class="data-row">
+                                                    <span class="data-label">Bleeding on Probing (BOP)</span>
+                                                    <span class="data-val" id="prof-bop">Positive</span>
+                                                </div>
+                                                <div class="data-row">
+                                                    <span class="data-label">Plaque Index Score</span>
+                                                    <span class="data-val" id="prof-plaque">Grade II (Moderate)</span>
+                                                </div>
+                                                <div class="data-row">
+                                                    <span class="data-label">Tooth Mobility</span>
+                                                    <span class="data-val" id="prof-mobility">Grade I</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Right Column: Risk & Recommendations -->
+                                    <div class="profile-column-right">
+                                        <!-- Risk Card -->
+                                        <div class="card glass-sub">
+                                            <div class="card-header">
+                                                <h4>AI Furcation Collapse Risk</h4>
+                                            </div>
+                                            <div class="card-body align-center flex-column gap-sm">
+                                                <div class="radial-gauge-container">
+                                                    <!-- Simple SVG circular progress bar -->
+                                                    <svg class="radial-gauge" viewBox="0 0 100 100">
+                                                        <circle cx="50" cy="50" r="40" class="gauge-bg"></circle>
+                                                        <circle cx="50" cy="50" r="40" class="gauge-fill" id="prof-gauge-circle" stroke-dasharray="251" stroke-dashoffset="125"></circle>
+                                                    </svg>
+                                                    <div class="gauge-value" id="prof-risk-score">84.2%</div>
+                                                </div>
+                                                <div class="risk-badge-label" id="prof-risk-label">CRITICAL RISK</div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Treatments Card -->
+                                        <div class="card glass-sub">
+                                            <div class="card-header">
+                                                <h4>Recommended Treatment Pathway</h4>
+                                            </div>
+                                            <div class="card-body flex-column gap-sm">
+                                                <div class="therapy-card">
+                                                    <div class="therapy-icon">
+                                                        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                                    </div>
+                                                    <div class="therapy-details">
+                                                        <h5 id="prof-therapy-1-title">Guided Tissue Regeneration (GTR)</h5>
+                                                        <p id="prof-therapy-1-desc">Place bioresorbable collagen membrane over bifurcation crotch to guide osteogenesis.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="therapy-card">
+                                                    <div class="therapy-icon">
+                                                        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                                                    </div>
+                                                    <div class="therapy-details">
+                                                        <h5 id="prof-therapy-2-title">Surgical Bone Grafting</h5>
+                                                        <p id="prof-therapy-2-desc">Pack local particulate mineralized bone crystals directly into the cul-de-sac defect.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Timeline -->
+                                <div class="card glass-sub mt-md">
+                                    <div class="card-header">
+                                        <h4>Dental Clinical Timeline</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="timeline" id="prof-timeline">
+                                            <!-- Dynamically filled -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- DIAGNOSTICS TAB -->
+                <section id="tab-diagnostics" class="tab-panel">
+                    <div class="diagnostics-layout">
+                        <!-- Left Column: Diagnostic Progress and Active Parameters -->
+                        <div class="diagnostics-left">
+                            
+                            <!-- Wizard Step Indicator -->
+                            <div class="steps-tracker glass">
+                                <div class="step-indicator active" id="step-ind-1">
+                                    <div class="step-num">1</div>
+                                    <span>Upload X-Ray</span>
+                                </div>
+                                <div class="step-line"></div>
+                                <div class="step-indicator" id="step-ind-2">
+                                    <div class="step-num">2</div>
+                                    <span>CBCT Slicer</span>
+                                </div>
+                                <div class="step-line"></div>
+                                <div class="step-indicator" id="step-ind-3">
+                                    <div class="step-num">3</div>
+                                    <span>AI Overlay</span>
+                                </div>
+                                <div class="step-line"></div>
+                                <div class="step-indicator" id="step-ind-4">
+                                    <div class="step-num">4</div>
+                                    <span>Neural Net</span>
+                                </div>
+                                <div class="step-line"></div>
+                                <div class="step-indicator" id="step-ind-5">
+                                    <div class="step-num">5</div>
+                                    <span>Risk Score</span>
+                                </div>
+                            </div>
+
+                            <!-- DIAGNOSTICS STEPS WRAPPER -->
+                            <div class="diagnostics-wizard-content">
+
+                                <!-- STEP 1: Upload radiograph -->
+                                <div class="wizard-step-panel active" id="wizard-step-1">
+                                    <div class="card-header">
+                                        <h3>Upload & Initialize Radiograph</h3>
+                                        <p>Select or drag a simulated CBCT/Panoramic radiograph file to start calculations.</p>
+                                    </div>
+                                    <div class="card-body align-center flex-column gap-md py-lg">
+                                        <div class="drag-drop-area" id="xray-upload-area">
+                                            <div class="upload-icon">
+                                                <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                                            </div>
+                                            <h4>Drag and drop radiograph here</h4>
+                                            <p class="text-secondary text-xs">Supports DICOM, JPEG, PNG formats</p>
+                                            <span class="text-sm font-semibold text-secondary my-xs">OR</span>
+                                            <button class="btn btn-secondary btn-sm" id="btn-select-xray-mock">Load Predefined Mock Radiograph</button>
+                                        </div>
+                                        
+                                        <div class="xray-preview-container hidden" id="xray-preview-box">
+                                            <img src="" id="xray-preview-img" alt="Dental radiograph mockup">
+                                            <div class="xray-preview-badge">Radiograph Loaded</div>
+                                        </div>
+
+                                        <button class="btn btn-primary w-full disabled" id="btn-xray-next" disabled>
+                                            <span>Initialize CBCT Slices Slicer</span>
+                                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 5 19"></polyline></svg>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- STEP 2: CBCT Volume Slicer -->
+                                <div class="wizard-step-panel" id="wizard-step-2">
+                                    <div class="card-header">
+                                        <h3>Interactive CBCT Triplanar Slices</h3>
+                                        <p>Adjust slice depth to review multi-axis molar dimensions.</p>
+                                    </div>
+                                    <div class="card-body gap-md">
+                                        <div class="slices-grid">
+                                            <div class="slice-canvas-box">
+                                                <h5>Sagittal View</h5>
+                                                <canvas id="canvas-sagittal" width="150" height="150"></canvas>
+                                            </div>
+                                            <div class="slice-canvas-box">
+                                                <h5>Coronal View</h5>
+                                                <canvas id="canvas-coronal" width="150" height="150"></canvas>
+                                            </div>
+                                            <div class="slice-canvas-box grid-span-2">
+                                                <h5>Axial Arch Slices</h5>
+                                                <canvas id="canvas-axial" width="300" height="150"></canvas>
+                                            </div>
+                                        </div>
+
+                                        <div class="slider-control-box">
+                                            <div class="slider-labels">
+                                                <span>Arch Slice Depth</span>
+                                                <strong id="cbct-slice-label">Slice #32</strong>
+                                            </div>
+                                            <input type="range" id="cbct-depth-slider" min="1" max="64" value="32" class="range-slider">
+                                        </div>
+
+                                        <button class="btn btn-primary w-full" id="btn-cbct-next">
+                                            <span>Run AI Feature Extraction Overlay</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- STEP 3: AI Heatmap Bounding Box Overlay -->
+                                <div class="wizard-step-panel" id="wizard-step-3">
+                                    <div class="card-header">
+                                        <h3>AI Feature Extraction & ROI Delineation</h3>
+                                        <p>Computer Vision sweep highlighting the Region of Interest (ROI) and bone density defect.</p>
+                                    </div>
+                                    <div class="card-body align-center flex-column gap-md">
+                                        <div class="analysis-canvas-wrapper">
+                                            <img src="" id="analysis-base-xray" alt="Base Scan">
+                                            <div class="laser-scanner" id="analysis-laser-line"></div>
+                                            <canvas id="canvas-overlay" width="300" height="300"></canvas>
+                                        </div>
+
+                                        <div class="scan-status-info text-center" id="analysis-status-message">
+                                            Running automated detection scan sweep...
+                                        </div>
+
+                                        <button class="btn btn-primary w-full hidden" id="btn-analysis-next">
+                                            <span>Generate Prognostic Risk Model</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- STEP 4: Neural Net Simulator -->
+                                <div class="wizard-step-panel" id="wizard-step-4">
+                                    <div class="card-header">
+                                        <h3>AI Neural Network Prognostic Model</h3>
+                                        <p>Processing systemic co-factors, mechanical occlusal load, and root shapes.</p>
+                                    </div>
+                                    <div class="card-body align-center flex-column gap-md">
+                                        <canvas id="canvas-neuralnet" width="300" height="200" class="neural-canvas"></canvas>
+                                        
+                                        <div class="progress-status-container">
+                                            <div class="progress-spinner"></div>
+                                            <span id="neuralnet-status-text">Consolidating molar root parameters...</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- STEP 5: Risk Assessment Results -->
+                                <div class="wizard-step-panel" id="wizard-step-5">
+                                    <div class="card-header">
+                                        <h3>Furcation Risk Assessment Report</h3>
+                                        <p>Final diagnostic report containing Hamp grade risk projections and clinical recommendation path.</p>
+                                    </div>
+                                    <div class="card-body gap-md">
+                                        <div class="risk-results-overview">
+                                            <div class="radial-gauge-container large">
+                                                <svg class="radial-gauge" viewBox="0 0 100 100">
+                                                    <circle cx="50" cy="50" r="40" class="gauge-bg"></circle>
+                                                    <circle cx="50" cy="50" r="40" class="gauge-fill" id="results-gauge-circle" stroke-dasharray="251" stroke-dashoffset="251"></circle>
+                                                </svg>
+                                                <div class="gauge-value" id="results-risk-score">0%</div>
+                                            </div>
+                                            <div class="risk-results-info">
+                                                <div class="results-risk-badge font-bold" id="results-risk-label">CALCULATING...</div>
+                                                <p class="text-sm text-secondary mt-xs" id="results-explain-text">Evaluating attachment coordinates...</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="therapies-results-list" id="results-therapies-container">
+                                            <!-- Dynamically filled -->
+                                        </div>
+
+                                        <div class="results-actions">
+                                            <button class="btn btn-secondary" id="btn-results-reset">Run Another Scan</button>
+                                            <button class="btn btn-primary" id="btn-results-save-profile">Save to Patient Profile</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Interactive Parameter Editor panel -->
+                        <div class="diagnostics-right glass">
+                            <div class="panel-header">
+                                <h3>Interactive Diagnostic Parameters</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="selected-patient-badge">
+                                    <span class="label">Patient Profile:</span>
+                                    <strong id="diag-active-patient-name">None (Please select patient)</strong>
+                                </div>
+
+                                <hr class="divider">
+
+                                <!-- Tooth & Arch Selection -->
+                                <div class="editor-section">
+                                    <label class="section-label">1. Tooth Selection</label>
+                                    <div class="jaw-toggle-box">
+                                        <button class="jaw-toggle-btn active" id="btn-jaw-upper">Upper Molars</button>
+                                        <button class="jaw-toggle-btn" id="btn-jaw-lower">Lower Molars</button>
+                                    </div>
+                                    <div class="teeth-grid active" id="teeth-grid-upper">
+                                        <button class="tooth-btn" data-tooth="18">#18</button>
+                                        <button class="tooth-btn" data-tooth="17">#17</button>
+                                        <button class="tooth-btn active" data-tooth="16">#16</button>
+                                        <button class="tooth-btn" data-tooth="26">#26</button>
+                                        <button class="tooth-btn" data-tooth="27">#27</button>
+                                        <button class="tooth-btn" data-tooth="28">#28</button>
+                                    </div>
+                                    <div class="teeth-grid hidden" id="teeth-grid-lower">
+                                        <button class="tooth-btn" data-tooth="48">#48</button>
+                                        <button class="tooth-btn" data-tooth="47">#47</button>
+                                        <button class="tooth-btn" data-tooth="46">#46</button>
+                                        <button class="tooth-btn" data-tooth="36">#36</button>
+                                        <button class="tooth-btn" data-tooth="37">#37</button>
+                                        <button class="tooth-btn" data-tooth="38">#38</button>
+                                    </div>
+                                </div>
+
+                                <!-- Root Anatomy -->
+                                <div class="editor-section">
+                                    <label class="section-label">2. Root Anatomy Parameters</label>
+                                    
+                                    <div class="slider-control-box compact">
+                                        <div class="slider-labels">
+                                            <span>Root Trunk Height</span>
+                                            <strong id="val-root-trunk">4.0 mm</strong>
+                                        </div>
+                                        <input type="range" id="slider-root-trunk" min="10" max="60" value="40" class="range-slider">
+                                    </div>
+
+                                    <div class="slider-control-box compact">
+                                        <div class="slider-labels">
+                                            <span>Root Divergence</span>
+                                            <strong id="val-divergence">25°</strong>
+                                        </div>
+                                        <input type="range" id="slider-divergence" min="5" max="60" value="25" class="range-slider">
+                                    </div>
+
+                                    <div class="slider-control-box compact">
+                                        <div class="slider-labels">
+                                            <span>Furcation Entrance Width</span>
+                                            <strong id="val-entrance">1.2 mm</strong>
+                                        </div>
+                                        <input type="range" id="slider-entrance" min="5" max="30" value="12" class="range-slider">
+                                    </div>
+                                </div>
+
+                                <!-- Periodontal Health Indices -->
+                                <div class="editor-section">
+                                    <label class="section-label">3. Clinical Attachment & Plaque</label>
+
+                                    <div class="slider-control-box compact">
+                                        <div class="slider-labels">
+                                            <span>Pocket Depth (PD)</span>
+                                            <strong id="val-pd">5 mm</strong>
+                                        </div>
+                                        <input type="range" id="slider-pd" min="1" max="10" value="5" class="range-slider">
+                                    </div>
+
+                                    <div class="slider-control-box compact">
+                                        <div class="slider-labels">
+                                            <span>Clinical Attachment Loss</span>
+                                            <strong id="val-cal">4 mm</strong>
+                                        </div>
+                                        <input type="range" id="slider-cal" min="0" max="10" value="4" class="range-slider">
+                                    </div>
+
+                                    <div class="editor-row mt-sm">
+                                        <div class="editor-field flex-grow">
+                                            <span>Bleeding on Probing (BOP)</span>
+                                            <label class="toggle-switch">
+                                                <input type="checkbox" id="toggle-bop" checked>
+                                                <span class="toggle-slider"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="editor-row mt-sm">
+                                        <div class="editor-field flex-grow">
+                                            <span>Plaque Index Score</span>
+                                            <select id="select-plaque" class="select-box">
+                                                <option value="0">Grade 0 (Absent)</option>
+                                                <option value="1">Grade I (Mild)</option>
+                                                <option value="2" selected>Grade II (Moderate)</option>
+                                                <option value="3">Grade III (Severe)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="editor-row mt-sm">
+                                        <div class="editor-field flex-grow">
+                                            <span>Tooth Mobility</span>
+                                            <select id="select-mobility" class="select-box">
+                                                <option value="0">Grade 0 (Normal)</option>
+                                                <option value="1" selected>Grade I (Mild)</option>
+                                                <option value="2">Grade II (Moderate)</option>
+                                                <option value="3">Grade III (Severe)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Mechanical Occlusal Load -->
+                                <div class="editor-section">
+                                    <label class="section-label">4. Mechanical Occlusal Forces</label>
+                                    
+                                    <div class="slider-control-box compact">
+                                        <div class="slider-labels">
+                                            <span>Bite Force (Simulation)</span>
+                                            <strong id="val-biteforce">600 N</strong>
+                                        </div>
+                                        <input type="range" id="slider-biteforce" min="100" max="800" value="600" class="range-slider">
+                                    </div>
+
+                                    <div class="trauma-indicator-box border-red" id="trauma-box">
+                                        <span>Trauma Overload:</span>
+                                        <strong class="text-red" id="trauma-label">Present (Overload)</strong>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ASSISTANT TAB -->
+                <section id="tab-assistant" class="tab-panel">
+                    <div class="assistant-chat-container glass">
+                        <!-- Header -->
+                        <div class="chat-header">
+                            <div class="chat-title">
+                                <h3>Explain Periodontal Parameters</h3>
+                                <p>Trained in Hamp / Glickman furcation classifications, bone regeneration, and local therapeutics.</p>
+                            </div>
+                        </div>
+
+                        <!-- Chat message area -->
+                        <div class="chat-log" id="chat-logs">
+                            <!-- Populated in app.js -->
+                        </div>
+
+                        <!-- Chip suggestions -->
+                        <div class="chat-suggestions-chips">
+                            <span>Suggested Queries:</span>
+                            <button class="chat-chip" data-query="Explain Hamp Grade II classification">Hamp Grade II</button>
+                            <button class="chat-chip" data-query="What are the surgical therapies for furcation?">Surgical therapies</button>
+                            <button class="chat-chip" data-query="What is the impact of diabetes on furcations?">Diabetes & Bone Loss</button>
+                        </div>
+
+                        <!-- Message Input area -->
+                        <div class="chat-input-box">
+                            <input type="text" id="chat-input" placeholder="Type clinical query here (e.g. Hamp Grade III treatment, diabetes impact)..." autocomplete="off">
+                            <button class="btn btn-primary" id="btn-chat-send">
+                                <span>Send Query</span>
+                                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SETTINGS TAB -->
+                <section id="tab-settings" class="tab-panel">
+                    <div class="settings-layout max-w-lg glass">
+                        <div class="card-header">
+                            <h3>Settings & Clinical Customization</h3>
+                            <p>Tweak server parameters, doctor attributes, and clinical algorithms.</p>
+                        </div>
+                        <div class="card-body gap-md">
+                            <div class="settings-group">
+                                <label class="setting-label">Primary Periodontist Name</label>
+                                <input type="text" id="setting-doctor-name" class="input-text" value="Dr. Shahid">
+                            </div>
+
+                            <div class="settings-group">
+                                <label class="setting-label">Diagnostic Grading Reference Standard</label>
+                                <select id="setting-standard" class="select-box">
+                                    <option value="hamp">Hamp's Classification Index (1975)</option>
+                                    <option value="glickman">Glickman's Classification (1953)</option>
+                                    <option value="tarnow">Tarnow and Fletcher Vertical Depth (1984)</option>
+                                </select>
+                            </div>
+
+                            <hr class="divider">
+
+                            <div class="settings-group">
+                                <label class="setting-label">Database Administration</label>
+                                <p class="text-secondary text-xs mb-sm">Reset database cache or close session authentication.</p>
+                                <div style="display: flex; gap: 0.75rem;">
+                                    <button class="btn btn-red" id="btn-reset-db">Reset Local Database</button>
+                                    <button class="btn btn-secondary" id="btn-logout" style="flex-grow: 1;">Logout Session</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+            </div>
+        </main>
+    </div>
+
+    <!-- ADD PATIENT MODAL -->
+    <div class="modal-overlay hidden" id="modal-add-patient">
+        <div class="modal-card glass">
+            <div class="modal-header">
+                <h3>Register New Dental Patient</h3>
+                <button class="btn-close" id="btn-modal-close">×</button>
+            </div>
+            <div class="modal-body gap-sm">
+                <div class="form-group">
+                    <label>Full Patient Name</label>
+                    <input type="text" id="modal-pat-name" class="input-text" placeholder="e.g. Clara Oswald">
+                </div>
+                <div class="form-row">
+                    <div class="form-group flex-grow">
+                        <label>Age</label>
+                        <input type="number" id="modal-pat-age" class="input-text" value="30">
+                    </div>
+                    <div class="form-group flex-grow ml-sm">
+                        <label>Gender</label>
+                        <select id="modal-pat-gender" class="select-box">
+                            <option value="Female">Female</option>
+                            <option value="Male">Male</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="text" id="modal-pat-phone" class="input-text" placeholder="+1 (555) 000-0000" value="+1 (555) ">
+                </div>
+                <div class="form-group">
+                    <label>Tooth Mapping Number</label>
+                    <select id="modal-pat-tooth" class="select-box">
+                        <option value="16">Tooth #16 (Upper Right Molar)</option>
+                        <option value="17">Tooth #17</option>
+                        <option value="18">Tooth #18</option>
+                        <option value="26">Tooth #26 (Upper Left Molar)</option>
+                        <option value="27">Tooth #27</option>
+                        <option value="28">Tooth #28</option>
+                        <option value="36">Tooth #36 (Lower Left Molar)</option>
+                        <option value="37">Tooth #37</option>
+                        <option value="38">Tooth #38</option>
+                        <option value="46">Tooth #46 (Lower Right Molar)</option>
+                        <option value="47">Tooth #47</option>
+                        <option value="48">Tooth #48</option>
+                    </select>
+                </div>
+                <div class="checkbox-row gap-md mt-sm">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="modal-pat-smoking">
+                        <span>Active Smoking</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="modal-pat-diabetes">
+                        <span>Diabetes Mellitus</span>
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="btn-modal-cancel">Cancel</button>
+                <button class="btn btn-primary" id="btn-modal-submit">Create Patient Profile</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- SCHEDULE APPOINTMENT MODAL -->
+    <div class="modal-overlay hidden" id="modal-schedule-appt">
+        <div class="modal-card glass">
+            <div class="modal-header">
+                <h3>Schedule Appointment</h3>
+                <button class="btn-close" id="btn-appt-modal-close">×</button>
+            </div>
+            <div class="modal-body gap-sm">
+                <div class="form-group">
+                    <label>Patient</label>
+                    <input type="text" id="appt-patient-name" class="input-text" readonly style="opacity:0.7;cursor:default;">
+                    <input type="hidden" id="appt-patient-id">
+                </div>
+                <div class="form-group">
+                    <label>Appointment Date</label>
+                    <input type="date" id="appt-date" class="input-text">
+                </div>
+                <div class="form-group">
+                    <label>Select Time Slot</label>
+                    <div class="appt-time-grid" id="appt-time-grid">
+                        <button class="time-slot-btn" data-time="08:00 AM">08:00 AM</button>
+                        <button class="time-slot-btn" data-time="08:30 AM">08:30 AM</button>
+                        <button class="time-slot-btn" data-time="09:00 AM">09:00 AM</button>
+                        <button class="time-slot-btn" data-time="09:30 AM">09:30 AM</button>
+                        <button class="time-slot-btn" data-time="10:00 AM">10:00 AM</button>
+                        <button class="time-slot-btn" data-time="10:30 AM">10:30 AM</button>
+                        <button class="time-slot-btn" data-time="11:00 AM">11:00 AM</button>
+                        <button class="time-slot-btn" data-time="11:30 AM">11:30 AM</button>
+                        <button class="time-slot-btn" data-time="12:00 PM">12:00 PM</button>
+                        <button class="time-slot-btn" data-time="02:00 PM">02:00 PM</button>
+                        <button class="time-slot-btn" data-time="03:00 PM">03:00 PM</button>
+                        <button class="time-slot-btn" data-time="04:00 PM">04:00 PM</button>
+                    </div>
+                    <input type="hidden" id="appt-time-selected">
+                </div>
+                <div class="form-group">
+                    <label>Diagnostic Goal</label>
+                    <select id="appt-goal" class="select-box">
+                        <option value="AI Intake Review">AI Intake Review</option>
+                        <option value="Follow-up Assessment">Follow-up Assessment</option>
+                        <option value="Periodontal Recall">Periodontal Recall</option>
+                        <option value="Post-Surgical Review">Post-Surgical Review</option>
+                        <option value="Regenerative Recall">Regenerative Recall</option>
+                        <option value="Emergency Consultation">Emergency Consultation</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="btn-appt-modal-cancel">Cancel</button>
+                <button class="btn btn-primary" id="btn-appt-modal-submit">Confirm Appointment</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script loading -->
+    <script src="app.js"></script>
+</body>
+</html>
