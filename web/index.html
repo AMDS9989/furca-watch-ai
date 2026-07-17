@@ -14,6 +14,7 @@
 <body>
     <!-- Authentication Overlay Screen -->
     <div class="auth-overlay" id="auth-screen">
+        <canvas id="auth-canvas"></canvas>
         <div class="auth-card glass">
             <!-- Sleek Logo Header -->
             <div class="auth-brand">
@@ -38,8 +39,8 @@
                     <label for="login-password">Password</label>
                     <input type="password" id="login-password" class="input-text-auth" placeholder="••••••••" required>
                 </div>
-                <button class="btn btn-primary btn-block" id="btn-login-submit">Sign In</button>
-                <button class="btn btn-secondary btn-block" id="btn-login-guest" style="margin-top: 10px;">Login as Guest (Demo)</button>
+                <button class="btn btn-primary-gradient btn-block" id="btn-login-submit">Sign In</button>
+                <button class="btn btn-secondary-outline btn-block" id="btn-login-guest" style="margin-top: 12px;">Login as Guest (Demo)</button>
                 <p class="auth-switch-text">Don't have an account? <span id="link-show-register" style="color: var(--accent); cursor: pointer; text-decoration: underline;">Register here</span></p>
             </div>
 
@@ -65,7 +66,7 @@
                     <label for="register-password">Password (min 6 characters)</label>
                     <input type="password" id="register-password" class="input-text-auth" placeholder="••••••••" required>
                 </div>
-                <button class="btn btn-primary btn-block" id="btn-register-submit">Register Profile</button>
+                <button class="btn btn-primary-gradient btn-block" id="btn-register-submit">Register Profile</button>
                 <p class="auth-switch-text">Already registered? <span id="link-show-login" style="color: var(--accent); cursor: pointer; text-decoration: underline;">Sign in instead</span></p>
             </div>
         </div>
