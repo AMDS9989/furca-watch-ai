@@ -14,58 +14,86 @@
 <body>
     <!-- Authentication Overlay Screen -->
     <div class="auth-overlay" id="auth-screen">
-        <div class="auth-card glass">
-            <div class="auth-brand">
-                <div class="brand-icon">
-                    <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        <div class="auth-container">
+            <!-- Left Branding Column -->
+            <div class="auth-brand-column">
+                <div class="auth-brand-logo">
+                    <svg viewBox="0 0 24 24" width="36" height="36" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    <h2>FurcaRisk<span>AI</span></h2>
                 </div>
-                <h2>FurcaRisk<span>AI</span></h2>
-                <p>Clinical Periodontal Decision Support & Diagnostics</p>
-            </div>
-            
-            <!-- Login Form -->
-            <div class="auth-form-container" id="login-form-section">
-                <h3>Welcome Back</h3>
-                <p class="auth-subtitle">Sign in to access your clinic dashboard</p>
-                <div class="auth-error-msg hidden" id="login-error">Invalid email or password</div>
-                
-                <div class="form-group-auth">
-                    <label for="login-email">Email Address</label>
-                    <input type="email" id="login-email" class="input-text-auth" placeholder="doctor@clinic.com" required>
+                <h3>Periodontal Furcation Decision Support</h3>
+                <p class="brand-tagline">Harnessing deep neural networks for accurate multi-planar CBCT molar assessment and attachment loss predictions.</p>
+                <div class="brand-features">
+                    <div class="feat-item">
+                        <div class="feat-icon">🧬</div>
+                        <div>
+                            <h4>AI Furcation Diagnostics</h4>
+                            <p>Automated identification and classification of clinical furcation defects.</p>
+                        </div>
+                    </div>
+                    <div class="feat-item">
+                        <div class="feat-icon">📊</div>
+                        <div>
+                            <h4>Attachment Loss Modeling</h4>
+                            <p>Predictive analytics for localized periodontal deterioration risks.</p>
+                        </div>
+                    </div>
+                    <div class="feat-item">
+                        <div class="feat-icon">💬</div>
+                        <div>
+                            <h4>Clinical Chatbot Companion</h4>
+                            <p>Instant guidelines verification and evidence-based therapeutic workflows.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group-auth">
-                    <label for="login-password">Password</label>
-                    <input type="password" id="login-password" class="input-text-auth" placeholder="••••••••" required>
-                </div>
-                <button class="btn btn-primary btn-block" id="btn-login-submit">Sign In</button>
-                <button class="btn btn-secondary btn-block" id="btn-login-guest" style="margin-top: 10px;">Login as Guest (Demo)</button>
-                <p class="auth-switch-text">Don't have an account? <span id="link-show-register" style="color: var(--accent); cursor: pointer; text-decoration: underline;">Register here</span></p>
             </div>
 
-            <!-- Register Form -->
-            <div class="auth-form-container hidden" id="register-form-section">
-                <h3>Create Account</h3>
-                <p class="auth-subtitle">Register your clinician profile</p>
-                <div class="auth-error-msg hidden" id="register-error">Failed to create account</div>
-                
-                <div class="form-group-auth">
-                    <label for="register-name">Full Name (with credentials)</label>
-                    <input type="text" id="register-name" class="input-text-auth" placeholder="Dr. Sarah Jenkins, DDS" required>
+            <!-- Right Form Column -->
+            <div class="auth-form-column">
+                <!-- Login Form -->
+                <div class="auth-form-container" id="login-form-section">
+                    <h3>Clinician Sign In</h3>
+                    <p class="auth-subtitle">Access your periodontology workspace dashboard</p>
+                    <div class="auth-error-msg hidden" id="login-error">Invalid email or password</div>
+                    
+                    <div class="form-group-auth">
+                        <label for="login-email">Email Address</label>
+                        <input type="email" id="login-email" class="input-text-auth" placeholder="doctor@clinic.com" required>
+                    </div>
+                    <div class="form-group-auth">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" class="input-text-auth" placeholder="••••••••" required>
+                    </div>
+                    <button class="btn btn-primary btn-block" id="btn-login-submit">Sign In</button>
+                    <button class="btn btn-secondary btn-block" id="btn-login-guest" style="margin-top: 10px;">Login as Guest (Demo)</button>
+                    <p class="auth-switch-text">Don't have an account? <span id="link-show-register" style="color: var(--accent); cursor: pointer; text-decoration: underline;">Register here</span></p>
                 </div>
-                <div class="form-group-auth">
-                    <label for="register-specialty">Specialty / Title</label>
-                    <input type="text" id="register-specialty" class="input-text-auth" placeholder="Clinical Periodontist" value="Clinical Periodontist" required>
+
+                <!-- Register Form -->
+                <div class="auth-form-container hidden" id="register-form-section">
+                    <h3>Create Clinician Profile</h3>
+                    <p class="auth-subtitle">Register your clinician profile</p>
+                    <div class="auth-error-msg hidden" id="register-error">Failed to create account</div>
+                    
+                    <div class="form-group-auth">
+                        <label for="register-name">Full Name (with credentials)</label>
+                        <input type="text" id="register-name" class="input-text-auth" placeholder="Dr. Sarah Jenkins, DDS" required>
+                    </div>
+                    <div class="form-group-auth">
+                        <label for="register-specialty">Specialty / Title</label>
+                        <input type="text" id="register-specialty" class="input-text-auth" placeholder="Clinical Periodontist" value="Clinical Periodontist" required>
+                    </div>
+                    <div class="form-group-auth">
+                        <label for="register-email">Email Address</label>
+                        <input type="email" id="register-email" class="input-text-auth" placeholder="doctor@clinic.com" required>
+                    </div>
+                    <div class="form-group-auth">
+                        <label for="register-password">Password (min 6 characters)</label>
+                        <input type="password" id="register-password" class="input-text-auth" placeholder="••••••••" required>
+                    </div>
+                    <button class="btn btn-primary btn-block" id="btn-register-submit">Register Profile</button>
+                    <p class="auth-switch-text">Already registered? <span id="link-show-login" style="color: var(--accent); cursor: pointer; text-decoration: underline;">Sign in instead</span></p>
                 </div>
-                <div class="form-group-auth">
-                    <label for="register-email">Email Address</label>
-                    <input type="email" id="register-email" class="input-text-auth" placeholder="doctor@clinic.com" required>
-                </div>
-                <div class="form-group-auth">
-                    <label for="register-password">Password (min 6 characters)</label>
-                    <input type="password" id="register-password" class="input-text-auth" placeholder="••••••••" required>
-                </div>
-                <button class="btn btn-primary btn-block" id="btn-register-submit">Register Profile</button>
-                <p class="auth-switch-text">Already registered? <span id="link-show-login" style="color: var(--accent); cursor: pointer; text-decoration: underline;">Sign in instead</span></p>
             </div>
         </div>
     </div>
