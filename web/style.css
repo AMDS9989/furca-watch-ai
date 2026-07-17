@@ -1877,9 +1877,11 @@ body {
     background-color: rgba(3, 7, 18, 0.95);
     z-index: 10000;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     backdrop-filter: blur(12px);
+    overflow-y: auto;
+    padding: 2rem 1rem;
 }
 
 .auth-overlay.hidden {
@@ -1895,6 +1897,7 @@ body {
     border-radius: 16px;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     text-align: center;
+    margin: auto 0;
 }
 
 .auth-brand {
