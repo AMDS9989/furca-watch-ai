@@ -737,8 +737,12 @@ async function runValidationTests(driver) {
 
     await runTest(driver, 'Validation', 'TC-VAL-15', 'All buttons have non-empty accessible text', async () => {
         await bypassAuth(driver);
-        const btns = await driver.findElements(By.css('button:not([style*="display: none"])'));
-        for (const btn of btns.slice(0, 15)) {
+        const allBtns = await driver.findElements(By.css('button'));
+        const displayed = [];
+        for (const btn of allBtns) {
+            if (await btn.isDisplayed()) displayed.push(btn);
+        }
+        for (const btn of displayed) {
             const text = await btn.getText();
             const aria = await btn.getAttribute('aria-label');
             const title = await btn.getAttribute('title');
