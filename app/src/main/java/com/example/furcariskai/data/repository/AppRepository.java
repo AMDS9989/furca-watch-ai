@@ -128,7 +128,7 @@ public class AppRepository {
             json.put("patientName", a.getPatientName());
             json.put("date", a.getDate());
             json.put("time", a.getTime());
-            json.put("goal", a.getGoal());
+            json.put("goal", a.getReason());
 
             RequestBody body = RequestBody.create(
                 json.toString(),
@@ -161,10 +161,9 @@ public class AppRepository {
             JSONObject json = new JSONObject();
             json.put("patientId", n.getPatientId());
             json.put("patientName", n.getPatientName());
-            json.put("date", n.getDate());
+            json.put("timestamp", n.getTimestamp());
             json.put("message", n.getMessage());
-            json.put("type", n.getType());
-            json.put("read", n.isRead());
+            json.put("type", n.getAlertType());
 
             RequestBody body = RequestBody.create(
                 json.toString(),
