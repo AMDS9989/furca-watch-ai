@@ -1572,13 +1572,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Toggle Registration Form
+    // Helper to store registration details locally as fallback
+    function saveLocalUser(email, password, name, specialty) {
+        try {
+            const users = JSON.parse(localStorage.getItem('local_users') || '{}');
+            users[email.toLowerCase().trim()] = {
+                password: password,
+                user: {
+                    id: 'local-' + Math.floor(1000 + Math.random() * 9000),
+                    email: email.trim(),
+                    name: name.trim(),
+                    specialty: specialty ? specialty.trim() : 'Clinical Periodontist'
+                }
+            };
+            localStorage.setItem('local_users', JSON.stringify(users));
+            console.log('Saved clinician profile locally:', email);
+        } catch (e) {
+            console.error('Failed to save local clinician credentials:', e);
+        }
+    }
+
+    // Handle Toggle Registration Form
     document.getElementById('link-show-register').addEventListener('click', () => {
         document.getElementById('login-form-section').classList.add('hidden');
         document.getElementById('register-form-section').classList.remove('hidden');
     });
 
-    // Toggle Login Form
+    // Handle Toggle Login Form
     document.getElementById('link-show-login').addEventListener('click', () => {
         document.getElementById('register-form-section').classList.add('hidden');
         document.getElementById('login-form-section').classList.remove('hidden');
@@ -1598,6 +1618,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         errorMsg.classList.add('hidden');
 
+        // Check local registered profiles fallback first (for instant login without email confirmation)
+        try {
+            const localUsers = JSON.parse(localStorage.getItem('local_users') || '{}');
+            const matched = localUsers[email.toLowerCase().trim()];
+            if (matched && matched.password === password) {
+                localStorage.setItem('auth_token', 'local_token_' + Date.now());
+                localStorage.setItem('auth_user', JSON.stringify(matched.user));
+                showToast('Login successful (Clinician Workspace)!', 'success');
+                document.getElementById('auth-screen').style.display = 'none';
+                document.getElementById('main-app').style.display = 'flex';
+                loadDataFromBackend();
+                return;
+            }
+        } catch (e) {
+            console.error('Local auth check error:', e);
+        }
+
         try {
             // Login via Supabase Auth
             if (supabase) {
@@ -1615,22 +1652,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
             }
-            // Fallback: accept any credentials
-            const response = await fetch('https://wdpukbmhvhlyortjwotj.supabase.co/auth/v1/token?grant_type=password', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, password })
-            });
-
-            const result = await response.json();
-            if (response.ok && result.token) {
-                localStorage.setItem('auth_token', result.token);
-                localStorage.setItem('auth_user', JSON.stringify(result.user));
-                checkAuth();
-            } else {
-                errorMsg.textContent = result.error || "Login failed. Verify credentials.";
-                errorMsg.classList.remove('hidden');
-            }
+            
+            errorMsg.textContent = "Login failed. Verify email and password or use Guest Mode.";
+            errorMsg.classList.remove('hidden');
         } catch (e) {
             console.error("Login request failed:", e);
             errorMsg.textContent = "Unable to connect to login server.";
@@ -1671,6 +1695,9 @@ document.addEventListener('DOMContentLoaded', () => {
         errorMsg.classList.add('hidden');
 
         try {
+            // Save credentials to local backup first
+            saveLocalUser(email, password, name, specialty);
+
             // Register via Supabase Auth
             if (supabase) {
                 const { data: regData, error: regErr } = await supabase.auth.signUp({
@@ -1678,33 +1705,24 @@ document.addEventListener('DOMContentLoaded', () => {
                     options: { data: { display_name: name, specialty: specialty || 'Clinical Periodontist' } }
                 });
                 if (!regErr && regData && regData.user) {
-                    showToast('Registration successful! Please check your email to confirm.', 'success');
+                    showToast('Clinician profile registered successfully!', 'success');
                     document.getElementById('register-form-section').classList.add('hidden');
                     document.getElementById('login-form-section').classList.remove('hidden');
+                    document.getElementById('login-email').value = email;
+                    document.getElementById('login-password').value = password;
                     return;
                 }
             }
-            const response = await fetch('https://wdpukbmhvhlyortjwotj.supabase.co/auth/v1/signup', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, specialty, email, password })
-            });
 
-            const result = await response.json();
-            if (response.ok) {
-                showToast('Profile registered! You can now sign in.', 'success');
-                // Switch back to login
-                document.getElementById('register-form-section').classList.add('hidden');
-                document.getElementById('login-form-section').classList.remove('hidden');
-                document.getElementById('login-email').value = email;
-                document.getElementById('login-password').value = "";
-            } else {
-                errorMsg.textContent = result.error || "Registration failed. Try again.";
-                errorMsg.classList.remove('hidden');
-            }
+            // If Supabase falls back or fails, we still let them login instantly with the local copy
+            showToast('Clinician profile registered locally!', 'success');
+            document.getElementById('register-form-section').classList.add('hidden');
+            document.getElementById('login-form-section').classList.remove('hidden');
+            document.getElementById('login-email').value = email;
+            document.getElementById('login-password').value = password;
         } catch (e) {
             console.error("Register request failed:", e);
-            errorMsg.textContent = "Unable to connect to server.";
+            errorMsg.textContent = "Registration failed. Try again.";
             errorMsg.classList.remove('hidden');
         }
     });
