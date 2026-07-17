@@ -1887,6 +1887,10 @@ body {
     display: none !important;
 }
 
+.hidden {
+    display: none !important;
+}
+
 .auth-card {
     width: 100%;
     max-width: 460px;
