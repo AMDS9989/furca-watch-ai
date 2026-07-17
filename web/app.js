@@ -1698,13 +1698,16 @@ document.addEventListener('DOMContentLoaded', () => {
         // Check local registered profiles fallback first (for instant login without email confirmation)
         try {
             const localUsers = JSON.parse(localStorage.getItem('local_users') || '{}');
-            const matched = localUsers[email.toLowerCase().trim()];
+            const cleanEmail = email.toLowerCase().trim();
+            const matched = localUsers[cleanEmail];
             if (matched && matched.password === password) {
                 localStorage.setItem('auth_token', 'local_token_' + Date.now());
                 localStorage.setItem('auth_user', JSON.stringify(matched.user));
                 showToast('Login successful (Clinician Workspace)!', 'success');
-                document.getElementById('auth-screen').style.display = 'none';
-                document.getElementById('main-app').style.display = 'flex';
+                
+                const authScreen = document.getElementById('auth-screen');
+                if (authScreen) authScreen.classList.add('hidden');
+                
                 loadDataFromBackend();
                 return;
             }
@@ -1723,8 +1726,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     localStorage.setItem('auth_token', authData.session.access_token);
                     localStorage.setItem('auth_user', JSON.stringify(user));
                     showToast('Login successful!', 'success');
-                    document.getElementById('auth-screen').style.display = 'none';
-                    document.getElementById('main-app').style.display = 'flex';
+                    
+                    const authScreen = document.getElementById('auth-screen');
+                    if (authScreen) authScreen.classList.add('hidden');
+                    
                     loadDataFromBackend();
                     return;
                 }
@@ -1750,8 +1755,10 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('auth_token', 'demo_token_' + Date.now());
         localStorage.setItem('auth_user', JSON.stringify(guestUser));
         showToast('Logged in as Guest Clinician!', 'success');
-        document.getElementById('auth-screen').style.display = 'none';
-        document.getElementById('main-app').style.display = 'flex';
+        
+        const authScreen = document.getElementById('auth-screen');
+        if (authScreen) authScreen.classList.add('hidden');
+        
         loadDataFromBackend();
     });
 
@@ -1775,28 +1782,34 @@ document.addEventListener('DOMContentLoaded', () => {
             // Save credentials to local backup first
             saveLocalUser(email, password, name, specialty);
 
-            // Register via Supabase Auth
+            // Register via Supabase Auth (tries background sync, failsafe email verification)
             if (supabase) {
-                const { data: regData, error: regErr } = await supabase.auth.signUp({
-                    email, password,
-                    options: { data: { display_name: name, specialty: specialty || 'Clinical Periodontist' } }
-                });
-                if (!regErr && regData && regData.user) {
-                    showToast('Clinician profile registered successfully!', 'success');
-                    document.getElementById('register-form-section').classList.add('hidden');
-                    document.getElementById('login-form-section').classList.remove('hidden');
-                    document.getElementById('login-email').value = email;
-                    document.getElementById('login-password').value = password;
-                    return;
+                try {
+                    await supabase.auth.signUp({
+                        email, password,
+                        options: { data: { display_name: name, specialty: specialty || 'Clinical Periodontist' } }
+                    });
+                } catch (err) {
+                    console.warn("Supabase background signup failed:", err);
                 }
             }
 
-            // If Supabase falls back or fails, we still let them login instantly with the local copy
-            showToast('Clinician profile registered locally!', 'success');
-            document.getElementById('register-form-section').classList.add('hidden');
-            document.getElementById('login-form-section').classList.remove('hidden');
-            document.getElementById('login-email').value = email;
-            document.getElementById('login-password').value = password;
+            // Automate direct logging in for the clinician workspace immediately!
+            const matchedUser = {
+                id: 'local-' + Math.floor(1000 + Math.random() * 9000),
+                email: email.trim(),
+                name: name.trim(),
+                specialty: specialty ? specialty.trim() : 'Clinical Periodontist'
+            };
+            localStorage.setItem('auth_token', 'local_token_' + Date.now());
+            localStorage.setItem('auth_user', JSON.stringify(matchedUser));
+
+            showToast('Clinician workspace created successfully!', 'success');
+            
+            const authScreen = document.getElementById('auth-screen');
+            if (authScreen) authScreen.classList.add('hidden');
+            
+            loadDataFromBackend();
         } catch (e) {
             console.error("Register request failed:", e);
             errorMsg.textContent = "Registration failed. Try again.";
