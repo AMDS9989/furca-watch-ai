@@ -1704,11 +1704,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.setItem('auth_token', 'local_token_' + Date.now());
                 localStorage.setItem('auth_user', JSON.stringify(matched.user));
                 showToast('Login successful (Clinician Workspace)!', 'success');
-                
-                const authScreen = document.getElementById('auth-screen');
-                if (authScreen) authScreen.classList.add('hidden');
-                
-                loadDataFromBackend();
+                checkAuth();
                 return;
             }
         } catch (e) {
@@ -1726,11 +1722,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     localStorage.setItem('auth_token', authData.session.access_token);
                     localStorage.setItem('auth_user', JSON.stringify(user));
                     showToast('Login successful!', 'success');
-                    
-                    const authScreen = document.getElementById('auth-screen');
-                    if (authScreen) authScreen.classList.add('hidden');
-                    
-                    loadDataFromBackend();
+                    checkAuth();
                     return;
                 }
             }
@@ -1755,11 +1747,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('auth_token', 'demo_token_' + Date.now());
         localStorage.setItem('auth_user', JSON.stringify(guestUser));
         showToast('Logged in as Guest Clinician!', 'success');
-        
-        const authScreen = document.getElementById('auth-screen');
-        if (authScreen) authScreen.classList.add('hidden');
-        
-        loadDataFromBackend();
+        checkAuth();
     });
 
     // Handle Register Submit
@@ -1805,11 +1793,7 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('auth_user', JSON.stringify(matchedUser));
 
             showToast('Clinician workspace created successfully!', 'success');
-            
-            const authScreen = document.getElementById('auth-screen');
-            if (authScreen) authScreen.classList.add('hidden');
-            
-            loadDataFromBackend();
+            checkAuth();
         } catch (e) {
             console.error("Register request failed:", e);
             errorMsg.textContent = "Registration failed. Try again.";
