@@ -926,6 +926,16 @@ async function runDeploymentTests(driver) {
 
     // Write results JSON
     const output = {
+        suiteName: "FurcaRiskAI Web Selenium E2E",
+        buildNumber: BUILD_NUMBER,
+        executionDate: new Date().toISOString(),
+        platform: PLATFORM,
+        durationMs: Date.now() - suiteStart,
+        totalTests: results.length,
+        passed,
+        failed,
+        passRate: ((passed / results.length) * 100).toFixed(1) + '%',
+        tests: results.map(r => ({ name: r.name, status: r.status, duration: r.duration, error: r.error, screenshot: r.screenshot })),
         meta: {
             buildNumber: BUILD_NUMBER,
             platform: PLATFORM,
