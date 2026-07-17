@@ -1626,8 +1626,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.ok && result.token) {
                 localStorage.setItem('auth_token', result.token);
                 localStorage.setItem('auth_user', JSON.stringify(result.user));
-                
-                // Initialize screen and state
                 checkAuth();
             } else {
                 errorMsg.textContent = result.error || "Login failed. Verify credentials.";
@@ -1638,6 +1636,22 @@ document.addEventListener('DOMContentLoaded', () => {
             errorMsg.textContent = "Unable to connect to login server.";
             errorMsg.classList.remove('hidden');
         }
+    });
+
+    // Handle Guest / Demo Login
+    document.getElementById('btn-login-guest').addEventListener('click', () => {
+        const guestUser = {
+            id: 'guest-' + Math.floor(1000 + Math.random() * 9000),
+            name: 'Dr. Guest Clinician',
+            email: 'guest@clinic.com',
+            specialty: 'Clinical Periodontist (Demo)'
+        };
+        localStorage.setItem('auth_token', 'demo_token_' + Date.now());
+        localStorage.setItem('auth_user', JSON.stringify(guestUser));
+        showToast('Logged in as Guest Clinician!', 'success');
+        document.getElementById('auth-screen').style.display = 'none';
+        document.getElementById('main-app').style.display = 'flex';
+        loadDataFromBackend();
     });
 
     // Handle Register Submit
@@ -1665,8 +1679,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
                 if (!regErr && regData && regData.user) {
                     showToast('Registration successful! Please check your email to confirm.', 'success');
-                    document.getElementById('auth-register-form').classList.add('hidden');
-                    document.getElementById('auth-login-form').classList.remove('hidden');
+                    document.getElementById('register-form-section').classList.add('hidden');
+                    document.getElementById('login-form-section').classList.remove('hidden');
                     return;
                 }
             }
