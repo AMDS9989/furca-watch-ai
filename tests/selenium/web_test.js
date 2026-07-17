@@ -72,10 +72,20 @@ async function runTest(driver, category, id, name, fn) {
 }
 
 // ── HTTP Check Helper (no browser needed) ────────────────────────────────────
-function httpGet(url) {
+function httpGet(url, depth = 0) {
+    if (depth > 5) return Promise.resolve({ status: 500, error: 'Too many redirects' });
     return new Promise((resolve) => {
         const mod = url.startsWith('https') ? https : http;
         const req = mod.get(url, { timeout: 10000 }, (res) => {
+            if (res.statusCode === 301 || res.statusCode === 302) {
+                const loc = res.headers.location;
+                if (loc) {
+                    const nextUrl = loc.startsWith('http') ? loc : new URL(loc, url).href;
+                    resolve(httpGet(nextUrl, depth + 1));
+                    res.resume();
+                    return;
+                }
+            }
             resolve({ status: res.statusCode, headers: res.headers });
             res.resume();
         });
@@ -425,6 +435,7 @@ async function runFunctionalTests(driver) {
         await driver.sleep(800);
         const searchInput = await driver.findElement(By.id('patient-search'));
         await searchInput.clear();
+        await driver.executeScript("arguments[0].dispatchEvent(new Event('input'));", searchInput);
         await searchInput.sendKeys('Johnathan');
         await driver.sleep(500);
         const items = await driver.findElements(By.css('.patient-list-item'));
@@ -439,6 +450,7 @@ async function runFunctionalTests(driver) {
         await searchInput.sendKeys('zzz_no_match_xyz');
         await driver.sleep(400);
         await searchInput.clear();
+        await driver.executeScript("arguments[0].dispatchEvent(new Event('input'));", searchInput);
         await driver.sleep(400);
         const items = await driver.findElements(By.css('.patient-list-item'));
         if (items.length === 0) throw new Error('List is empty after clearing search');
@@ -821,8 +833,8 @@ async function runDeploymentTests(driver) {
     });
 
     await runTest(driver, 'Deployment', 'TC-DEP-05', 'Google Fonts CDN is reachable', async () => {
-        const res = await httpGet('https://fonts.googleapis.com');
-        if (res.status !== 200 && res.status !== 301 && res.status !== 302) throw new Error(`Google Fonts HTTP: ${res.status}`);
+        const res = await httpGet('https://fonts.googleapis.com/css2?family=Inter');
+        if (res.status !== 200) throw new Error(`Google Fonts HTTP: ${res.status}`);
     });
 
     await runTest(driver, 'Deployment', 'TC-DEP-06', 'Page loads within 10 seconds', async () => {
