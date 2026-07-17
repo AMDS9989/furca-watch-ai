@@ -167,7 +167,15 @@ jobs:
           mkdir -p "Test Results/Summary"
 
       # ── 8. Run Selenium E2E Tests ─────────────────────────────────────────────
-      - name: Run Selenium E2E Tests (Headless Chrome)
+      # ── 7b. Run Unit Tests ────────────────────────────────────────────────────
+      - name: Run Unit Tests (Node.js — 20 tests, no browser)
+        working-directory: tests
+        run: |
+          echo "🧪 Running 20 unit tests..."
+          npm run test:unit 2>&1 | tee ../Test\ Results/Logs/unit-run.log || true
+
+      # ── 8. Run Selenium E2E Tests ─────────────────────────────────────────────
+      - name: Run Selenium E2E Tests (85 tests – Headless Chrome)
         working-directory: tests
         run: |
           echo "📡 Testing against: $BASE_URL"
@@ -200,6 +208,15 @@ jobs:
         run: npm run generate:summary
         env:
           GITHUB_PAGES_URL: ${{ needs.build-and-deploy.outputs.page_url }}
+
+      # ── 11b. Generate Master Summary (all 105 tests combined) ─────────────────
+      - name: Generate Master Summary Report
+        working-directory: tests
+        if: always()
+        run: npm run generate:master
+        env:
+          GITHUB_PAGES_URL: ${{ needs.build-and-deploy.outputs.page_url }}
+          GITHUB_STEP_SUMMARY: ${{ env.GITHUB_STEP_SUMMARY }}
 
       # ── 12. Move screenshots into Test Results ────────────────────────────────
       - name: Collect Screenshots
