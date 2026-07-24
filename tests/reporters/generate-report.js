@@ -29,7 +29,8 @@ function badge(status) {
     return '<span style="display:inline-flex;align-items:center;gap:.3rem;padding:.25rem .7rem;border-radius:20px;font-size:.75rem;font-weight:700;background:rgba(255,77,109,.12);color:#ff4d6d;border:1px solid rgba(255,77,109,.2)">&#10007; FAIL</span>';
 }
 
-const rows = r.tests.map(function(t, i) {
+const testList = r.tests || r.results || [];
+const rows = testList.map(function(t, i) {
     const errCell = t.error
         ? '<span style="color:#ff4d6d;font-size:.8rem;font-family:monospace">' + t.error + '</span>'
         : '<span style="color:#94a3b8">&#8212;</span>';
@@ -83,7 +84,7 @@ const md = [
     '',
     '| # | Test | Status | Duration |',
     '|---|---|---|---|'
-].concat(r.tests.map(function(t, i) {
+].concat(testList.map(function(t, i) {
     return '| ' + (i+1) + ' | ' + t.name + ' | ' + (t.status === 'PASS' ? 'PASS' : 'FAIL') + ' | ' + t.duration + 'ms |';
 })).concat([
     '',

@@ -112,7 +112,8 @@ async function generateExcel() {
         cell.border = { bottom: { style: 'medium', color: { argb: 'FF00F0FF' } } };
     });
 
-    r.tests.forEach(function(t, i) {
+    const testList = r.tests || r.results || [];
+    testList.forEach(function(t, i) {
         const isPass = t.status === 'PASS';
         const dataRow = detailSheet.addRow([
             i + 1,

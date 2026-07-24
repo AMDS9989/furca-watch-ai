@@ -1,0 +1,341 @@
+{
+  "meta": {
+    "buildNumber": "local",
+    "platform": "Unit Tests (Node.js)",
+    "timestamp": "2026-07-24T09:39:43.715Z",
+    "totalTests": 20,
+    "passed": 20,
+    "failed": 0
+  },
+  "categories": [
+    {
+      "name": "Unit",
+      "tests": [
+        {
+          "id": "TC-UNIT-01",
+          "name": "Risk score >= 75 maps to CRITICAL",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-02",
+          "name": "Risk score 55–74 maps to HIGH",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-03",
+          "name": "Risk score 35–54 maps to MODERATE",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-04",
+          "name": "Risk score < 35 maps to LOW",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-05",
+          "name": "Generated patient ID matches FR-XXXXX format",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-06",
+          "name": "Generated patient IDs are unique across 100 calls",
+          "status": "PASS",
+          "duration": 1,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-07",
+          "name": "mapPatient maps phone_number to phoneNumber",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-08",
+          "name": "mapPatient maps pocket_depth to pocketDepth",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-09",
+          "name": "mapPatient maps clinical_attachment_loss to clinicalAttachmentLoss",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-10",
+          "name": "mapPatient maps plaque_index to plaqueIndex",
+          "status": "PASS",
+          "duration": 1,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-11",
+          "name": "smoking: 1 (int) converts to true boolean",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-12",
+          "name": "smoking: 0 (int) converts to false boolean",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-13",
+          "name": "diabetes: 1 (int) converts to true boolean",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-14",
+          "name": "bleeding: true (bool) stays true",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-15",
+          "name": "Missing phoneNumber defaults to empty string",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-16",
+          "name": "Missing riskScore defaults to 0",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-17",
+          "name": "Missing timeline defaults to empty array",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-18",
+          "name": "JSON string timeline is parsed to array",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-19",
+          "name": "mapAppointment maps patient_id to patientId",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-20",
+          "name": "mapAppointment falls back to \"reason\" if no \"goal\"",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        }
+      ],
+      "passed": 20,
+      "failed": 0
+    }
+  ],
+  "results": [
+    {
+      "id": "TC-UNIT-01",
+      "name": "Risk score >= 75 maps to CRITICAL",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-02",
+      "name": "Risk score 55–74 maps to HIGH",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-03",
+      "name": "Risk score 35–54 maps to MODERATE",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-04",
+      "name": "Risk score < 35 maps to LOW",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-05",
+      "name": "Generated patient ID matches FR-XXXXX format",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-06",
+      "name": "Generated patient IDs are unique across 100 calls",
+      "status": "PASS",
+      "duration": 1,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-07",
+      "name": "mapPatient maps phone_number to phoneNumber",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-08",
+      "name": "mapPatient maps pocket_depth to pocketDepth",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-09",
+      "name": "mapPatient maps clinical_attachment_loss to clinicalAttachmentLoss",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-10",
+      "name": "mapPatient maps plaque_index to plaqueIndex",
+      "status": "PASS",
+      "duration": 1,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-11",
+      "name": "smoking: 1 (int) converts to true boolean",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-12",
+      "name": "smoking: 0 (int) converts to false boolean",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-13",
+      "name": "diabetes: 1 (int) converts to true boolean",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-14",
+      "name": "bleeding: true (bool) stays true",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-15",
+      "name": "Missing phoneNumber defaults to empty string",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-16",
+      "name": "Missing riskScore defaults to 0",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-17",
+      "name": "Missing timeline defaults to empty array",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-18",
+      "name": "JSON string timeline is parsed to array",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-19",
+      "name": "mapAppointment maps patient_id to patientId",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-20",
+      "name": "mapAppointment falls back to \"reason\" if no \"goal\"",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    }
+  ]
+}

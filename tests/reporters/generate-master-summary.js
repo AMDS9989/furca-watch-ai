@@ -24,8 +24,8 @@ const unitData = loadJSON(UNIT_RESULTS);
 
 // Merge all results
 const allResults = [
-    ...(webData  ? webData.results  : []),
-    ...(unitData ? unitData.results : [])
+    ...(webData  ? (webData.tests  || webData.results  || []) : []),
+    ...(unitData ? (unitData.tests || unitData.results || []) : [])
 ];
 
 const totalPassed  = allResults.filter(r => r.status === 'PASS').length;

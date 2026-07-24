@@ -4,24 +4,24 @@
   "description": "Comprehensive test suite for FurcaRiskAI – 105 tests across 5 categories",
   "main": "index.js",
   "scripts": {
-    "test:web":          "node selenium/web_test.js",
-    "test:web:ci":       "cross-env HEADLESS=true node selenium/web_test.js",
-    "test:unit":         "node unit/unit_test.js",
-    "test:app":          "node appium/app_test.js",
-    "test:all":          "npm run test:unit && npm run test:web",
-    "test:load":         "node ../load-test.js",
-    "test:load:ci":      "node ../load-test.js --vus 100 --duration 60",
-    "report:load":       "node ../load-test-report.js",
-    "generate:html":     "node reporters/generate-report.js",
-    "generate:excel":    "node reporters/generate-excel.js",
-    "generate:summary":  "node reporters/generate-summary.js",
-    "generate:master":   "node reporters/generate-master-summary.js",
-    "generate:reports":  "node reporters/generate-report.js && node reporters/generate-excel.js && node reporters/generate-summary.js && node reporters/generate-master-summary.js"
+    "test:web": "node selenium/web_test.js",
+    "test:web:ci": "cross-env HEADLESS=true node selenium/web_test.js",
+    "test:unit": "node unit/unit_test.js",
+    "test:app": "node appium/app_test.js",
+    "test:all": "npm run test:unit && npm run test:web",
+    "test:load": "node ../load-test.js",
+    "test:load:ci": "node ../load-test.js --vus 100 --duration 60",
+    "report:load": "node ../load-test-report.js",
+    "generate:html": "node reporters/generate-report.js",
+    "generate:excel": "node reporters/generate-excel.js",
+    "generate:summary": "node reporters/generate-summary.js",
+    "generate:master": "node reporters/generate-master-summary.js",
+    "generate:reports": "node reporters/generate-report.js && node reporters/generate-excel.js && node reporters/generate-summary.js && node reporters/generate-master-summary.js"
   },
   "dependencies": {
-    "cross-env":          "^7.0.3",
-    "exceljs":            "^4.4.0",
+    "cross-env": "^7.0.3",
+    "exceljs": "^4.4.0",
     "selenium-webdriver": "^4.22.0",
-    "webdriverio":        "^8.39.0"
+    "webdriverio": "^8.39.0"
   }
 }

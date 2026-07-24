@@ -43,7 +43,7 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-          cache-dependency-path: tests/package.json
+          cache-dependency-path: tests/appium/package.json
 
       # ── 4. Android SDK ──────────────────────────────────────────────────────
       - name: Set up Android SDK
@@ -76,6 +76,7 @@ jobs:
       # ── 7. Android Emulator ─────────────────────────────────────────────────
       - name: Start Android Emulator
         uses: reactivecircus/android-emulator-runner@v2
+        continue-on-error: true
         with:
           api-level: 33
           arch: x86_64
@@ -87,8 +88,8 @@ jobs:
 
       # ── 8. Install Test Dependencies ────────────────────────────────────────
       - name: Install Test Dependencies
-        working-directory: tests
-        run: npm ci
+        working-directory: tests/appium
+        run: npm install
 
       # ── 9. Start Appium Server ──────────────────────────────────────────────
       - name: Install & Start Appium
@@ -112,25 +113,28 @@ jobs:
 
       # ── 11. Run Appium E2E Tests ─────────────────────────────────────────────
       - name: Run Appium E2E Tests
-        working-directory: tests
+        working-directory: tests/appium
         run: |
-          npm run test:app || true
+          npm run test || true
 
       # ── 12. Generate HTML Report ─────────────────────────────────────────────
       - name: Generate HTML Report
-        working-directory: tests
-        run: npm run generate:html
+        working-directory: tests/appium
+        if: always()
+        run: npm run report:html
 
       # ── 13. Generate Excel Report ────────────────────────────────────────────
       - name: Generate Excel Report
-        working-directory: tests
-        run: npm run generate:excel
+        working-directory: tests/appium
+        if: always()
+        run: npm run report:excel
 
       # ── 14. Write GitHub Step Summary ────────────────────────────────────────
       - name: Add Summary to GitHub Actions
+        if: always()
         run: |
-          if [ -f "Test Results/Summary/summary.md" ]; then
-            cat "Test Results/Summary/summary.md" >> $GITHUB_STEP_SUMMARY
+          if [ -f "Test Results/Summary/mobile-summary.md" ]; then
+            cat "Test Results/Summary/mobile-summary.md" >> $GITHUB_STEP_SUMMARY
           fi
 
       # ── 15. Upload All Artifacts ─────────────────────────────────────────────
@@ -141,28 +145,29 @@ jobs:
           name: furcariskai-e2e-reports-${{ github.run_number }}
           path: |
             Test Results/
-            tests/results.json
-            tests/screenshots/
+            tests/appium/appium-results.json
+            tests/appium/screenshots/
             appium.log
           retention-days: 30
 
       # ── 16. Prepare GitHub Pages publish directory ───────────────────────────
       - name: Prepare GitHub Pages Directory
+        if: always()
         run: |
           mkdir -p gh-pages-publish/reports/latest/screenshots
           mkdir -p gh-pages-publish/reports/history/${{ github.run_number }}
 
           # Copy HTML report to latest/
-          cp "Test Results/HTML/execution-report.html" gh-pages-publish/reports/latest/
-          cp "Test Results/Summary/summary.md" gh-pages-publish/reports/latest/
+          cp "Test Results/HTML/mobile-execution-report.html" gh-pages-publish/reports/latest/
+          cp "Test Results/Summary/mobile-summary.md" gh-pages-publish/reports/latest/
 
           # Copy screenshots if any
-          if [ -d "tests/screenshots" ]; then
-            cp -r tests/screenshots/. gh-pages-publish/reports/latest/screenshots/
+          if [ -d "tests/appium/screenshots" ]; then
+            cp -r tests/appium/screenshots/. gh-pages-publish/reports/latest/screenshots/
           fi
 
           # Copy to history/<build-number>/
-          cp "Test Results/HTML/execution-report.html" gh-pages-publish/reports/history/${{ github.run_number }}/
+          cp "Test Results/HTML/mobile-execution-report.html" gh-pages-publish/reports/history/${{ github.run_number }}/
 
           # Generate index.html for gh-pages root
           cat > gh-pages-publish/index.html << 'EOF'

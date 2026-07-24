@@ -5,6 +5,9 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const { createClient } = require('@supabase/supabase-js');
 
+// Load environment variables if backend/.env exists
+try { require('dotenv').config({ path: path.join(__dirname, '.env') }); } catch(_) {}
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -14,8 +17,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Supabase Initialization
-const SUPABASE_URL = 'https://wdpukbmhvhlyortjwotj.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_REIoJWeL52wOfoOnEQX-ng_t-_7NvPE';
+const SUPABASE_URL = process.env.SUPABASE_URL || 'https://wdpukbmhvhlyortjwotj.supabase.co';
+const SUPABASE_KEY = process.env.SUPABASE_KEY || 'sb_publishable_REIoJWeL52wOfoOnEQX-ng_t-_7NvPE';
 let supabase = null;
 try {
     supabase = createClient(SUPABASE_URL, SUPABASE_KEY);

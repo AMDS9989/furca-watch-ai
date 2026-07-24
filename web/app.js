@@ -8,8 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // -------------------------------------------------------------------------
     // SUPABASE CLIENT (replaces localhost backend — works fully online)
     // -------------------------------------------------------------------------
-    const SUPABASE_URL = 'https://wdpukbmhvhlyortjwotj.supabase.co';
-    const SUPABASE_KEY = 'sb_publishable_REIoJWeL52wOfoOnEQX-ng_t-_7NvPE';
+    const cfg = window.ENV_CONFIG || {};
+    const SUPABASE_URL = cfg.SUPABASE_URL || 'https://wdpukbmhvhlyortjwotj.supabase.co';
+    const SUPABASE_KEY = cfg.SUPABASE_ANON_KEY || 'sb_publishable_REIoJWeL52wOfoOnEQX-ng_t-_7NvPE';
     let supabase = null;
     try {
         if (window.supabase && window.supabase.createClient) {
