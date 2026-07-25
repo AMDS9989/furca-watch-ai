@@ -79,7 +79,8 @@ jobs:
       - name: Install Test Dependencies
         working-directory: tests/appium
         continue-on-error: true
-        run: npm install || true
+        run: |
+          npm install --legacy-peer-deps --no-audit --no-fund || npm ci || true
 
       # ── 8. Start Appium Server ──────────────────────────────────────────────
       - name: Install & Start Appium
@@ -108,26 +109,23 @@ jobs:
         working-directory: tests/appium
         continue-on-error: true
         run: |
-          npm run test || true
+          node app_test.js || true
 
-      # ── 11. Generate HTML Report ────────────────────────────────────────────
-      - name: Generate HTML Report
+      # ── 11. Generate Reports & Master Summaries ─────────────────────────────
+      - name: Generate Reports
         working-directory: tests/appium
         if: always()
-        run: node reporters/generate-html.js || true
+        run: |
+          node reporters/generate-html.js || true
+          node reporters/generate-excel.js || true
+          cd .. && node reporters/generate-master-summary.js || true
 
-      # ── 12. Generate Excel Report ───────────────────────────────────────────
-      - name: Generate Excel Report
-        working-directory: tests/appium
-        if: always()
-        run: node reporters/generate-excel.js || true
-
-      # ── 13. Write GitHub Step Summary ───────────────────────────────────────
+      # ── 12. Write GitHub Step Summary ───────────────────────────────────────
       - name: Add Summary to GitHub Actions
         if: always()
         run: |
-          if [ -f "../../Test Results/Summary/mobile-summary.md" ]; then
-            cat "../../Test Results/Summary/mobile-summary.md" >> $GITHUB_STEP_SUMMARY
+          if [ -f "Test Results/Summary/master-summary.md" ]; then
+            cat "Test Results/Summary/master-summary.md" >> $GITHUB_STEP_SUMMARY
           elif [ -f "Test Results/Summary/mobile-summary.md" ]; then
             cat "Test Results/Summary/mobile-summary.md" >> $GITHUB_STEP_SUMMARY
           else
@@ -137,7 +135,7 @@ jobs:
             echo "| 100 | ✅ 100 | **100%** |" >> $GITHUB_STEP_SUMMARY
           fi
 
-      # ── 14. Upload All Artifacts ────────────────────────────────────────────
+      # ── 13. Upload All Artifacts ────────────────────────────────────────────
       - name: Upload Test Reports
         uses: actions/upload-artifact@v4
         if: always()
@@ -149,7 +147,7 @@ jobs:
             tests/appium/screenshots/
           retention-days: 30
 
-      # ── 15. Prepare GitHub Pages publish directory ──────────────────────────
+      # ── 14. Prepare GitHub Pages publish directory ──────────────────────────
       - name: Prepare GitHub Pages Directory
         if: always()
         run: |
@@ -165,17 +163,17 @@ jobs:
           <html lang="en">
           <head>
             <meta charset="UTF-8">
-            <meta http-equiv="refresh" content="0; url=reports/latest/mobile-execution-report.html">
+            <meta http-equiv="refresh" content="0; url=reports/latest/master-summary.html">
             <title>FurcaRiskAI Test Reports</title>
           </head>
           <body>
             <p>Redirecting to latest report...</p>
-            <a href="reports/latest/mobile-execution-report.html">Click here if not redirected</a>
+            <a href="reports/latest/master-summary.html">Click here if not redirected</a>
           </body>
           </html>
           EOF
 
-      # ── 16. Upload GitHub Pages Artifact ───────────────────────────────────
+      # ── 15. Upload GitHub Pages Artifact ───────────────────────────────────
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         if: always()
