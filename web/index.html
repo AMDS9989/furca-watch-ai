@@ -500,19 +500,21 @@
                                         <p>Select or drag a simulated CBCT/Panoramic radiograph file to start calculations.</p>
                                     </div>
                                     <div class="card-body align-center flex-column gap-md py-lg">
-                                        <div class="drag-drop-area" id="xray-upload-area">
+                                        <input type="file" id="xray-file-input" accept="image/*,.dcm,.png,.jpg,.jpeg" style="display:none;">
+                                        <div class="drag-drop-area cursor-pointer" id="xray-upload-area" style="cursor:pointer;">
                                             <div class="upload-icon">
                                                 <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
                                             </div>
-                                            <h4>Drag and drop radiograph here</h4>
+                                            <h4>Drag and drop radiograph here or click to browse</h4>
                                             <p class="text-secondary text-xs">Supports DICOM, JPEG, PNG formats</p>
                                             <span class="text-sm font-semibold text-secondary my-xs">OR</span>
                                             <button class="btn btn-secondary btn-sm" id="btn-select-xray-mock">Load Predefined Mock Radiograph</button>
                                         </div>
                                         
                                         <div class="xray-preview-container hidden" id="xray-preview-box">
-                                            <img src="" id="xray-preview-img" alt="Dental radiograph mockup">
+                                            <img src="" id="xray-preview-img" alt="Dental radiograph preview" style="max-height:300px; width:auto; border-radius:8px;">
                                             <div class="xray-preview-badge">Radiograph Loaded</div>
+                                            <button class="btn btn-sm btn-secondary mt-sm" id="btn-change-xray">Change Image</button>
                                         </div>
 
                                         <button class="btn btn-primary w-full disabled" id="btn-xray-next" disabled>

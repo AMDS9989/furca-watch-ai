@@ -888,38 +888,89 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // STEP 1: Uploading radiograph
     const xrayArea = document.getElementById('xray-upload-area');
+    const xrayFileInput = document.getElementById('xray-file-input');
     const xrayPreviewBox = document.getElementById('xray-preview-box');
     const xrayPreviewImg = document.getElementById('xray-preview-img');
     const xrayNextBtn = document.getElementById('btn-xray-next');
+    const changeXrayBtn = document.getElementById('btn-change-xray');
 
-    document.getElementById('btn-select-xray-mock').addEventListener('click', () => {
-        uploadXrayUri = mockXrayBase64;
-        xrayPreviewImg.src = mockXrayBase64;
-        xrayArea.classList.add('hidden');
-        xrayPreviewBox.classList.remove('hidden');
-        xrayNextBtn.classList.remove('disabled');
-        xrayNextBtn.disabled = false;
-    });
+    function processSelectedFile(file) {
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            uploadXrayUri = e.target.result;
+            xrayPreviewImg.src = e.target.result;
+            xrayArea.classList.add('hidden');
+            xrayPreviewBox.classList.remove('hidden');
+            xrayNextBtn.classList.remove('disabled');
+            xrayNextBtn.disabled = false;
+        };
+        reader.readAsDataURL(file);
+    }
 
-    xrayArea.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        xrayArea.classList.add('dragover');
-    });
+    if (xrayArea) {
+        xrayArea.addEventListener('click', (e) => {
+            if (e.target.id === 'btn-select-xray-mock') return; // Handled separately
+            if (xrayFileInput) xrayFileInput.click();
+        });
+    }
 
-    xrayArea.addEventListener('dragleave', () => {
-        xrayArea.classList.remove('dragover');
-    });
+    if (xrayFileInput) {
+        xrayFileInput.addEventListener('change', (e) => {
+            if (e.target.files && e.target.files[0]) {
+                processSelectedFile(e.target.files[0]);
+            }
+        });
+    }
 
-    xrayArea.addEventListener('drop', (e) => {
-        e.preventDefault();
-        xrayArea.classList.remove('dragover');
-        uploadXrayUri = mockXrayBase64; // load mock x-ray
-        xrayPreviewImg.src = mockXrayBase64;
-        xrayArea.classList.add('hidden');
-        xrayPreviewBox.classList.remove('hidden');
-        xrayNextBtn.classList.remove('disabled');
-        xrayNextBtn.disabled = false;
-    });
+    if (changeXrayBtn) {
+        changeXrayBtn.addEventListener('click', () => {
+            xrayPreviewBox.classList.add('hidden');
+            xrayArea.classList.remove('hidden');
+            xrayNextBtn.classList.add('disabled');
+            xrayNextBtn.disabled = true;
+            if (xrayFileInput) xrayFileInput.value = '';
+        });
+    }
+
+    const mockBtn = document.getElementById('btn-select-xray-mock');
+    if (mockBtn) {
+        mockBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            uploadXrayUri = mockXrayBase64;
+            xrayPreviewImg.src = mockXrayBase64;
+            xrayArea.classList.add('hidden');
+            xrayPreviewBox.classList.remove('hidden');
+            xrayNextBtn.classList.remove('disabled');
+            xrayNextBtn.disabled = false;
+        });
+    }
+
+    if (xrayArea) {
+        xrayArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            xrayArea.classList.add('dragover');
+        });
+
+        xrayArea.addEventListener('dragleave', () => {
+            xrayArea.classList.remove('dragover');
+        });
+
+        xrayArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            xrayArea.classList.remove('dragover');
+            if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) {
+                processSelectedFile(e.dataTransfer.files[0]);
+            } else {
+                uploadXrayUri = mockXrayBase64;
+                xrayPreviewImg.src = mockXrayBase64;
+                xrayArea.classList.add('hidden');
+                xrayPreviewBox.classList.remove('hidden');
+                xrayNextBtn.classList.remove('disabled');
+                xrayNextBtn.disabled = false;
+            }
+        });
+    }
 
     xrayNextBtn.addEventListener('click', () => {
         goStep(2);
