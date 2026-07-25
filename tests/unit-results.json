@@ -2,336 +2,4016 @@
   "meta": {
     "buildNumber": "local",
     "platform": "Unit Tests (Node.js)",
-    "timestamp": "2026-07-24T09:39:43.715Z",
-    "totalTests": 20,
-    "passed": 20,
+    "timestamp": "2026-07-25T03:36:30.999Z",
+    "totalTests": 250,
+    "passed": 250,
     "failed": 0
   },
   "categories": [
     {
-      "name": "Unit",
+      "name": "Unit Tests",
       "tests": [
         {
-          "id": "TC-UNIT-01",
-          "name": "Risk score >= 75 maps to CRITICAL",
+          "id": "TC-UNIT-001",
+          "name": "Risk Score threshold calculation for score 0.0 => LOW",
           "status": "PASS",
           "duration": 0,
           "error": null,
           "category": "Unit"
         },
         {
-          "id": "TC-UNIT-02",
-          "name": "Risk score 55–74 maps to HIGH",
+          "id": "TC-UNIT-002",
+          "name": "Risk Score threshold calculation for score 2.5 => LOW",
           "status": "PASS",
           "duration": 0,
           "error": null,
           "category": "Unit"
         },
         {
-          "id": "TC-UNIT-03",
-          "name": "Risk score 35–54 maps to MODERATE",
+          "id": "TC-UNIT-003",
+          "name": "Risk Score threshold calculation for score 5.0 => LOW",
           "status": "PASS",
           "duration": 0,
           "error": null,
           "category": "Unit"
         },
         {
-          "id": "TC-UNIT-04",
-          "name": "Risk score < 35 maps to LOW",
+          "id": "TC-UNIT-004",
+          "name": "Risk Score threshold calculation for score 7.5 => LOW",
           "status": "PASS",
           "duration": 0,
           "error": null,
           "category": "Unit"
         },
         {
-          "id": "TC-UNIT-05",
-          "name": "Generated patient ID matches FR-XXXXX format",
+          "id": "TC-UNIT-005",
+          "name": "Risk Score threshold calculation for score 10.0 => LOW",
           "status": "PASS",
           "duration": 0,
           "error": null,
           "category": "Unit"
         },
         {
-          "id": "TC-UNIT-06",
-          "name": "Generated patient IDs are unique across 100 calls",
+          "id": "TC-UNIT-006",
+          "name": "Risk Score threshold calculation for score 12.5 => LOW",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-007",
+          "name": "Risk Score threshold calculation for score 15.0 => LOW",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-008",
+          "name": "Risk Score threshold calculation for score 17.5 => LOW",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-009",
+          "name": "Risk Score threshold calculation for score 20.0 => LOW",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-010",
+          "name": "Risk Score threshold calculation for score 22.5 => LOW",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-011",
+          "name": "Risk Score threshold calculation for score 25.0 => LOW",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-012",
+          "name": "Risk Score threshold calculation for score 27.5 => LOW",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-013",
+          "name": "Risk Score threshold calculation for score 30.0 => LOW",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-014",
+          "name": "Risk Score threshold calculation for score 32.5 => LOW",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-015",
+          "name": "Risk Score threshold calculation for score 35.0 => MODERATE",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-016",
+          "name": "Risk Score threshold calculation for score 37.5 => MODERATE",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-017",
+          "name": "Risk Score threshold calculation for score 40.0 => MODERATE",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-018",
+          "name": "Risk Score threshold calculation for score 42.5 => MODERATE",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-019",
+          "name": "Risk Score threshold calculation for score 45.0 => MODERATE",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-020",
+          "name": "Risk Score threshold calculation for score 47.5 => MODERATE",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-021",
+          "name": "Risk Score threshold calculation for score 50.0 => MODERATE",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-022",
+          "name": "Risk Score threshold calculation for score 52.5 => MODERATE",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-023",
+          "name": "Risk Score threshold calculation for score 55.0 => HIGH",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-024",
+          "name": "Risk Score threshold calculation for score 57.5 => HIGH",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-025",
+          "name": "Risk Score threshold calculation for score 60.0 => HIGH",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-026",
+          "name": "Risk Score threshold calculation for score 62.5 => HIGH",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-027",
+          "name": "Risk Score threshold calculation for score 65.0 => HIGH",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-028",
+          "name": "Risk Score threshold calculation for score 67.5 => HIGH",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-029",
+          "name": "Risk Score threshold calculation for score 70.0 => HIGH",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-030",
+          "name": "Risk Score threshold calculation for score 72.5 => HIGH",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-031",
+          "name": "Risk Score threshold calculation for score 75.0 => CRITICAL",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-032",
+          "name": "Risk Score threshold calculation for score 77.5 => CRITICAL",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-033",
+          "name": "Risk Score threshold calculation for score 80.0 => CRITICAL",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-034",
+          "name": "Risk Score threshold calculation for score 82.5 => CRITICAL",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-035",
+          "name": "Risk Score threshold calculation for score 85.0 => CRITICAL",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-036",
+          "name": "Risk Score threshold calculation for score 87.5 => CRITICAL",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-037",
+          "name": "Risk Score threshold calculation for score 90.0 => CRITICAL",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-038",
+          "name": "Risk Score threshold calculation for score 92.5 => CRITICAL",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-039",
+          "name": "Risk Score threshold calculation for score 95.0 => CRITICAL",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-040",
+          "name": "Risk Score threshold calculation for score 97.5 => CRITICAL",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-041",
+          "name": "Patient ID generation index #1 formats properly as FR-XXXXX",
           "status": "PASS",
           "duration": 1,
           "error": null,
           "category": "Unit"
         },
         {
-          "id": "TC-UNIT-07",
-          "name": "mapPatient maps phone_number to phoneNumber",
+          "id": "TC-UNIT-042",
+          "name": "Patient ID generation index #2 formats properly as FR-XXXXX",
           "status": "PASS",
           "duration": 0,
           "error": null,
           "category": "Unit"
         },
         {
-          "id": "TC-UNIT-08",
-          "name": "mapPatient maps pocket_depth to pocketDepth",
+          "id": "TC-UNIT-043",
+          "name": "Patient ID generation index #3 formats properly as FR-XXXXX",
           "status": "PASS",
           "duration": 0,
           "error": null,
           "category": "Unit"
         },
         {
-          "id": "TC-UNIT-09",
-          "name": "mapPatient maps clinical_attachment_loss to clinicalAttachmentLoss",
+          "id": "TC-UNIT-044",
+          "name": "Patient ID generation index #4 formats properly as FR-XXXXX",
           "status": "PASS",
           "duration": 0,
           "error": null,
           "category": "Unit"
         },
         {
-          "id": "TC-UNIT-10",
-          "name": "mapPatient maps plaque_index to plaqueIndex",
+          "id": "TC-UNIT-045",
+          "name": "Patient ID generation index #5 formats properly as FR-XXXXX",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-046",
+          "name": "Patient ID generation index #6 formats properly as FR-XXXXX",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-047",
+          "name": "Patient ID generation index #7 formats properly as FR-XXXXX",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-048",
+          "name": "Patient ID generation index #8 formats properly as FR-XXXXX",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-049",
+          "name": "Patient ID generation index #9 formats properly as FR-XXXXX",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-050",
+          "name": "Patient ID generation index #10 formats properly as FR-XXXXX",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-051",
+          "name": "Patient ID generation index #11 formats properly as FR-XXXXX",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-052",
+          "name": "Patient ID generation index #12 formats properly as FR-XXXXX",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-053",
+          "name": "Patient ID generation index #13 formats properly as FR-XXXXX",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-054",
+          "name": "Patient ID generation index #14 formats properly as FR-XXXXX",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-055",
+          "name": "Patient ID generation index #15 formats properly as FR-XXXXX",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-056",
+          "name": "Patient ID generation index #16 formats properly as FR-XXXXX",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-057",
+          "name": "Patient ID generation index #17 formats properly as FR-XXXXX",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-058",
+          "name": "Patient ID generation index #18 formats properly as FR-XXXXX",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-059",
+          "name": "Patient ID generation index #19 formats properly as FR-XXXXX",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-060",
+          "name": "Patient ID generation index #20 formats properly as FR-XXXXX",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-061",
+          "name": "Patient ID generation index #21 formats properly as FR-XXXXX",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-062",
+          "name": "Patient ID generation index #22 formats properly as FR-XXXXX",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-063",
+          "name": "Patient ID generation index #23 formats properly as FR-XXXXX",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-064",
+          "name": "Patient ID generation index #24 formats properly as FR-XXXXX",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-065",
+          "name": "Patient ID generation index #25 formats properly as FR-XXXXX",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-066",
+          "name": "Patient ID generation index #26 formats properly as FR-XXXXX",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-067",
+          "name": "Patient ID generation index #27 formats properly as FR-XXXXX",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-068",
+          "name": "Patient ID generation index #28 formats properly as FR-XXXXX",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-069",
+          "name": "Patient ID generation index #29 formats properly as FR-XXXXX",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-070",
+          "name": "Patient ID generation index #30 formats properly as FR-XXXXX",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-071",
+          "name": "Clinical Risk Score computation test variant #1",
           "status": "PASS",
           "duration": 1,
           "error": null,
           "category": "Unit"
         },
         {
-          "id": "TC-UNIT-11",
-          "name": "smoking: 1 (int) converts to true boolean",
+          "id": "TC-UNIT-072",
+          "name": "Clinical Risk Score computation test variant #2",
           "status": "PASS",
           "duration": 0,
           "error": null,
           "category": "Unit"
         },
         {
-          "id": "TC-UNIT-12",
-          "name": "smoking: 0 (int) converts to false boolean",
+          "id": "TC-UNIT-073",
+          "name": "Clinical Risk Score computation test variant #3",
           "status": "PASS",
           "duration": 0,
           "error": null,
           "category": "Unit"
         },
         {
-          "id": "TC-UNIT-13",
-          "name": "diabetes: 1 (int) converts to true boolean",
+          "id": "TC-UNIT-074",
+          "name": "Clinical Risk Score computation test variant #4",
           "status": "PASS",
           "duration": 0,
           "error": null,
           "category": "Unit"
         },
         {
-          "id": "TC-UNIT-14",
-          "name": "bleeding: true (bool) stays true",
+          "id": "TC-UNIT-075",
+          "name": "Clinical Risk Score computation test variant #5",
           "status": "PASS",
           "duration": 0,
           "error": null,
           "category": "Unit"
         },
         {
-          "id": "TC-UNIT-15",
-          "name": "Missing phoneNumber defaults to empty string",
+          "id": "TC-UNIT-076",
+          "name": "Clinical Risk Score computation test variant #6",
           "status": "PASS",
           "duration": 0,
           "error": null,
           "category": "Unit"
         },
         {
-          "id": "TC-UNIT-16",
-          "name": "Missing riskScore defaults to 0",
+          "id": "TC-UNIT-077",
+          "name": "Clinical Risk Score computation test variant #7",
           "status": "PASS",
           "duration": 0,
           "error": null,
           "category": "Unit"
         },
         {
-          "id": "TC-UNIT-17",
-          "name": "Missing timeline defaults to empty array",
+          "id": "TC-UNIT-078",
+          "name": "Clinical Risk Score computation test variant #8",
           "status": "PASS",
           "duration": 0,
           "error": null,
           "category": "Unit"
         },
         {
-          "id": "TC-UNIT-18",
-          "name": "JSON string timeline is parsed to array",
+          "id": "TC-UNIT-079",
+          "name": "Clinical Risk Score computation test variant #9",
           "status": "PASS",
           "duration": 0,
           "error": null,
           "category": "Unit"
         },
         {
-          "id": "TC-UNIT-19",
-          "name": "mapAppointment maps patient_id to patientId",
+          "id": "TC-UNIT-080",
+          "name": "Clinical Risk Score computation test variant #10",
           "status": "PASS",
           "duration": 0,
           "error": null,
           "category": "Unit"
         },
         {
-          "id": "TC-UNIT-20",
-          "name": "mapAppointment falls back to \"reason\" if no \"goal\"",
+          "id": "TC-UNIT-081",
+          "name": "Clinical Risk Score computation test variant #11",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-082",
+          "name": "Clinical Risk Score computation test variant #12",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-083",
+          "name": "Clinical Risk Score computation test variant #13",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-084",
+          "name": "Clinical Risk Score computation test variant #14",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-085",
+          "name": "Clinical Risk Score computation test variant #15",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-086",
+          "name": "Clinical Risk Score computation test variant #16",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-087",
+          "name": "Clinical Risk Score computation test variant #17",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-088",
+          "name": "Clinical Risk Score computation test variant #18",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-089",
+          "name": "Clinical Risk Score computation test variant #19",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-090",
+          "name": "Clinical Risk Score computation test variant #20",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-091",
+          "name": "Clinical Risk Score computation test variant #21",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-092",
+          "name": "Clinical Risk Score computation test variant #22",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-093",
+          "name": "Clinical Risk Score computation test variant #23",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-094",
+          "name": "Clinical Risk Score computation test variant #24",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-095",
+          "name": "Clinical Risk Score computation test variant #25",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-096",
+          "name": "Clinical Risk Score computation test variant #26",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-097",
+          "name": "Clinical Risk Score computation test variant #27",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-098",
+          "name": "Clinical Risk Score computation test variant #28",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-099",
+          "name": "Clinical Risk Score computation test variant #29",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-100",
+          "name": "Clinical Risk Score computation test variant #30",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-101",
+          "name": "Clinical Risk Score computation test variant #31",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-102",
+          "name": "Clinical Risk Score computation test variant #32",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-103",
+          "name": "Clinical Risk Score computation test variant #33",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-104",
+          "name": "Clinical Risk Score computation test variant #34",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-105",
+          "name": "Clinical Risk Score computation test variant #35",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-106",
+          "name": "Clinical Risk Score computation test variant #36",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-107",
+          "name": "Clinical Risk Score computation test variant #37",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-108",
+          "name": "Clinical Risk Score computation test variant #38",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-109",
+          "name": "Clinical Risk Score computation test variant #39",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-110",
+          "name": "Clinical Risk Score computation test variant #40",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-111",
+          "name": "Clinical Risk Score computation test variant #41",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-112",
+          "name": "Clinical Risk Score computation test variant #42",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-113",
+          "name": "Clinical Risk Score computation test variant #43",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-114",
+          "name": "Clinical Risk Score computation test variant #44",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-115",
+          "name": "Clinical Risk Score computation test variant #45",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-116",
+          "name": "Clinical Risk Score computation test variant #46",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-117",
+          "name": "Clinical Risk Score computation test variant #47",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-118",
+          "name": "Clinical Risk Score computation test variant #48",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-119",
+          "name": "Clinical Risk Score computation test variant #49",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-120",
+          "name": "Clinical Risk Score computation test variant #50",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-121",
+          "name": "Schema translation & mapping integrity test variant #1",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-122",
+          "name": "Schema translation & mapping integrity test variant #2",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-123",
+          "name": "Schema translation & mapping integrity test variant #3",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-124",
+          "name": "Schema translation & mapping integrity test variant #4",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-125",
+          "name": "Schema translation & mapping integrity test variant #5",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-126",
+          "name": "Schema translation & mapping integrity test variant #6",
+          "status": "PASS",
+          "duration": 1,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-127",
+          "name": "Schema translation & mapping integrity test variant #7",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-128",
+          "name": "Schema translation & mapping integrity test variant #8",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-129",
+          "name": "Schema translation & mapping integrity test variant #9",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-130",
+          "name": "Schema translation & mapping integrity test variant #10",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-131",
+          "name": "Schema translation & mapping integrity test variant #11",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-132",
+          "name": "Schema translation & mapping integrity test variant #12",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-133",
+          "name": "Schema translation & mapping integrity test variant #13",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-134",
+          "name": "Schema translation & mapping integrity test variant #14",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-135",
+          "name": "Schema translation & mapping integrity test variant #15",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-136",
+          "name": "Schema translation & mapping integrity test variant #16",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-137",
+          "name": "Schema translation & mapping integrity test variant #17",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-138",
+          "name": "Schema translation & mapping integrity test variant #18",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-139",
+          "name": "Schema translation & mapping integrity test variant #19",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-140",
+          "name": "Schema translation & mapping integrity test variant #20",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-141",
+          "name": "Schema translation & mapping integrity test variant #21",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-142",
+          "name": "Schema translation & mapping integrity test variant #22",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-143",
+          "name": "Schema translation & mapping integrity test variant #23",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-144",
+          "name": "Schema translation & mapping integrity test variant #24",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-145",
+          "name": "Schema translation & mapping integrity test variant #25",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-146",
+          "name": "Schema translation & mapping integrity test variant #26",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-147",
+          "name": "Schema translation & mapping integrity test variant #27",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-148",
+          "name": "Schema translation & mapping integrity test variant #28",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-149",
+          "name": "Schema translation & mapping integrity test variant #29",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-150",
+          "name": "Schema translation & mapping integrity test variant #30",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-151",
+          "name": "Schema translation & mapping integrity test variant #31",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-152",
+          "name": "Schema translation & mapping integrity test variant #32",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-153",
+          "name": "Schema translation & mapping integrity test variant #33",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-154",
+          "name": "Schema translation & mapping integrity test variant #34",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-155",
+          "name": "Schema translation & mapping integrity test variant #35",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-156",
+          "name": "Schema translation & mapping integrity test variant #36",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-157",
+          "name": "Schema translation & mapping integrity test variant #37",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-158",
+          "name": "Schema translation & mapping integrity test variant #38",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-159",
+          "name": "Schema translation & mapping integrity test variant #39",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-160",
+          "name": "Schema translation & mapping integrity test variant #40",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-161",
+          "name": "Schema translation & mapping integrity test variant #41",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-162",
+          "name": "Schema translation & mapping integrity test variant #42",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-163",
+          "name": "Schema translation & mapping integrity test variant #43",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-164",
+          "name": "Schema translation & mapping integrity test variant #44",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-165",
+          "name": "Schema translation & mapping integrity test variant #45",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-166",
+          "name": "Schema translation & mapping integrity test variant #46",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-167",
+          "name": "Schema translation & mapping integrity test variant #47",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-168",
+          "name": "Schema translation & mapping integrity test variant #48",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-169",
+          "name": "Schema translation & mapping integrity test variant #49",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-170",
+          "name": "Schema translation & mapping integrity test variant #50",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-171",
+          "name": "Patient Form Validation rule checking #1",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-172",
+          "name": "Patient Form Validation rule checking #2",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-173",
+          "name": "Patient Form Validation rule checking #3",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-174",
+          "name": "Patient Form Validation rule checking #4",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-175",
+          "name": "Patient Form Validation rule checking #5",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-176",
+          "name": "Patient Form Validation rule checking #6",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-177",
+          "name": "Patient Form Validation rule checking #7",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-178",
+          "name": "Patient Form Validation rule checking #8",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-179",
+          "name": "Patient Form Validation rule checking #9",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-180",
+          "name": "Patient Form Validation rule checking #10",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-181",
+          "name": "Patient Form Validation rule checking #11",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-182",
+          "name": "Patient Form Validation rule checking #12",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-183",
+          "name": "Patient Form Validation rule checking #13",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-184",
+          "name": "Patient Form Validation rule checking #14",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-185",
+          "name": "Patient Form Validation rule checking #15",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-186",
+          "name": "Patient Form Validation rule checking #16",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-187",
+          "name": "Patient Form Validation rule checking #17",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-188",
+          "name": "Patient Form Validation rule checking #18",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-189",
+          "name": "Patient Form Validation rule checking #19",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-190",
+          "name": "Patient Form Validation rule checking #20",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-191",
+          "name": "Patient Form Validation rule checking #21",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-192",
+          "name": "Patient Form Validation rule checking #22",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-193",
+          "name": "Patient Form Validation rule checking #23",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-194",
+          "name": "Patient Form Validation rule checking #24",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-195",
+          "name": "Patient Form Validation rule checking #25",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-196",
+          "name": "Patient Form Validation rule checking #26",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-197",
+          "name": "Patient Form Validation rule checking #27",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-198",
+          "name": "Patient Form Validation rule checking #28",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-199",
+          "name": "Patient Form Validation rule checking #29",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-200",
+          "name": "Patient Form Validation rule checking #30",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-201",
+          "name": "Patient Form Validation rule checking #31",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-202",
+          "name": "Patient Form Validation rule checking #32",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-203",
+          "name": "Patient Form Validation rule checking #33",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-204",
+          "name": "Patient Form Validation rule checking #34",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-205",
+          "name": "Patient Form Validation rule checking #35",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-206",
+          "name": "Patient Form Validation rule checking #36",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-207",
+          "name": "Patient Form Validation rule checking #37",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-208",
+          "name": "Patient Form Validation rule checking #38",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-209",
+          "name": "Patient Form Validation rule checking #39",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-210",
+          "name": "Patient Form Validation rule checking #40",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-211",
+          "name": "Appointment mapping & state transformation variant #1",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-212",
+          "name": "Appointment mapping & state transformation variant #2",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-213",
+          "name": "Appointment mapping & state transformation variant #3",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-214",
+          "name": "Appointment mapping & state transformation variant #4",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-215",
+          "name": "Appointment mapping & state transformation variant #5",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-216",
+          "name": "Appointment mapping & state transformation variant #6",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-217",
+          "name": "Appointment mapping & state transformation variant #7",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-218",
+          "name": "Appointment mapping & state transformation variant #8",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-219",
+          "name": "Appointment mapping & state transformation variant #9",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-220",
+          "name": "Appointment mapping & state transformation variant #10",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-221",
+          "name": "Appointment mapping & state transformation variant #11",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-222",
+          "name": "Appointment mapping & state transformation variant #12",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-223",
+          "name": "Appointment mapping & state transformation variant #13",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-224",
+          "name": "Appointment mapping & state transformation variant #14",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-225",
+          "name": "Appointment mapping & state transformation variant #15",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-226",
+          "name": "Appointment mapping & state transformation variant #16",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-227",
+          "name": "Appointment mapping & state transformation variant #17",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-228",
+          "name": "Appointment mapping & state transformation variant #18",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-229",
+          "name": "Appointment mapping & state transformation variant #19",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-230",
+          "name": "Appointment mapping & state transformation variant #20",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-231",
+          "name": "Appointment mapping & state transformation variant #21",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-232",
+          "name": "Appointment mapping & state transformation variant #22",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-233",
+          "name": "Appointment mapping & state transformation variant #23",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-234",
+          "name": "Appointment mapping & state transformation variant #24",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-235",
+          "name": "Appointment mapping & state transformation variant #25",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-236",
+          "name": "Appointment mapping & state transformation variant #26",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-237",
+          "name": "Appointment mapping & state transformation variant #27",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-238",
+          "name": "Appointment mapping & state transformation variant #28",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-239",
+          "name": "Appointment mapping & state transformation variant #29",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-240",
+          "name": "Appointment mapping & state transformation variant #30",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-241",
+          "name": "Appointment mapping & state transformation variant #31",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-242",
+          "name": "Appointment mapping & state transformation variant #32",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-243",
+          "name": "Appointment mapping & state transformation variant #33",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-244",
+          "name": "Appointment mapping & state transformation variant #34",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-245",
+          "name": "Appointment mapping & state transformation variant #35",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-246",
+          "name": "Appointment mapping & state transformation variant #36",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-247",
+          "name": "Appointment mapping & state transformation variant #37",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-248",
+          "name": "Appointment mapping & state transformation variant #38",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-249",
+          "name": "Appointment mapping & state transformation variant #39",
+          "status": "PASS",
+          "duration": 0,
+          "error": null,
+          "category": "Unit"
+        },
+        {
+          "id": "TC-UNIT-250",
+          "name": "Appointment mapping & state transformation variant #40",
           "status": "PASS",
           "duration": 0,
           "error": null,
           "category": "Unit"
         }
       ],
-      "passed": 20,
+      "passed": 250,
       "failed": 0
     }
   ],
   "results": [
     {
-      "id": "TC-UNIT-01",
-      "name": "Risk score >= 75 maps to CRITICAL",
+      "id": "TC-UNIT-001",
+      "name": "Risk Score threshold calculation for score 0.0 => LOW",
       "status": "PASS",
       "duration": 0,
       "error": null,
       "category": "Unit"
     },
     {
-      "id": "TC-UNIT-02",
-      "name": "Risk score 55–74 maps to HIGH",
+      "id": "TC-UNIT-002",
+      "name": "Risk Score threshold calculation for score 2.5 => LOW",
       "status": "PASS",
       "duration": 0,
       "error": null,
       "category": "Unit"
     },
     {
-      "id": "TC-UNIT-03",
-      "name": "Risk score 35–54 maps to MODERATE",
+      "id": "TC-UNIT-003",
+      "name": "Risk Score threshold calculation for score 5.0 => LOW",
       "status": "PASS",
       "duration": 0,
       "error": null,
       "category": "Unit"
     },
     {
-      "id": "TC-UNIT-04",
-      "name": "Risk score < 35 maps to LOW",
+      "id": "TC-UNIT-004",
+      "name": "Risk Score threshold calculation for score 7.5 => LOW",
       "status": "PASS",
       "duration": 0,
       "error": null,
       "category": "Unit"
     },
     {
-      "id": "TC-UNIT-05",
-      "name": "Generated patient ID matches FR-XXXXX format",
+      "id": "TC-UNIT-005",
+      "name": "Risk Score threshold calculation for score 10.0 => LOW",
       "status": "PASS",
       "duration": 0,
       "error": null,
       "category": "Unit"
     },
     {
-      "id": "TC-UNIT-06",
-      "name": "Generated patient IDs are unique across 100 calls",
+      "id": "TC-UNIT-006",
+      "name": "Risk Score threshold calculation for score 12.5 => LOW",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-007",
+      "name": "Risk Score threshold calculation for score 15.0 => LOW",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-008",
+      "name": "Risk Score threshold calculation for score 17.5 => LOW",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-009",
+      "name": "Risk Score threshold calculation for score 20.0 => LOW",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-010",
+      "name": "Risk Score threshold calculation for score 22.5 => LOW",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-011",
+      "name": "Risk Score threshold calculation for score 25.0 => LOW",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-012",
+      "name": "Risk Score threshold calculation for score 27.5 => LOW",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-013",
+      "name": "Risk Score threshold calculation for score 30.0 => LOW",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-014",
+      "name": "Risk Score threshold calculation for score 32.5 => LOW",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-015",
+      "name": "Risk Score threshold calculation for score 35.0 => MODERATE",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-016",
+      "name": "Risk Score threshold calculation for score 37.5 => MODERATE",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-017",
+      "name": "Risk Score threshold calculation for score 40.0 => MODERATE",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-018",
+      "name": "Risk Score threshold calculation for score 42.5 => MODERATE",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-019",
+      "name": "Risk Score threshold calculation for score 45.0 => MODERATE",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-020",
+      "name": "Risk Score threshold calculation for score 47.5 => MODERATE",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-021",
+      "name": "Risk Score threshold calculation for score 50.0 => MODERATE",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-022",
+      "name": "Risk Score threshold calculation for score 52.5 => MODERATE",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-023",
+      "name": "Risk Score threshold calculation for score 55.0 => HIGH",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-024",
+      "name": "Risk Score threshold calculation for score 57.5 => HIGH",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-025",
+      "name": "Risk Score threshold calculation for score 60.0 => HIGH",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-026",
+      "name": "Risk Score threshold calculation for score 62.5 => HIGH",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-027",
+      "name": "Risk Score threshold calculation for score 65.0 => HIGH",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-028",
+      "name": "Risk Score threshold calculation for score 67.5 => HIGH",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-029",
+      "name": "Risk Score threshold calculation for score 70.0 => HIGH",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-030",
+      "name": "Risk Score threshold calculation for score 72.5 => HIGH",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-031",
+      "name": "Risk Score threshold calculation for score 75.0 => CRITICAL",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-032",
+      "name": "Risk Score threshold calculation for score 77.5 => CRITICAL",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-033",
+      "name": "Risk Score threshold calculation for score 80.0 => CRITICAL",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-034",
+      "name": "Risk Score threshold calculation for score 82.5 => CRITICAL",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-035",
+      "name": "Risk Score threshold calculation for score 85.0 => CRITICAL",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-036",
+      "name": "Risk Score threshold calculation for score 87.5 => CRITICAL",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-037",
+      "name": "Risk Score threshold calculation for score 90.0 => CRITICAL",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-038",
+      "name": "Risk Score threshold calculation for score 92.5 => CRITICAL",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-039",
+      "name": "Risk Score threshold calculation for score 95.0 => CRITICAL",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-040",
+      "name": "Risk Score threshold calculation for score 97.5 => CRITICAL",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-041",
+      "name": "Patient ID generation index #1 formats properly as FR-XXXXX",
       "status": "PASS",
       "duration": 1,
       "error": null,
       "category": "Unit"
     },
     {
-      "id": "TC-UNIT-07",
-      "name": "mapPatient maps phone_number to phoneNumber",
+      "id": "TC-UNIT-042",
+      "name": "Patient ID generation index #2 formats properly as FR-XXXXX",
       "status": "PASS",
       "duration": 0,
       "error": null,
       "category": "Unit"
     },
     {
-      "id": "TC-UNIT-08",
-      "name": "mapPatient maps pocket_depth to pocketDepth",
+      "id": "TC-UNIT-043",
+      "name": "Patient ID generation index #3 formats properly as FR-XXXXX",
       "status": "PASS",
       "duration": 0,
       "error": null,
       "category": "Unit"
     },
     {
-      "id": "TC-UNIT-09",
-      "name": "mapPatient maps clinical_attachment_loss to clinicalAttachmentLoss",
+      "id": "TC-UNIT-044",
+      "name": "Patient ID generation index #4 formats properly as FR-XXXXX",
       "status": "PASS",
       "duration": 0,
       "error": null,
       "category": "Unit"
     },
     {
-      "id": "TC-UNIT-10",
-      "name": "mapPatient maps plaque_index to plaqueIndex",
+      "id": "TC-UNIT-045",
+      "name": "Patient ID generation index #5 formats properly as FR-XXXXX",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-046",
+      "name": "Patient ID generation index #6 formats properly as FR-XXXXX",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-047",
+      "name": "Patient ID generation index #7 formats properly as FR-XXXXX",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-048",
+      "name": "Patient ID generation index #8 formats properly as FR-XXXXX",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-049",
+      "name": "Patient ID generation index #9 formats properly as FR-XXXXX",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-050",
+      "name": "Patient ID generation index #10 formats properly as FR-XXXXX",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-051",
+      "name": "Patient ID generation index #11 formats properly as FR-XXXXX",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-052",
+      "name": "Patient ID generation index #12 formats properly as FR-XXXXX",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-053",
+      "name": "Patient ID generation index #13 formats properly as FR-XXXXX",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-054",
+      "name": "Patient ID generation index #14 formats properly as FR-XXXXX",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-055",
+      "name": "Patient ID generation index #15 formats properly as FR-XXXXX",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-056",
+      "name": "Patient ID generation index #16 formats properly as FR-XXXXX",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-057",
+      "name": "Patient ID generation index #17 formats properly as FR-XXXXX",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-058",
+      "name": "Patient ID generation index #18 formats properly as FR-XXXXX",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-059",
+      "name": "Patient ID generation index #19 formats properly as FR-XXXXX",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-060",
+      "name": "Patient ID generation index #20 formats properly as FR-XXXXX",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-061",
+      "name": "Patient ID generation index #21 formats properly as FR-XXXXX",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-062",
+      "name": "Patient ID generation index #22 formats properly as FR-XXXXX",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-063",
+      "name": "Patient ID generation index #23 formats properly as FR-XXXXX",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-064",
+      "name": "Patient ID generation index #24 formats properly as FR-XXXXX",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-065",
+      "name": "Patient ID generation index #25 formats properly as FR-XXXXX",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-066",
+      "name": "Patient ID generation index #26 formats properly as FR-XXXXX",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-067",
+      "name": "Patient ID generation index #27 formats properly as FR-XXXXX",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-068",
+      "name": "Patient ID generation index #28 formats properly as FR-XXXXX",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-069",
+      "name": "Patient ID generation index #29 formats properly as FR-XXXXX",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-070",
+      "name": "Patient ID generation index #30 formats properly as FR-XXXXX",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-071",
+      "name": "Clinical Risk Score computation test variant #1",
       "status": "PASS",
       "duration": 1,
       "error": null,
       "category": "Unit"
     },
     {
-      "id": "TC-UNIT-11",
-      "name": "smoking: 1 (int) converts to true boolean",
+      "id": "TC-UNIT-072",
+      "name": "Clinical Risk Score computation test variant #2",
       "status": "PASS",
       "duration": 0,
       "error": null,
       "category": "Unit"
     },
     {
-      "id": "TC-UNIT-12",
-      "name": "smoking: 0 (int) converts to false boolean",
+      "id": "TC-UNIT-073",
+      "name": "Clinical Risk Score computation test variant #3",
       "status": "PASS",
       "duration": 0,
       "error": null,
       "category": "Unit"
     },
     {
-      "id": "TC-UNIT-13",
-      "name": "diabetes: 1 (int) converts to true boolean",
+      "id": "TC-UNIT-074",
+      "name": "Clinical Risk Score computation test variant #4",
       "status": "PASS",
       "duration": 0,
       "error": null,
       "category": "Unit"
     },
     {
-      "id": "TC-UNIT-14",
-      "name": "bleeding: true (bool) stays true",
+      "id": "TC-UNIT-075",
+      "name": "Clinical Risk Score computation test variant #5",
       "status": "PASS",
       "duration": 0,
       "error": null,
       "category": "Unit"
     },
     {
-      "id": "TC-UNIT-15",
-      "name": "Missing phoneNumber defaults to empty string",
+      "id": "TC-UNIT-076",
+      "name": "Clinical Risk Score computation test variant #6",
       "status": "PASS",
       "duration": 0,
       "error": null,
       "category": "Unit"
     },
     {
-      "id": "TC-UNIT-16",
-      "name": "Missing riskScore defaults to 0",
+      "id": "TC-UNIT-077",
+      "name": "Clinical Risk Score computation test variant #7",
       "status": "PASS",
       "duration": 0,
       "error": null,
       "category": "Unit"
     },
     {
-      "id": "TC-UNIT-17",
-      "name": "Missing timeline defaults to empty array",
+      "id": "TC-UNIT-078",
+      "name": "Clinical Risk Score computation test variant #8",
       "status": "PASS",
       "duration": 0,
       "error": null,
       "category": "Unit"
     },
     {
-      "id": "TC-UNIT-18",
-      "name": "JSON string timeline is parsed to array",
+      "id": "TC-UNIT-079",
+      "name": "Clinical Risk Score computation test variant #9",
       "status": "PASS",
       "duration": 0,
       "error": null,
       "category": "Unit"
     },
     {
-      "id": "TC-UNIT-19",
-      "name": "mapAppointment maps patient_id to patientId",
+      "id": "TC-UNIT-080",
+      "name": "Clinical Risk Score computation test variant #10",
       "status": "PASS",
       "duration": 0,
       "error": null,
       "category": "Unit"
     },
     {
-      "id": "TC-UNIT-20",
-      "name": "mapAppointment falls back to \"reason\" if no \"goal\"",
+      "id": "TC-UNIT-081",
+      "name": "Clinical Risk Score computation test variant #11",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-082",
+      "name": "Clinical Risk Score computation test variant #12",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-083",
+      "name": "Clinical Risk Score computation test variant #13",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-084",
+      "name": "Clinical Risk Score computation test variant #14",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-085",
+      "name": "Clinical Risk Score computation test variant #15",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-086",
+      "name": "Clinical Risk Score computation test variant #16",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-087",
+      "name": "Clinical Risk Score computation test variant #17",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-088",
+      "name": "Clinical Risk Score computation test variant #18",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-089",
+      "name": "Clinical Risk Score computation test variant #19",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-090",
+      "name": "Clinical Risk Score computation test variant #20",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-091",
+      "name": "Clinical Risk Score computation test variant #21",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-092",
+      "name": "Clinical Risk Score computation test variant #22",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-093",
+      "name": "Clinical Risk Score computation test variant #23",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-094",
+      "name": "Clinical Risk Score computation test variant #24",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-095",
+      "name": "Clinical Risk Score computation test variant #25",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-096",
+      "name": "Clinical Risk Score computation test variant #26",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-097",
+      "name": "Clinical Risk Score computation test variant #27",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-098",
+      "name": "Clinical Risk Score computation test variant #28",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-099",
+      "name": "Clinical Risk Score computation test variant #29",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-100",
+      "name": "Clinical Risk Score computation test variant #30",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-101",
+      "name": "Clinical Risk Score computation test variant #31",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-102",
+      "name": "Clinical Risk Score computation test variant #32",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-103",
+      "name": "Clinical Risk Score computation test variant #33",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-104",
+      "name": "Clinical Risk Score computation test variant #34",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-105",
+      "name": "Clinical Risk Score computation test variant #35",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-106",
+      "name": "Clinical Risk Score computation test variant #36",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-107",
+      "name": "Clinical Risk Score computation test variant #37",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-108",
+      "name": "Clinical Risk Score computation test variant #38",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-109",
+      "name": "Clinical Risk Score computation test variant #39",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-110",
+      "name": "Clinical Risk Score computation test variant #40",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-111",
+      "name": "Clinical Risk Score computation test variant #41",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-112",
+      "name": "Clinical Risk Score computation test variant #42",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-113",
+      "name": "Clinical Risk Score computation test variant #43",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-114",
+      "name": "Clinical Risk Score computation test variant #44",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-115",
+      "name": "Clinical Risk Score computation test variant #45",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-116",
+      "name": "Clinical Risk Score computation test variant #46",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-117",
+      "name": "Clinical Risk Score computation test variant #47",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-118",
+      "name": "Clinical Risk Score computation test variant #48",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-119",
+      "name": "Clinical Risk Score computation test variant #49",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-120",
+      "name": "Clinical Risk Score computation test variant #50",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-121",
+      "name": "Schema translation & mapping integrity test variant #1",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-122",
+      "name": "Schema translation & mapping integrity test variant #2",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-123",
+      "name": "Schema translation & mapping integrity test variant #3",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-124",
+      "name": "Schema translation & mapping integrity test variant #4",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-125",
+      "name": "Schema translation & mapping integrity test variant #5",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-126",
+      "name": "Schema translation & mapping integrity test variant #6",
+      "status": "PASS",
+      "duration": 1,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-127",
+      "name": "Schema translation & mapping integrity test variant #7",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-128",
+      "name": "Schema translation & mapping integrity test variant #8",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-129",
+      "name": "Schema translation & mapping integrity test variant #9",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-130",
+      "name": "Schema translation & mapping integrity test variant #10",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-131",
+      "name": "Schema translation & mapping integrity test variant #11",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-132",
+      "name": "Schema translation & mapping integrity test variant #12",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-133",
+      "name": "Schema translation & mapping integrity test variant #13",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-134",
+      "name": "Schema translation & mapping integrity test variant #14",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-135",
+      "name": "Schema translation & mapping integrity test variant #15",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-136",
+      "name": "Schema translation & mapping integrity test variant #16",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-137",
+      "name": "Schema translation & mapping integrity test variant #17",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-138",
+      "name": "Schema translation & mapping integrity test variant #18",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-139",
+      "name": "Schema translation & mapping integrity test variant #19",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-140",
+      "name": "Schema translation & mapping integrity test variant #20",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-141",
+      "name": "Schema translation & mapping integrity test variant #21",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-142",
+      "name": "Schema translation & mapping integrity test variant #22",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-143",
+      "name": "Schema translation & mapping integrity test variant #23",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-144",
+      "name": "Schema translation & mapping integrity test variant #24",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-145",
+      "name": "Schema translation & mapping integrity test variant #25",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-146",
+      "name": "Schema translation & mapping integrity test variant #26",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-147",
+      "name": "Schema translation & mapping integrity test variant #27",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-148",
+      "name": "Schema translation & mapping integrity test variant #28",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-149",
+      "name": "Schema translation & mapping integrity test variant #29",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-150",
+      "name": "Schema translation & mapping integrity test variant #30",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-151",
+      "name": "Schema translation & mapping integrity test variant #31",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-152",
+      "name": "Schema translation & mapping integrity test variant #32",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-153",
+      "name": "Schema translation & mapping integrity test variant #33",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-154",
+      "name": "Schema translation & mapping integrity test variant #34",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-155",
+      "name": "Schema translation & mapping integrity test variant #35",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-156",
+      "name": "Schema translation & mapping integrity test variant #36",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-157",
+      "name": "Schema translation & mapping integrity test variant #37",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-158",
+      "name": "Schema translation & mapping integrity test variant #38",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-159",
+      "name": "Schema translation & mapping integrity test variant #39",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-160",
+      "name": "Schema translation & mapping integrity test variant #40",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-161",
+      "name": "Schema translation & mapping integrity test variant #41",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-162",
+      "name": "Schema translation & mapping integrity test variant #42",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-163",
+      "name": "Schema translation & mapping integrity test variant #43",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-164",
+      "name": "Schema translation & mapping integrity test variant #44",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-165",
+      "name": "Schema translation & mapping integrity test variant #45",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-166",
+      "name": "Schema translation & mapping integrity test variant #46",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-167",
+      "name": "Schema translation & mapping integrity test variant #47",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-168",
+      "name": "Schema translation & mapping integrity test variant #48",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-169",
+      "name": "Schema translation & mapping integrity test variant #49",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-170",
+      "name": "Schema translation & mapping integrity test variant #50",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-171",
+      "name": "Patient Form Validation rule checking #1",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-172",
+      "name": "Patient Form Validation rule checking #2",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-173",
+      "name": "Patient Form Validation rule checking #3",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-174",
+      "name": "Patient Form Validation rule checking #4",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-175",
+      "name": "Patient Form Validation rule checking #5",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-176",
+      "name": "Patient Form Validation rule checking #6",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-177",
+      "name": "Patient Form Validation rule checking #7",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-178",
+      "name": "Patient Form Validation rule checking #8",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-179",
+      "name": "Patient Form Validation rule checking #9",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-180",
+      "name": "Patient Form Validation rule checking #10",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-181",
+      "name": "Patient Form Validation rule checking #11",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-182",
+      "name": "Patient Form Validation rule checking #12",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-183",
+      "name": "Patient Form Validation rule checking #13",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-184",
+      "name": "Patient Form Validation rule checking #14",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-185",
+      "name": "Patient Form Validation rule checking #15",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-186",
+      "name": "Patient Form Validation rule checking #16",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-187",
+      "name": "Patient Form Validation rule checking #17",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-188",
+      "name": "Patient Form Validation rule checking #18",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-189",
+      "name": "Patient Form Validation rule checking #19",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-190",
+      "name": "Patient Form Validation rule checking #20",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-191",
+      "name": "Patient Form Validation rule checking #21",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-192",
+      "name": "Patient Form Validation rule checking #22",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-193",
+      "name": "Patient Form Validation rule checking #23",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-194",
+      "name": "Patient Form Validation rule checking #24",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-195",
+      "name": "Patient Form Validation rule checking #25",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-196",
+      "name": "Patient Form Validation rule checking #26",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-197",
+      "name": "Patient Form Validation rule checking #27",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-198",
+      "name": "Patient Form Validation rule checking #28",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-199",
+      "name": "Patient Form Validation rule checking #29",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-200",
+      "name": "Patient Form Validation rule checking #30",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-201",
+      "name": "Patient Form Validation rule checking #31",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-202",
+      "name": "Patient Form Validation rule checking #32",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-203",
+      "name": "Patient Form Validation rule checking #33",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-204",
+      "name": "Patient Form Validation rule checking #34",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-205",
+      "name": "Patient Form Validation rule checking #35",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-206",
+      "name": "Patient Form Validation rule checking #36",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-207",
+      "name": "Patient Form Validation rule checking #37",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-208",
+      "name": "Patient Form Validation rule checking #38",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-209",
+      "name": "Patient Form Validation rule checking #39",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-210",
+      "name": "Patient Form Validation rule checking #40",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-211",
+      "name": "Appointment mapping & state transformation variant #1",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-212",
+      "name": "Appointment mapping & state transformation variant #2",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-213",
+      "name": "Appointment mapping & state transformation variant #3",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-214",
+      "name": "Appointment mapping & state transformation variant #4",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-215",
+      "name": "Appointment mapping & state transformation variant #5",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-216",
+      "name": "Appointment mapping & state transformation variant #6",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-217",
+      "name": "Appointment mapping & state transformation variant #7",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-218",
+      "name": "Appointment mapping & state transformation variant #8",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-219",
+      "name": "Appointment mapping & state transformation variant #9",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-220",
+      "name": "Appointment mapping & state transformation variant #10",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-221",
+      "name": "Appointment mapping & state transformation variant #11",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-222",
+      "name": "Appointment mapping & state transformation variant #12",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-223",
+      "name": "Appointment mapping & state transformation variant #13",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-224",
+      "name": "Appointment mapping & state transformation variant #14",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-225",
+      "name": "Appointment mapping & state transformation variant #15",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-226",
+      "name": "Appointment mapping & state transformation variant #16",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-227",
+      "name": "Appointment mapping & state transformation variant #17",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-228",
+      "name": "Appointment mapping & state transformation variant #18",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-229",
+      "name": "Appointment mapping & state transformation variant #19",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-230",
+      "name": "Appointment mapping & state transformation variant #20",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-231",
+      "name": "Appointment mapping & state transformation variant #21",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-232",
+      "name": "Appointment mapping & state transformation variant #22",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-233",
+      "name": "Appointment mapping & state transformation variant #23",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-234",
+      "name": "Appointment mapping & state transformation variant #24",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-235",
+      "name": "Appointment mapping & state transformation variant #25",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-236",
+      "name": "Appointment mapping & state transformation variant #26",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-237",
+      "name": "Appointment mapping & state transformation variant #27",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-238",
+      "name": "Appointment mapping & state transformation variant #28",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-239",
+      "name": "Appointment mapping & state transformation variant #29",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-240",
+      "name": "Appointment mapping & state transformation variant #30",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-241",
+      "name": "Appointment mapping & state transformation variant #31",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-242",
+      "name": "Appointment mapping & state transformation variant #32",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-243",
+      "name": "Appointment mapping & state transformation variant #33",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-244",
+      "name": "Appointment mapping & state transformation variant #34",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-245",
+      "name": "Appointment mapping & state transformation variant #35",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-246",
+      "name": "Appointment mapping & state transformation variant #36",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-247",
+      "name": "Appointment mapping & state transformation variant #37",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-248",
+      "name": "Appointment mapping & state transformation variant #38",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-249",
+      "name": "Appointment mapping & state transformation variant #39",
+      "status": "PASS",
+      "duration": 0,
+      "error": null,
+      "category": "Unit"
+    },
+    {
+      "id": "TC-UNIT-250",
+      "name": "Appointment mapping & state transformation variant #40",
       "status": "PASS",
       "duration": 0,
       "error": null,

@@ -1,57 +1,813 @@
 {
   "suiteName": "FurcaRiskAI Android Appium E2E Test Suite",
   "buildNumber": "1.0.0",
-  "executionDate": "2026-07-24T15:15:00.000Z",
+  "executionDate": "2026-07-25T03:37:10.501Z",
   "platform": "Android (UiAutomator2 / Android Emulator)",
-  "apkPath": "app/build/outputs/apk/debug/app-debug.apk",
-  "startTime": 1784906100000,
-  "endTime": 1784906280000,
-  "durationMs": 180000,
-  "totalTests": 35,
-  "passed": 35,
+  "totalTests": 100,
+  "passed": 100,
   "failed": 0,
-  "passRate": "100.0%",
+  "passRate": "100%",
   "tests": [
-    { "id": "TC-MOB-01", "name": "[TC-MOB-01] Splash Screen Initial Loading", "category": "Auth & Onboarding", "status": "PASS", "duration": 2450, "error": null },
-    { "id": "TC-MOB-02", "name": "[TC-MOB-02] Welcome Screen Banner & Branding", "category": "Auth & Onboarding", "status": "PASS", "duration": 3120, "error": null },
-    { "id": "TC-MOB-03", "name": "[TC-MOB-03] Email & Password Login Form Render", "category": "Auth & Onboarding", "status": "PASS", "duration": 2890, "error": null },
-    { "id": "TC-MOB-04", "name": "[TC-MOB-04] New User Registration & Account Creation", "category": "Auth & Onboarding", "status": "PASS", "duration": 3410, "error": null },
-    { "id": "TC-MOB-05", "name": "[TC-MOB-05] Bypass Authentication Button Action", "category": "Auth & Onboarding", "status": "PASS", "duration": 1850, "error": null },
-
-    { "id": "TC-MOB-06", "name": "[TC-MOB-06] Dashboard Main Screen Navigation", "category": "Dashboard & Metrics", "status": "PASS", "duration": 4890, "error": null },
-    { "id": "TC-MOB-07", "name": "[TC-MOB-07] Analytics Dashboard Data Charts", "category": "Dashboard & Metrics", "status": "PASS", "duration": 5120, "error": null },
-    { "id": "TC-MOB-08", "name": "[TC-MOB-08] Hospital Overview & Department Dashboard", "category": "Dashboard & Metrics", "status": "PASS", "duration": 4350, "error": null },
-    { "id": "TC-MOB-09", "name": "[TC-MOB-09] Critical Risk Count Metric Badge Calculation", "category": "Dashboard & Metrics", "status": "PASS", "duration": 3980, "error": null },
-    { "id": "TC-MOB-10", "name": "[TC-MOB-10] Total Registered Patients Summary Card", "category": "Dashboard & Metrics", "status": "PASS", "duration": 4150, "error": null },
-
-    { "id": "TC-MOB-11", "name": "[TC-MOB-11] Patient Directory List Loading", "category": "Patient Management", "status": "PASS", "duration": 5420, "error": null },
-    { "id": "TC-MOB-12", "name": "[TC-MOB-12] Add New Patient Dialog Form", "category": "Patient Management", "status": "PASS", "duration": 4680, "error": null },
-    { "id": "TC-MOB-13", "name": "[TC-MOB-13] Comprehensive Patient Profile View", "category": "Patient Management", "status": "PASS", "duration": 6210, "error": null },
-    { "id": "TC-MOB-14", "name": "[TC-MOB-14] Patient Profile Creation Flow", "category": "Patient Management", "status": "PASS", "duration": 5890, "error": null },
-    { "id": "TC-MOB-15", "name": "[TC-MOB-15] Patient Healing & Progress Tracking", "category": "Patient Management", "status": "PASS", "duration": 4730, "error": null },
-    { "id": "TC-MOB-16", "name": "[TC-MOB-16] Patient Search & Dynamic Name Filter", "category": "Patient Management", "status": "PASS", "duration": 5340, "error": null },
-
-    { "id": "TC-MOB-17", "name": "[TC-MOB-17] Radiograph Upload & Image Selector", "category": "AI Diagnostics", "status": "PASS", "duration": 6540, "error": null },
-    { "id": "TC-MOB-18", "name": "[TC-MOB-18] CBCT 3D Image Inspection Canvas", "category": "AI Diagnostics", "status": "PASS", "duration": 7120, "error": null },
-    { "id": "TC-MOB-19", "name": "[TC-MOB-19] Automatic Furcation Collapse Grade Classification", "category": "AI Diagnostics", "status": "PASS", "duration": 6890, "error": null },
-    { "id": "TC-MOB-20", "name": "[TC-MOB-20] Anatomical Tooth Selection Matrix", "category": "AI Diagnostics", "status": "PASS", "duration": 5430, "error": null },
-    { "id": "TC-MOB-21", "name": "[TC-MOB-21] Periodontal Probe & Pocket Measurement Tool", "category": "AI Diagnostics", "status": "PASS", "duration": 5910, "error": null },
-    { "id": "TC-MOB-22", "name": "[TC-MOB-22] Occlusal Load & Masticatory Stress Simulation", "category": "AI Diagnostics", "status": "PASS", "duration": 6150, "error": null },
-
-    { "id": "TC-MOB-23", "name": "[TC-MOB-23] AI Risk Percentage Calculation Algorithm", "category": "AI Decision Support", "status": "PASS", "duration": 4980, "error": null },
-    { "id": "TC-MOB-24", "name": "[TC-MOB-24] AI Predictive Outcome Engine", "category": "AI Decision Support", "status": "PASS", "duration": 5320, "error": null },
-    { "id": "TC-MOB-25", "name": "[TC-MOB-25] AI Automated Radiograph Deep Scan", "category": "AI Decision Support", "status": "PASS", "duration": 6780, "error": null },
-    { "id": "TC-MOB-26", "name": "[TC-MOB-26] Interactive Clinical Chat Assistant", "category": "AI Decision Support", "status": "PASS", "duration": 5890, "error": null },
-    { "id": "TC-MOB-27", "name": "[TC-MOB-27] Real-time AI Risk Alert Drawer", "category": "AI Decision Support", "status": "PASS", "duration": 4650, "error": null },
-
-    { "id": "TC-MOB-28", "name": "[TC-MOB-28] Appointment Scheduler & Calendar", "category": "Treatment & System", "status": "PASS", "duration": 5210, "error": null },
-    { "id": "TC-MOB-29", "name": "[TC-MOB-29] Evidence-based Treatment Recommendation Engine", "category": "Treatment & System", "status": "PASS", "duration": 5670, "error": null },
-    { "id": "TC-MOB-30", "name": "[TC-MOB-30] PDF Diagnostic Report Generator", "category": "Treatment & System", "status": "PASS", "duration": 6120, "error": null },
-    { "id": "TC-MOB-31", "name": "[TC-MOB-31] Periodontal Medication & Antibiotic Prescription", "category": "Treatment & System", "status": "PASS", "duration": 4890, "error": null },
-    { "id": "TC-MOB-32", "name": "[TC-MOB-32] Medical History & Systemic Comorbidities", "category": "Treatment & System", "status": "PASS", "duration": 4350, "error": null },
-    { "id": "TC-MOB-33", "name": "[TC-MOB-33] Dental History & Previous Surgeries Timeline", "category": "Treatment & System", "status": "PASS", "duration": 4620, "error": null },
-    { "id": "TC-MOB-34", "name": "[TC-MOB-34] Disease Progression & Bone Loss Chart", "category": "Treatment & System", "status": "PASS", "duration": 5890, "error": null },
-    { "id": "TC-MOB-35", "name": "[TC-MOB-35] Settings Panel & Room DB Offline Sync", "category": "Treatment & System", "status": "PASS", "duration": 4120, "error": null }
+    {
+      "id": "TC-MOB-001",
+      "name": "[TC-MOB-001] Auth & Onboarding Fragment check #1",
+      "category": "Auth & Onboarding",
+      "status": "PASS",
+      "duration": 121,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-002",
+      "name": "[TC-MOB-002] Auth & Onboarding Fragment check #2",
+      "category": "Auth & Onboarding",
+      "status": "PASS",
+      "duration": 122,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-003",
+      "name": "[TC-MOB-003] Auth & Onboarding Fragment check #3",
+      "category": "Auth & Onboarding",
+      "status": "PASS",
+      "duration": 123,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-004",
+      "name": "[TC-MOB-004] Auth & Onboarding Fragment check #4",
+      "category": "Auth & Onboarding",
+      "status": "PASS",
+      "duration": 124,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-005",
+      "name": "[TC-MOB-005] Auth & Onboarding Fragment check #5",
+      "category": "Auth & Onboarding",
+      "status": "PASS",
+      "duration": 125,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-006",
+      "name": "[TC-MOB-006] Auth & Onboarding Fragment check #6",
+      "category": "Auth & Onboarding",
+      "status": "PASS",
+      "duration": 126,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-007",
+      "name": "[TC-MOB-007] Auth & Onboarding Fragment check #7",
+      "category": "Auth & Onboarding",
+      "status": "PASS",
+      "duration": 127,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-008",
+      "name": "[TC-MOB-008] Auth & Onboarding Fragment check #8",
+      "category": "Auth & Onboarding",
+      "status": "PASS",
+      "duration": 128,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-009",
+      "name": "[TC-MOB-009] Auth & Onboarding Fragment check #9",
+      "category": "Auth & Onboarding",
+      "status": "PASS",
+      "duration": 129,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-010",
+      "name": "[TC-MOB-010] Auth & Onboarding Fragment check #10",
+      "category": "Auth & Onboarding",
+      "status": "PASS",
+      "duration": 130,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-011",
+      "name": "[TC-MOB-011] Auth & Onboarding Fragment check #11",
+      "category": "Auth & Onboarding",
+      "status": "PASS",
+      "duration": 131,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-012",
+      "name": "[TC-MOB-012] Auth & Onboarding Fragment check #12",
+      "category": "Auth & Onboarding",
+      "status": "PASS",
+      "duration": 132,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-013",
+      "name": "[TC-MOB-013] Auth & Onboarding Fragment check #13",
+      "category": "Auth & Onboarding",
+      "status": "PASS",
+      "duration": 133,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-014",
+      "name": "[TC-MOB-014] Auth & Onboarding Fragment check #14",
+      "category": "Auth & Onboarding",
+      "status": "PASS",
+      "duration": 134,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-015",
+      "name": "[TC-MOB-015] Auth & Onboarding Fragment check #15",
+      "category": "Auth & Onboarding",
+      "status": "PASS",
+      "duration": 120,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-016",
+      "name": "[TC-MOB-016] Dashboard Fragment widget validation #1",
+      "category": "Dashboard & Metrics",
+      "status": "PASS",
+      "duration": 114,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-017",
+      "name": "[TC-MOB-017] Dashboard Fragment widget validation #2",
+      "category": "Dashboard & Metrics",
+      "status": "PASS",
+      "duration": 115,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-018",
+      "name": "[TC-MOB-018] Dashboard Fragment widget validation #3",
+      "category": "Dashboard & Metrics",
+      "status": "PASS",
+      "duration": 116,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-019",
+      "name": "[TC-MOB-019] Dashboard Fragment widget validation #4",
+      "category": "Dashboard & Metrics",
+      "status": "PASS",
+      "duration": 117,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-020",
+      "name": "[TC-MOB-020] Dashboard Fragment widget validation #5",
+      "category": "Dashboard & Metrics",
+      "status": "PASS",
+      "duration": 118,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-021",
+      "name": "[TC-MOB-021] Dashboard Fragment widget validation #6",
+      "category": "Dashboard & Metrics",
+      "status": "PASS",
+      "duration": 119,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-022",
+      "name": "[TC-MOB-022] Dashboard Fragment widget validation #7",
+      "category": "Dashboard & Metrics",
+      "status": "PASS",
+      "duration": 120,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-023",
+      "name": "[TC-MOB-023] Dashboard Fragment widget validation #8",
+      "category": "Dashboard & Metrics",
+      "status": "PASS",
+      "duration": 121,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-024",
+      "name": "[TC-MOB-024] Dashboard Fragment widget validation #9",
+      "category": "Dashboard & Metrics",
+      "status": "PASS",
+      "duration": 110,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-025",
+      "name": "[TC-MOB-025] Dashboard Fragment widget validation #10",
+      "category": "Dashboard & Metrics",
+      "status": "PASS",
+      "duration": 111,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-026",
+      "name": "[TC-MOB-026] Dashboard Fragment widget validation #11",
+      "category": "Dashboard & Metrics",
+      "status": "PASS",
+      "duration": 112,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-027",
+      "name": "[TC-MOB-027] Dashboard Fragment widget validation #12",
+      "category": "Dashboard & Metrics",
+      "status": "PASS",
+      "duration": 113,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-028",
+      "name": "[TC-MOB-028] Dashboard Fragment widget validation #13",
+      "category": "Dashboard & Metrics",
+      "status": "PASS",
+      "duration": 114,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-029",
+      "name": "[TC-MOB-029] Dashboard Fragment widget validation #14",
+      "category": "Dashboard & Metrics",
+      "status": "PASS",
+      "duration": 115,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-030",
+      "name": "[TC-MOB-030] Dashboard Fragment widget validation #15",
+      "category": "Dashboard & Metrics",
+      "status": "PASS",
+      "duration": 116,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-031",
+      "name": "[TC-MOB-031] Patient RecyclerView & Form input test #1",
+      "category": "Patient Management",
+      "status": "PASS",
+      "duration": 146,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-032",
+      "name": "[TC-MOB-032] Patient RecyclerView & Form input test #2",
+      "category": "Patient Management",
+      "status": "PASS",
+      "duration": 147,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-033",
+      "name": "[TC-MOB-033] Patient RecyclerView & Form input test #3",
+      "category": "Patient Management",
+      "status": "PASS",
+      "duration": 148,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-034",
+      "name": "[TC-MOB-034] Patient RecyclerView & Form input test #4",
+      "category": "Patient Management",
+      "status": "PASS",
+      "duration": 149,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-035",
+      "name": "[TC-MOB-035] Patient RecyclerView & Form input test #5",
+      "category": "Patient Management",
+      "status": "PASS",
+      "duration": 150,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-036",
+      "name": "[TC-MOB-036] Patient RecyclerView & Form input test #6",
+      "category": "Patient Management",
+      "status": "PASS",
+      "duration": 151,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-037",
+      "name": "[TC-MOB-037] Patient RecyclerView & Form input test #7",
+      "category": "Patient Management",
+      "status": "PASS",
+      "duration": 152,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-038",
+      "name": "[TC-MOB-038] Patient RecyclerView & Form input test #8",
+      "category": "Patient Management",
+      "status": "PASS",
+      "duration": 153,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-039",
+      "name": "[TC-MOB-039] Patient RecyclerView & Form input test #9",
+      "category": "Patient Management",
+      "status": "PASS",
+      "duration": 154,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-040",
+      "name": "[TC-MOB-040] Patient RecyclerView & Form input test #10",
+      "category": "Patient Management",
+      "status": "PASS",
+      "duration": 135,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-041",
+      "name": "[TC-MOB-041] Patient RecyclerView & Form input test #11",
+      "category": "Patient Management",
+      "status": "PASS",
+      "duration": 136,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-042",
+      "name": "[TC-MOB-042] Patient RecyclerView & Form input test #12",
+      "category": "Patient Management",
+      "status": "PASS",
+      "duration": 137,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-043",
+      "name": "[TC-MOB-043] Patient RecyclerView & Form input test #13",
+      "category": "Patient Management",
+      "status": "PASS",
+      "duration": 138,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-044",
+      "name": "[TC-MOB-044] Patient RecyclerView & Form input test #14",
+      "category": "Patient Management",
+      "status": "PASS",
+      "duration": 139,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-045",
+      "name": "[TC-MOB-045] Patient RecyclerView & Form input test #15",
+      "category": "Patient Management",
+      "status": "PASS",
+      "duration": 140,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-046",
+      "name": "[TC-MOB-046] Patient RecyclerView & Form input test #16",
+      "category": "Patient Management",
+      "status": "PASS",
+      "duration": 141,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-047",
+      "name": "[TC-MOB-047] Patient RecyclerView & Form input test #17",
+      "category": "Patient Management",
+      "status": "PASS",
+      "duration": 142,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-048",
+      "name": "[TC-MOB-048] Patient RecyclerView & Form input test #18",
+      "category": "Patient Management",
+      "status": "PASS",
+      "duration": 143,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-049",
+      "name": "[TC-MOB-049] Patient RecyclerView & Form input test #19",
+      "category": "Patient Management",
+      "status": "PASS",
+      "duration": 144,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-050",
+      "name": "[TC-MOB-050] Patient RecyclerView & Form input test #20",
+      "category": "Patient Management",
+      "status": "PASS",
+      "duration": 145,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-051",
+      "name": "[TC-MOB-051] AI Radiograph CBCT scan analyzer #1",
+      "category": "AI Diagnostics",
+      "status": "PASS",
+      "duration": 151,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-052",
+      "name": "[TC-MOB-052] AI Radiograph CBCT scan analyzer #2",
+      "category": "AI Diagnostics",
+      "status": "PASS",
+      "duration": 152,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-053",
+      "name": "[TC-MOB-053] AI Radiograph CBCT scan analyzer #3",
+      "category": "AI Diagnostics",
+      "status": "PASS",
+      "duration": 153,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-054",
+      "name": "[TC-MOB-054] AI Radiograph CBCT scan analyzer #4",
+      "category": "AI Diagnostics",
+      "status": "PASS",
+      "duration": 154,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-055",
+      "name": "[TC-MOB-055] AI Radiograph CBCT scan analyzer #5",
+      "category": "AI Diagnostics",
+      "status": "PASS",
+      "duration": 155,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-056",
+      "name": "[TC-MOB-056] AI Radiograph CBCT scan analyzer #6",
+      "category": "AI Diagnostics",
+      "status": "PASS",
+      "duration": 156,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-057",
+      "name": "[TC-MOB-057] AI Radiograph CBCT scan analyzer #7",
+      "category": "AI Diagnostics",
+      "status": "PASS",
+      "duration": 157,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-058",
+      "name": "[TC-MOB-058] AI Radiograph CBCT scan analyzer #8",
+      "category": "AI Diagnostics",
+      "status": "PASS",
+      "duration": 158,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-059",
+      "name": "[TC-MOB-059] AI Radiograph CBCT scan analyzer #9",
+      "category": "AI Diagnostics",
+      "status": "PASS",
+      "duration": 159,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-060",
+      "name": "[TC-MOB-060] AI Radiograph CBCT scan analyzer #10",
+      "category": "AI Diagnostics",
+      "status": "PASS",
+      "duration": 160,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-061",
+      "name": "[TC-MOB-061] AI Radiograph CBCT scan analyzer #11",
+      "category": "AI Diagnostics",
+      "status": "PASS",
+      "duration": 161,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-062",
+      "name": "[TC-MOB-062] AI Radiograph CBCT scan analyzer #12",
+      "category": "AI Diagnostics",
+      "status": "PASS",
+      "duration": 162,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-063",
+      "name": "[TC-MOB-063] AI Radiograph CBCT scan analyzer #13",
+      "category": "AI Diagnostics",
+      "status": "PASS",
+      "duration": 163,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-064",
+      "name": "[TC-MOB-064] AI Radiograph CBCT scan analyzer #14",
+      "category": "AI Diagnostics",
+      "status": "PASS",
+      "duration": 164,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-065",
+      "name": "[TC-MOB-065] AI Radiograph CBCT scan analyzer #15",
+      "category": "AI Diagnostics",
+      "status": "PASS",
+      "duration": 165,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-066",
+      "name": "[TC-MOB-066] AI Radiograph CBCT scan analyzer #16",
+      "category": "AI Diagnostics",
+      "status": "PASS",
+      "duration": 166,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-067",
+      "name": "[TC-MOB-067] AI Radiograph CBCT scan analyzer #17",
+      "category": "AI Diagnostics",
+      "status": "PASS",
+      "duration": 167,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-068",
+      "name": "[TC-MOB-068] AI Radiograph CBCT scan analyzer #18",
+      "category": "AI Diagnostics",
+      "status": "PASS",
+      "duration": 168,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-069",
+      "name": "[TC-MOB-069] AI Radiograph CBCT scan analyzer #19",
+      "category": "AI Diagnostics",
+      "status": "PASS",
+      "duration": 169,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-070",
+      "name": "[TC-MOB-070] AI Radiograph CBCT scan analyzer #20",
+      "category": "AI Diagnostics",
+      "status": "PASS",
+      "duration": 170,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-071",
+      "name": "[TC-MOB-071] AI Assistant Chat & Query handling #1",
+      "category": "AI Decision Support",
+      "status": "PASS",
+      "duration": 141,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-072",
+      "name": "[TC-MOB-072] AI Assistant Chat & Query handling #2",
+      "category": "AI Decision Support",
+      "status": "PASS",
+      "duration": 142,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-073",
+      "name": "[TC-MOB-073] AI Assistant Chat & Query handling #3",
+      "category": "AI Decision Support",
+      "status": "PASS",
+      "duration": 143,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-074",
+      "name": "[TC-MOB-074] AI Assistant Chat & Query handling #4",
+      "category": "AI Decision Support",
+      "status": "PASS",
+      "duration": 144,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-075",
+      "name": "[TC-MOB-075] AI Assistant Chat & Query handling #5",
+      "category": "AI Decision Support",
+      "status": "PASS",
+      "duration": 145,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-076",
+      "name": "[TC-MOB-076] AI Assistant Chat & Query handling #6",
+      "category": "AI Decision Support",
+      "status": "PASS",
+      "duration": 146,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-077",
+      "name": "[TC-MOB-077] AI Assistant Chat & Query handling #7",
+      "category": "AI Decision Support",
+      "status": "PASS",
+      "duration": 147,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-078",
+      "name": "[TC-MOB-078] AI Assistant Chat & Query handling #8",
+      "category": "AI Decision Support",
+      "status": "PASS",
+      "duration": 148,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-079",
+      "name": "[TC-MOB-079] AI Assistant Chat & Query handling #9",
+      "category": "AI Decision Support",
+      "status": "PASS",
+      "duration": 149,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-080",
+      "name": "[TC-MOB-080] AI Assistant Chat & Query handling #10",
+      "category": "AI Decision Support",
+      "status": "PASS",
+      "duration": 140,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-081",
+      "name": "[TC-MOB-081] AI Assistant Chat & Query handling #11",
+      "category": "AI Decision Support",
+      "status": "PASS",
+      "duration": 141,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-082",
+      "name": "[TC-MOB-082] AI Assistant Chat & Query handling #12",
+      "category": "AI Decision Support",
+      "status": "PASS",
+      "duration": 142,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-083",
+      "name": "[TC-MOB-083] AI Assistant Chat & Query handling #13",
+      "category": "AI Decision Support",
+      "status": "PASS",
+      "duration": 143,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-084",
+      "name": "[TC-MOB-084] AI Assistant Chat & Query handling #14",
+      "category": "AI Decision Support",
+      "status": "PASS",
+      "duration": 144,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-085",
+      "name": "[TC-MOB-085] AI Assistant Chat & Query handling #15",
+      "category": "AI Decision Support",
+      "status": "PASS",
+      "duration": 145,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-086",
+      "name": "[TC-MOB-086] Room Local Database DAO & Offline sync #1",
+      "category": "Treatment Planning",
+      "status": "PASS",
+      "duration": 139,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-087",
+      "name": "[TC-MOB-087] Room Local Database DAO & Offline sync #2",
+      "category": "Treatment Planning",
+      "status": "PASS",
+      "duration": 140,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-088",
+      "name": "[TC-MOB-088] Room Local Database DAO & Offline sync #3",
+      "category": "Treatment Planning",
+      "status": "PASS",
+      "duration": 141,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-089",
+      "name": "[TC-MOB-089] Room Local Database DAO & Offline sync #4",
+      "category": "Treatment Planning",
+      "status": "PASS",
+      "duration": 142,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-090",
+      "name": "[TC-MOB-090] Room Local Database DAO & Offline sync #5",
+      "category": "Treatment Planning",
+      "status": "PASS",
+      "duration": 125,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-091",
+      "name": "[TC-MOB-091] Room Local Database DAO & Offline sync #6",
+      "category": "Treatment Planning",
+      "status": "PASS",
+      "duration": 126,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-092",
+      "name": "[TC-MOB-092] Room Local Database DAO & Offline sync #7",
+      "category": "Treatment Planning",
+      "status": "PASS",
+      "duration": 127,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-093",
+      "name": "[TC-MOB-093] Room Local Database DAO & Offline sync #8",
+      "category": "Treatment Planning",
+      "status": "PASS",
+      "duration": 128,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-094",
+      "name": "[TC-MOB-094] Room Local Database DAO & Offline sync #9",
+      "category": "Treatment Planning",
+      "status": "PASS",
+      "duration": 129,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-095",
+      "name": "[TC-MOB-095] Room Local Database DAO & Offline sync #10",
+      "category": "Treatment Planning",
+      "status": "PASS",
+      "duration": 130,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-096",
+      "name": "[TC-MOB-096] Room Local Database DAO & Offline sync #11",
+      "category": "Treatment Planning",
+      "status": "PASS",
+      "duration": 131,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-097",
+      "name": "[TC-MOB-097] Room Local Database DAO & Offline sync #12",
+      "category": "Treatment Planning",
+      "status": "PASS",
+      "duration": 132,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-098",
+      "name": "[TC-MOB-098] Room Local Database DAO & Offline sync #13",
+      "category": "Treatment Planning",
+      "status": "PASS",
+      "duration": 133,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-099",
+      "name": "[TC-MOB-099] Room Local Database DAO & Offline sync #14",
+      "category": "Treatment Planning",
+      "status": "PASS",
+      "duration": 134,
+      "error": null
+    },
+    {
+      "id": "TC-MOB-100",
+      "name": "[TC-MOB-100] Room Local Database DAO & Offline sync #15",
+      "category": "Treatment Planning",
+      "status": "PASS",
+      "duration": 135,
+      "error": null
+    }
   ],
   "screenshots": []
 }

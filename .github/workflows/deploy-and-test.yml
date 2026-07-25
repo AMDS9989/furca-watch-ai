@@ -162,16 +162,15 @@ jobs:
           mkdir -p "Test Results/Logs"
           mkdir -p "Test Results/Summary"
 
-      # ── 8. Run Selenium E2E Tests ─────────────────────────────────────────────
       # ── 7b. Run Unit Tests ────────────────────────────────────────────────────
-      - name: Run Unit Tests (Node.js — 20 tests, no browser)
+      - name: Run Unit Tests (Node.js — 250 tests, pure logic)
         working-directory: tests
         run: |
-          echo "🧪 Running 20 unit tests..."
+          echo "🧪 Running 250 unit tests..."
           npm run test:unit 2>&1 | tee ../Test\ Results/Logs/unit-run.log || true
 
       # ── 8. Run Selenium E2E Tests ─────────────────────────────────────────────
-      - name: Run Selenium E2E Tests (85 tests – Headless Chrome)
+      - name: Run Selenium E2E Tests (150 tests – Headless Chrome)
         working-directory: tests
         run: |
           echo "📡 Testing against: $BASE_URL"
