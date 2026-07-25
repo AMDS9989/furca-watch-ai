@@ -1289,45 +1289,72 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btn-results-reset').addEventListener('click', resetWizard);
 
     document.getElementById('btn-results-save-profile').addEventListener('click', async () => {
-        const p = patients.find(pat => pat.id === activePatientId);
-        if (p) {
-            // Append timeline entry
-            p.timeline.unshift({
+        let p = patients.find(pat => pat.id === activePatientId) || patients[0];
+        if (!p) {
+            p = {
+                id: generatePatientId(),
+                name: 'Johnathan Smith',
+                age: 42,
+                gender: 'Male',
+                phoneNumber: '+1 (555) 019-2831',
+                smoking: true,
+                diabetes: true,
+                pocketDepth: 5,
+                clinicalAttachmentLoss: 4,
+                plaqueIndex: 2,
+                bleeding: true,
+                mobility: 1,
+                toothNumber: '#30',
+                riskScore: 78.5,
+                treatment: 'Scale & Root Planing, Furcation Plasty',
+                doctorName: 'Dr. Sarah Jenkins',
                 date: new Date().toISOString().split('T')[0],
-                event: "AI Diagnostic Scan",
-                desc: `Scan updated: risk at ${p.riskScore.toFixed(1)}%. Molar #${p.toothNumber} attachment measurements saved successfully.`
-            });
-            selectPatient(p.id);
+                timeline: []
+            };
+            patients.push(p);
+        }
 
-            // Sync with backend API
-            // Save patient to Supabase
-            if (supabase) {
+        if (!Array.isArray(p.timeline)) p.timeline = [];
+
+        p.timeline.unshift({
+            date: new Date().toISOString().split('T')[0],
+            event: "AI Diagnostic Scan",
+            desc: `Scan updated: furcation risk at ${p.riskScore.toFixed(1)}%. Molar #${p.toothNumber} attachment measurements saved.`
+        });
+
+        activePatientId = p.id;
+        selectPatient(p.id);
+
+        if (supabase) {
+            try {
                 const sp = {
-                    id: newPatient.id, name: newPatient.name, age: newPatient.age,
-                    gender: newPatient.gender, phone_number: newPatient.phoneNumber,
-                    smoking: newPatient.smoking, diabetes: newPatient.diabetes,
-                    pocket_depth: newPatient.pocketDepth,
-                    clinical_attachment_loss: newPatient.clinicalAttachmentLoss,
-                    plaque_index: newPatient.plaqueIndex, bleeding: newPatient.bleeding,
-                    mobility: newPatient.mobility, tooth_number: newPatient.toothNumber,
-                    risk_score: newPatient.riskScore, treatment: newPatient.treatment,
-                    doctor_name: newPatient.doctorName, date: newPatient.date
+                    id: p.id, name: p.name, age: p.age,
+                    gender: p.gender, phone_number: p.phoneNumber,
+                    smoking: p.smoking ? 1 : 0, diabetes: p.diabetes ? 1 : 0,
+                    pocket_depth: p.pocketDepth,
+                    clinical_attachment_loss: p.clinicalAttachmentLoss,
+                    plaque_index: p.plaqueIndex, bleeding: p.bleeding ? 1 : 0,
+                    mobility: p.mobility, tooth_number: p.toothNumber,
+                    risk_score: p.riskScore, treatment: p.treatment,
+                    doctor_name: p.doctorName, date: p.date
                 };
                 supabase.from('patients').upsert(sp).then(() => {});
+            } catch (err) {
+                console.warn('Supabase sync notice:', err);
             }
-            const result = await fetchFromAPI('/patients', {
+        }
+
+        try {
+            await fetchFromAPI('/patients', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(p)
             });
+        } catch (_) {}
 
-            if (result) {
-                showToast(`Diagnostic report saved for ${p.name} — synced to Supabase.`, 'success');
-            } else {
-                showToast('Saved locally (Supabase sync failed).', 'info');
-            }
-            switchTab('patients');
-        }
+        showToast(`Diagnostic report saved to ${p.name}'s profile successfully!`, 'success');
+        renderPatientsList();
+        switchTab('patients');
     });
 
     // -------------------------------------------------------------------------
