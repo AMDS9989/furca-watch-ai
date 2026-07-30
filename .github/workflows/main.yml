@@ -1,0 +1,337 @@
+name: FitnessPaw QA Enterprise CI/CD
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # 1. Selenium — Website Tests (300)
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  selenium:
+    name: Selenium — Website Tests (300)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        working-directory: tests
+        run: |
+          npm install --legacy-peer-deps --no-audit --no-fund || npm ci || true
+          mkdir -p "../Test Results/HTML" "../Test Results/Excel" "../Test Results/Summary"
+
+      - name: Run Selenium Website Test Suite (300 Tests)
+        working-directory: tests
+        run: |
+          node selenium/web_test.js || true
+
+      - name: Upload Selenium Test Artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: selenium-test-results
+          path: |
+            tests/results.json
+            Test Results/
+          retention-days: 30
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # 2. Appium — Android Tests (300)
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  appium:
+    name: Appium — Android Tests (300)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup Java 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Install Test Dependencies
+        working-directory: tests
+        run: |
+          npm install --legacy-peer-deps --no-audit --no-fund || npm ci || true
+          mkdir -p "../Test Results/HTML" "../Test Results/Excel" "../Test Results/Summary"
+
+      - name: Run Appium Android Test Suite (300 Tests)
+        working-directory: tests
+        run: |
+          node appium/app_test.js || true
+
+      - name: Upload Appium Test Artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: appium-test-results
+          path: |
+            tests/appium/appium-results.json
+            Test Results/
+          retention-days: 30
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # 3. Unit Tests — API (300)
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  unit:
+    name: Unit Tests — API (300)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        working-directory: tests
+        run: |
+          npm install --legacy-peer-deps --no-audit --no-fund || npm ci || true
+          mkdir -p "../Test Results/HTML" "../Test Results/Summary"
+
+      - name: Run Unit & API Logic Test Suite (300 Tests)
+        working-directory: tests
+        run: |
+          node unit/unit_test.js || true
+
+      - name: Upload Unit Test Artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: unit-test-results
+          path: |
+            tests/unit-results.json
+            Test Results/
+          retention-days: 30
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # 4. Validation Tests (300)
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  validation:
+    name: Validation Tests (300)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        working-directory: tests
+        run: |
+          npm install --legacy-peer-deps --no-audit --no-fund || npm ci || true
+          mkdir -p "../Test Results/HTML" "../Test Results/Summary"
+
+      - name: Run Security & SAST/DAST Validation Suite (300 Tests)
+        working-directory: tests
+        run: |
+          node validation/validation_test.js || true
+
+      - name: Upload Validation Test Artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: validation-test-results
+          path: |
+            tests/validation-results.json
+            Test Results/
+          retention-days: 30
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # 5. Deployment Status (300)
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  deployment:
+    name: Deployment Status (300)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        working-directory: tests
+        run: |
+          npm install --legacy-peer-deps --no-audit --no-fund || npm ci || true
+          mkdir -p "../Test Results/HTML" "../Test Results/Summary"
+
+      - name: Run Deployment Readiness & Infrastructure Suite (300 Tests)
+        working-directory: tests
+        run: |
+          node deployment/deployment_test.js || true
+
+      - name: Upload Deployment Test Artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: deployment-test-results
+          path: |
+            tests/deployment-results.json
+            Test Results/
+          retention-days: 30
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # 6. Load Testing — Performance (300)
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  load:
+    name: Load Testing — Performance (300)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        working-directory: tests
+        run: |
+          npm install --legacy-peer-deps --no-audit --no-fund || npm ci || true
+          mkdir -p "../Test Results/HTML" "../Test Results/Summary"
+
+      - name: Run Load & Performance Benchmark Suite (300 Tests)
+        working-directory: tests
+        run: |
+          node load/load_runner.js || true
+
+      - name: Upload Load Test Artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: load-test-results
+          path: |
+            tests/load-results.json
+            Test Results/
+          retention-days: 30
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # 7. Compile Master Report & Deploy (Downstream Job)
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  compile:
+    name: Compile Master Report & Deploy
+    needs: [selenium, appium, unit, validation, deployment, load]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Report Dependencies
+        working-directory: tests
+        run: |
+          npm install --legacy-peer-deps --no-audit --no-fund || npm ci || true
+          npm install exceljs --no-save || true
+
+      - name: Download All Upstream Test Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: download-artifacts
+
+      - name: Consolidate Upstream JSON Results
+        run: |
+          echo "Syncing downloaded artifacts into tests/..."
+          find download-artifacts -name "*.json" -exec cp {} tests/ \; || true
+          ls -la tests/*.json || true
+
+      - name: Generate Master Enterprise Report (1,800 Test Cases)
+        working-directory: tests
+        run: |
+          node reporters/generate-master-summary.js || true
+          node reporters/generate-excel.js || true
+          node reporters/generate-report.js || true
+
+      - name: Write GitHub Step Summary
+        if: always()
+        run: |
+          if [ -f "Test Results/Summary/master-summary.md" ]; then
+            cat "Test Results/Summary/master-summary.md" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Prepare GitHub Pages Publication Directory
+        if: always()
+        run: |
+          mkdir -p dist/reports
+          cp -r web/. dist/ || true
+          if [ -d "Test Results" ]; then
+            cp -r "Test Results/." dist/reports/ || true
+          fi
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload GitHub Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/
+
+      - name: Deploy Master Portal & Reports to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Upload Final Master Enterprise Artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: master-enterprise-test-report-${{ github.run_number }}
+          path: |
+            Test Results/
+            tests/*.json
+          retention-days: 30

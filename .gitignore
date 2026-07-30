@@ -33,8 +33,10 @@ backend/furcarisk.db
 tests/node_modules/
 tests/results.json
 tests/screenshots/
-Test Results/
-Load Test Results/
+Test Results/*
+!Test Results/Excel/
+Load Test Results/*
+!Load Test Results/Excel/
 load-test-results.json
 *.txt
 

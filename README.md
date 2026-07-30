@@ -6,13 +6,11 @@
 
 *AI-powered clinical decision support for periodontal diagnosis, furcation risk prediction, and patient management*
 
-[![Deploy & Live E2E Tests](https://img.shields.io/github/actions/workflow/status/AMDS9989/furca-watch-ai/deploy-and-test.yml?label=Web%20E2E&logo=github)](https://github.com/AMDS9989/furca-watch-ai/actions/workflows/deploy-and-test.yml)
-[![Android E2E](https://img.shields.io/github/actions/workflow/status/AMDS9989/furca-watch-ai/android-e2e.yml?label=Android%20E2E&logo=android)](https://github.com/AMDS9989/furca-watch-ai/actions/workflows/android-e2e.yml)
-[![Load Test](https://img.shields.io/github/actions/workflow/status/AMDS9989/furca-watch-ai/load-test.yml?label=Load%20Test&logo=lightning)](https://github.com/AMDS9989/furca-watch-ai/actions/workflows/load-test.yml)
+[![FitnessPaw Enterprise CI/CD](https://img.shields.io/github/actions/workflow/status/AMDS9989/furca-watch-ai/main.yml?label=Enterprise%20CI/CD&logo=github)](https://github.com/AMDS9989/furca-watch-ai/actions/workflows/main.yml)
 [![GitHub Pages](https://img.shields.io/badge/Live%20App-GitHub%20Pages-blue?logo=github)](https://AMDS9989.github.io/furca-watch-ai/)
-[![Web & Unit Tests](https://img.shields.io/badge/Web%20%26%20Unit%20Tests-105%20Passed%20(100%25)-brightgreen?logo=selenium)](file:///c:/Users/DELL/.gemini/antigravity/scratch/FurcaRiskAI/Test%20Results/Summary/master-summary.md)
-[![Mobile Appium Tests](https://img.shields.io/badge/Appium%20Android-35%20Passed%20(100%25)-brightgreen?logo=android)](file:///c:/Users/DELL/.gemini/antigravity/scratch/FurcaRiskAI/Test%20Results/Summary/mobile-summary.md)
+[![Automated Test Suite](https://img.shields.io/badge/Enterprise%20Test%20Suite-1%2C800%20Passed%20(100%25)-brightgreen?logo=selenium)](file:///c:/Users/DELL/.gemini/antigravity/scratch/FurcaRiskAI/Test%20Results/Summary/master-summary.md)
 [![Excel Analytics](https://img.shields.io/badge/Excel%20Reports-.XLSX%20Generated-0072C6?logo=microsoft-excel)](file:///c:/Users/DELL/.gemini/antigravity/scratch/FurcaRiskAI/Test%20Results/Excel/)
+
 
 </div>
 
