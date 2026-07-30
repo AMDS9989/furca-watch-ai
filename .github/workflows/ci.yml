@@ -1,0 +1,319 @@
+name: FurcaRiskAI Enterprise QA CI/CD
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # 1. Selenium - FurcaRiskAI Web Tests (300)
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  selenium:
+    name: Selenium - FurcaRiskAI Web Tests (300)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies & Run Selenium Suite (300)
+        working-directory: tests
+        run: |
+          npm install --legacy-peer-deps --no-audit --no-fund || npm ci || true
+          mkdir -p "../Test Results/Excel" "../Test Results/CSV"
+          node selenium/web_test.js || true
+          node reporters/generate-standalone-sheets.js || true
+
+      - name: Upload Selenium Test Artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: selenium-web-test-results
+          path: |
+            Test Results/Excel/Selenium_Web_Tests_300.xlsx
+            Test Results/CSV/Selenium_Web_Tests_300.csv
+            tests/results.json
+          retention-days: 30
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # 2. Appium - FurcaRiskAI Android App Tests (300)
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  appium:
+    name: Appium - FurcaRiskAI Android App Tests (300)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies & Run Appium Suite (300)
+        working-directory: tests
+        run: |
+          npm install --legacy-peer-deps --no-audit --no-fund || npm ci || true
+          mkdir -p "../Test Results/Excel" "../Test Results/CSV"
+          node appium/app_test.js || true
+          node reporters/generate-standalone-sheets.js || true
+
+      - name: Upload Appium Test Artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: appium-android-test-results
+          path: |
+            Test Results/Excel/Appium_Android_Tests_300.xlsx
+            Test Results/CSV/Appium_Android_Tests_300.csv
+            tests/appium/appium-results.json
+          retention-days: 30
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # 3. Unit Tests - FurcaRiskAI API & Cloud (300)
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  unit:
+    name: Unit Tests - FurcaRiskAI API & Cloud (300)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies & Run Unit Suite (300)
+        working-directory: tests
+        run: |
+          npm install --legacy-peer-deps --no-audit --no-fund || npm ci || true
+          mkdir -p "../Test Results/Excel" "../Test Results/CSV"
+          node unit/unit_test.js || true
+          node reporters/generate-standalone-sheets.js || true
+
+      - name: Upload Unit Test Artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: unit-api-cloud-test-results
+          path: |
+            Test Results/Excel/Unit_API_Cloud_Tests_300.xlsx
+            Test Results/CSV/Unit_API_Cloud_Tests_300.csv
+            tests/unit-results.json
+          retention-days: 30
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # 4. Validation Tests - FurcaRiskAI Biomarkers (300)
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  validation:
+    name: Validation Tests - FurcaRiskAI Biomarkers (300)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies & Run Validation Suite (300)
+        working-directory: tests
+        run: |
+          npm install --legacy-peer-deps --no-audit --no-fund || npm ci || true
+          mkdir -p "../Test Results/Excel" "../Test Results/CSV"
+          node validation/validation_test.js || true
+          node reporters/generate-standalone-sheets.js || true
+
+      - name: Upload Validation Test Artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: validation-biomarkers-test-results
+          path: |
+            Test Results/Excel/Validation_Biomarkers_Tests_300.xlsx
+            Test Results/CSV/Validation_Biomarkers_Tests_300.csv
+            tests/validation-results.json
+          retention-days: 30
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # 5. Deployment Status - FurcaRiskAI Web & Mobile (300)
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  deployment:
+    name: Deployment Status - FurcaRiskAI Web & Mobile (300)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies & Run Deployment Suite (300)
+        working-directory: tests
+        run: |
+          npm install --legacy-peer-deps --no-audit --no-fund || npm ci || true
+          mkdir -p "../Test Results/Excel" "../Test Results/CSV"
+          node deployment/deployment_test.js || true
+          node reporters/generate-standalone-sheets.js || true
+
+      - name: Upload Deployment Test Artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: deployment-status-test-results
+          path: |
+            Test Results/Excel/Deployment_Status_300.xlsx
+            Test Results/CSV/Deployment_Status_300.csv
+            tests/deployment-results.json
+          retention-days: 30
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # 6. Load Testing - FurcaRiskAI Realtime Sync (300)
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  load:
+    name: Load Testing - FurcaRiskAI Realtime Sync (300)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies & Run Load Suite (300)
+        working-directory: tests
+        run: |
+          npm install --legacy-peer-deps --no-audit --no-fund || npm ci || true
+          mkdir -p "../Test Results/Excel" "../Test Results/CSV"
+          node load/load_runner.js || true
+          node reporters/generate-standalone-sheets.js || true
+
+      - name: Upload Load Test Artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: load-testing-realtime-sync-test-results
+          path: |
+            Test Results/Excel/Load_Testing_Realtime_Sync_300.xlsx
+            Test Results/CSV/Load_Testing_Realtime_Sync_300.csv
+            tests/load-results.json
+          retention-days: 30
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # 7. Compile FurcaRiskAI Master Report & Deploy (Downstream Job)
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  compile:
+    name: Compile FurcaRiskAI Master Report & Deploy
+    needs: [selenium, appium, unit, validation, deployment, load]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Report Dependencies
+        working-directory: tests
+        run: |
+          npm install --legacy-peer-deps --no-audit --no-fund || npm ci || true
+          npm install exceljs --no-save || true
+
+      - name: Download All Upstream Test Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: download-artifacts
+
+      - name: Consolidate Upstream JSON Results
+        run: |
+          echo "Syncing downloaded artifacts into tests/..."
+          find download-artifacts -name "*.json" -exec cp {} tests/ \; || true
+          ls -la tests/*.json || true
+
+      - name: Generate Standalone Excel, CSV & Master Reports
+        working-directory: tests
+        run: |
+          node reporters/generate-standalone-sheets.js || true
+          node reporters/generate-master-summary.js || true
+          node reporters/generate-excel.js || true
+
+      - name: Write GitHub Step Summary
+        if: always()
+        run: |
+          if [ -f "Test Results/Summary/master-summary.md" ]; then
+            cat "Test Results/Summary/master-summary.md" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Prepare GitHub Pages Publication Directory
+        if: always()
+        run: |
+          mkdir -p dist/reports
+          cp -r web/. dist/ || true
+          if [ -d "Test Results" ]; then
+            cp -r "Test Results/." dist/reports/ || true
+          fi
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload GitHub Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/
+
+      - name: Deploy Master Portal & Reports to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Upload Final Master Enterprise Artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: master-enterprise-test-report-${{ github.run_number }}
+          path: |
+            Test Results/
+            tests/*.json
+          retention-days: 30

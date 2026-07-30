@@ -35,8 +35,10 @@ tests/results.json
 tests/screenshots/
 Test Results/*
 !Test Results/Excel/
+!Test Results/CSV/
 Load Test Results/*
 !Load Test Results/Excel/
+!Load Test Results/CSV/
 load-test-results.json
 *.txt
 
